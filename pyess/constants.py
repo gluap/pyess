@@ -19,6 +19,8 @@ GRAPH_TFORMATS = {
     "year": "%Y",
     "year_month": "%Y%m"
 }
-GRAPH_DATA = {
+GRAPH_DATA_URL = {
     f"{PREFIX}v1/user/graph/{dev}/{ts}" for ts in GRAPH_TIMESPANS for dev in GRAPH_DEVICES
 }
+
+SWITCH_URL = f"{PREFIX}/v1/user/operation/status"
