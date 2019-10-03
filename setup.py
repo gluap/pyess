@@ -1,7 +1,7 @@
 # coding=utf-8
 from setuptools import setup
 
-from pyduofern import __version__ as version
+from pyesses import __version__ as version
 
 setup(name='pyess',
       version=version,

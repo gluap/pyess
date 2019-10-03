@@ -30,6 +30,7 @@ class ESS:
 
     def login(self):
         url = LOGIN_URL.format(self.ip)
+        logger.info("fetching auth key")
         r = requests.put(url, json={"password": self.pw}, verify=False, headers={"Content-Type": "application/json"})
         auth_key = r.json()["auth_key"]
         timesync_info = {
@@ -105,13 +106,18 @@ def get_ess_pw(ip="192.168.23.1"):
 
 def autodetect_ess():
     name = find_all_esses()[0]
-    name = re.sub(r"LGE_ESS-(.+)\._pmsctrl\._tcp\.local\.", "\g<1>", name)
+    name = extract_name_from_zeroconf(name)
 
     zeroconf = Zeroconf()
     ess_info = zeroconf.get_service_info("_pmsctrl._tcp.local.", f"LGE_ESS-{name}._pmsctrl._tcp.local.")
     zeroconf.close()
     ip = [socket.inet_ntoa(ip) for ip in ess_info.addresses][0]
     return ip, name
+
+
+def extract_name_from_zeroconf(name):
+    name = re.sub(r"LGE_ESS-(.+)\._pmsctrl\._tcp\.local\.", "\g<1>", name)
+    return name
 
 
 def get_json_with_auth(url, auth_key):
