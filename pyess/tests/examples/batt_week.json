@@ -1,0 +1,39 @@
+{
+  "m_timeFrom": "20190930000000",
+  "m_timeTo": "20191006224500",
+  "db": "success",
+  "loginfo": [
+    {
+      "db": "0",
+      "time": "20190930000000",
+      "charge": "3328",
+      "discharge": "3195",
+      "total_charge": "3328",
+      "total_discharge": "3195"
+    },
+    {
+      "db": "1",
+      "time": "20191001000000",
+      "charge": "1033",
+      "discharge": "954",
+      "total_charge": "4361",
+      "total_discharge": "4149"
+    },
+    {
+      "db": "2",
+      "time": "20191002000000",
+      "charge": "4109",
+      "discharge": "1504",
+      "total_charge": "8470",
+      "total_discharge": "5653"
+    },
+    {
+      "db": "3",
+      "time": "20191003000000",
+      "charge": "1586",
+      "discharge": "9388",
+      "total_charge": "10056",
+      "total_discharge": "15041"
+    }
+  ]
+}

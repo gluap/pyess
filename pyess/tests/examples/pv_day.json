@@ -1,0 +1,376 @@
+{
+  "m_timeFrom": "20191003000000",
+  "m_timeTo": "20191004000000",
+  "db": "success",
+  "loginfo": [
+    {
+      "db": "0",
+      "time": "20191003000000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "1",
+      "time": "20191003001500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "2",
+      "time": "20191003003000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "3",
+      "time": "20191003004500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "4",
+      "time": "20191003010000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "5",
+      "time": "20191003011500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "6",
+      "time": "20191003013000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "7",
+      "time": "20191003014500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "8",
+      "time": "20191003020000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "9",
+      "time": "20191003021500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "10",
+      "time": "20191003023000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "11",
+      "time": "20191003024500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "12",
+      "time": "20191003030000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "13",
+      "time": "20191003031500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "14",
+      "time": "20191003033000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "15",
+      "time": "20191003034500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "16",
+      "time": "20191003040000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "17",
+      "time": "20191003041500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "18",
+      "time": "20191003043000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "19",
+      "time": "20191003044500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "20",
+      "time": "20191003050000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "21",
+      "time": "20191003051500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "22",
+      "time": "20191003053000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "23",
+      "time": "20191003054500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "24",
+      "time": "20191003060000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "25",
+      "time": "20191003061500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "26",
+      "time": "20191003063000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "27",
+      "time": "20191003064500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "28",
+      "time": "20191003070000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "29",
+      "time": "20191003071500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "30",
+      "time": "20191003073000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "31",
+      "time": "20191003074500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "32",
+      "time": "20191003080000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "33",
+      "time": "20191003081500",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "34",
+      "time": "20191003100000",
+      "generation": "0",
+      "feed_in": "0",
+      "self_consum": "0",
+      "total_generation": "0",
+      "total_Feed_in": "0"
+    },
+    {
+      "db": "35",
+      "time": "20191003121500",
+      "generation": "1138",
+      "feed_in": "40",
+      "self_consum": "96.48506",
+      "total_generation": "1138",
+      "total_Feed_in": "40"
+    },
+    {
+      "db": "36",
+      "time": "20191003123000",
+      "generation": "431",
+      "feed_in": "6",
+      "self_consum": "98.60789",
+      "total_generation": "1569",
+      "total_Feed_in": "46"
+    },
+    {
+      "db": "37",
+      "time": "20191003124500",
+      "generation": "365",
+      "feed_in": "15",
+      "self_consum": "95.89041",
+      "total_generation": "1934",
+      "total_Feed_in": "61"
+    },
+    {
+      "db": "38",
+      "time": "20191003130000",
+      "generation": "308",
+      "feed_in": "7",
+      "self_consum": "97.72727",
+      "total_generation": "2242",
+      "total_Feed_in": "68"
+    },
+    {
+      "db": "39",
+      "time": "20191003131500",
+      "generation": "264",
+      "feed_in": "5",
+      "self_consum": "98.10606",
+      "total_generation": "2506",
+      "total_Feed_in": "73"
+    },
+    {
+      "db": "40",
+      "time": "20191003133000",
+      "generation": "346",
+      "feed_in": "22",
+      "self_consum": "93.64162",
+      "total_generation": "2852",
+      "total_Feed_in": "95"
+    }
+  ]
+}

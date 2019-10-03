@@ -1,0 +1,43 @@
+{
+  "m_timeFrom": "20190930000000",
+  "m_timeTo": "20191006224500",
+  "db": "success",
+  "loginfo": [
+    {
+      "db": "0",
+      "time": "20190930000000",
+      "consumption": "11638",
+      "purchase": "6099",
+      "self_suffi": "47.59409",
+      "total_consumption": "11638",
+      "total_purchase": "6099"
+    },
+    {
+      "db": "1",
+      "time": "20191001000000",
+      "consumption": "6151",
+      "purchase": "3729",
+      "self_suffi": "39.37571",
+      "total_consumption": "17789",
+      "total_purchase": "9828"
+    },
+    {
+      "db": "2",
+      "time": "20191002000000",
+      "consumption": "5888",
+      "purchase": "2969",
+      "self_suffi": "49.57541",
+      "total_consumption": "23677",
+      "total_purchase": "12797"
+    },
+    {
+      "db": "3",
+      "time": "20191003000000",
+      "consumption": "12693",
+      "purchase": "2134",
+      "self_suffi": "83.18758",
+      "total_consumption": "36370",
+      "total_purchase": "14931"
+    }
+  ]
+}

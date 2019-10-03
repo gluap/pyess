@@ -1,0 +1,34 @@
+{
+  "m_timeFrom": "20191001000000",
+  "m_timeTo": "20191031214500",
+  "db": "success",
+  "loginfo": [
+    {
+      "db": "0",
+      "time": "20191001000000",
+      "generation": "2517",
+      "feed_in": "138",
+      "self_consum": "99.36432",
+      "total_generation": "2517",
+      "total_feed_in": "138"
+    },
+    {
+      "db": "1",
+      "time": "20191002000000",
+      "generation": "5619",
+      "feed_in": "95",
+      "self_consum": "98.30931",
+      "total_generation": "8136",
+      "total_feed_in": "233"
+    },
+    {
+      "db": "2",
+      "time": "20191003000000",
+      "generation": "2852",
+      "feed_in": "95",
+      "self_consum": "96.66901",
+      "total_generation": "10988",
+      "total_feed_in": "328"
+    }
+  ]
+}

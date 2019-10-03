@@ -1,0 +1,33 @@
+{
+  "statistics": {
+    "pcs_pv_total_power": "1330",
+    "batconv_power": "945",
+    "bat_use": "1",
+    "bat_status": "1",
+    "bat_user_soc": "25.69444",
+    "load_power": "376",
+    "load_today": "0.0",
+    "grid_power": "9",
+    "current_day_self_consumption": "96.7",
+    "current_pv_generation_sum": "2852",
+    "current_grid_feed_in_energy": "95"
+  },
+  "direction": {
+    "is_direct_consuming_": "1",
+    "is_battery_charging_": "1",
+    "is_battery_discharging_": "0",
+    "is_grid_selling_": "1",
+    "is_grid_buying_": "0",
+    "is_charging_from_grid_": "0"
+  },
+  "operation": {
+    "status": "start",
+    "mode": "1"
+  },
+  "wintermode": {
+    "winter_status": "on"
+  },
+  "pcs_fault": {
+    "pcs_status": "pcs_ok"
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "m_timeFrom": "20190930000000",
+  "m_timeTo": "20191006224500",
+  "db": "success",
+  "loginfo": [
+    {
+      "db": "0",
+      "time": "20190930000000",
+      "generation": "5854",
+      "feed_in": "182",
+      "self_consum": "96.89101",
+      "total_generation": "5854",
+      "total_Feed_in": "182"
+    },
+    {
+      "db": "1",
+      "time": "20191001000000",
+      "generation": "2517",
+      "feed_in": "138",
+      "self_consum": "99.36432",
+      "total_generation": "8371",
+      "total_Feed_in": "320"
+    },
+    {
+      "db": "2",
+      "time": "20191002000000",
+      "generation": "5619",
+      "feed_in": "95",
+      "self_consum": "98.30931",
+      "total_generation": "13990",
+      "total_Feed_in": "415"
+    },
+    {
+      "db": "3",
+      "time": "20191003000000",
+      "generation": "2852",
+      "feed_in": "95",
+      "self_consum": "96.66901",
+      "total_generation": "16842",
+      "total_Feed_in": "510"
+    }
+  ]
+}

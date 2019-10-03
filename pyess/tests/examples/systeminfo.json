@@ -1,0 +1,21 @@
+{
+  "pms": {
+    "model": "CENSORED",
+    "serialno": "CENSORED",
+    "ac_input_power": "6600",
+    "ac_output_power": "5",
+    "install_date": "CENSORED"
+  },
+  "batt": {
+    "capacity": "64",
+    "install_date": "CENSORED"
+  },
+  "version": {
+    "pms_version": "10.05.6053",
+    "pms_build_date": "CENSORED",
+    "pcs_version": "LG P1 02.00.02.00 R1753",
+    "bms_version": "LGBMS.01.01.01.00",
+    "bms_unit1_version": "",
+    "bms_unit2_version": ""
+  }
+}

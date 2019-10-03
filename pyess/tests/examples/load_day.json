@@ -1,0 +1,376 @@
+{
+  "m_timeFrom": "20191003000000",
+  "m_timeTo": "20191004000000",
+  "db": "success",
+  "loginfo": [
+    {
+      "db": "0",
+      "time": "20191003000000",
+      "consumption": "50",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "50",
+      "total_purchase": "0"
+    },
+    {
+      "db": "1",
+      "time": "20191003001500",
+      "consumption": "349",
+      "purchase": "2",
+      "self_suffi": "99.42693",
+      "total_consumption": "399",
+      "total_purchase": "2"
+    },
+    {
+      "db": "2",
+      "time": "20191003003000",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "437",
+      "total_purchase": "2"
+    },
+    {
+      "db": "3",
+      "time": "20191003004500",
+      "consumption": "120",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "557",
+      "total_purchase": "2"
+    },
+    {
+      "db": "4",
+      "time": "20191003010000",
+      "consumption": "152",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "709",
+      "total_purchase": "2"
+    },
+    {
+      "db": "5",
+      "time": "20191003011500",
+      "consumption": "45",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "754",
+      "total_purchase": "2"
+    },
+    {
+      "db": "6",
+      "time": "20191003013000",
+      "consumption": "34",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "788",
+      "total_purchase": "2"
+    },
+    {
+      "db": "7",
+      "time": "20191003014500",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "826",
+      "total_purchase": "2"
+    },
+    {
+      "db": "8",
+      "time": "20191003020000",
+      "consumption": "40",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "866",
+      "total_purchase": "2"
+    },
+    {
+      "db": "9",
+      "time": "20191003021500",
+      "consumption": "70",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "936",
+      "total_purchase": "2"
+    },
+    {
+      "db": "10",
+      "time": "20191003023000",
+      "consumption": "50",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "986",
+      "total_purchase": "2"
+    },
+    {
+      "db": "11",
+      "time": "20191003024500",
+      "consumption": "39",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1025",
+      "total_purchase": "2"
+    },
+    {
+      "db": "12",
+      "time": "20191003030000",
+      "consumption": "39",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1064",
+      "total_purchase": "2"
+    },
+    {
+      "db": "13",
+      "time": "20191003031500",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1102",
+      "total_purchase": "2"
+    },
+    {
+      "db": "14",
+      "time": "20191003033000",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1140",
+      "total_purchase": "2"
+    },
+    {
+      "db": "15",
+      "time": "20191003034500",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1178",
+      "total_purchase": "2"
+    },
+    {
+      "db": "16",
+      "time": "20191003040000",
+      "consumption": "37",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1215",
+      "total_purchase": "2"
+    },
+    {
+      "db": "17",
+      "time": "20191003041500",
+      "consumption": "31",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1246",
+      "total_purchase": "2"
+    },
+    {
+      "db": "18",
+      "time": "20191003043000",
+      "consumption": "44",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1290",
+      "total_purchase": "2"
+    },
+    {
+      "db": "19",
+      "time": "20191003044500",
+      "consumption": "41",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1331",
+      "total_purchase": "2"
+    },
+    {
+      "db": "20",
+      "time": "20191003050000",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1369",
+      "total_purchase": "2"
+    },
+    {
+      "db": "21",
+      "time": "20191003051500",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1407",
+      "total_purchase": "2"
+    },
+    {
+      "db": "22",
+      "time": "20191003053000",
+      "consumption": "35",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1442",
+      "total_purchase": "2"
+    },
+    {
+      "db": "23",
+      "time": "20191003054500",
+      "consumption": "31",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1473",
+      "total_purchase": "2"
+    },
+    {
+      "db": "24",
+      "time": "20191003060000",
+      "consumption": "31",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1504",
+      "total_purchase": "2"
+    },
+    {
+      "db": "25",
+      "time": "20191003061500",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1542",
+      "total_purchase": "2"
+    },
+    {
+      "db": "26",
+      "time": "20191003063000",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1580",
+      "total_purchase": "2"
+    },
+    {
+      "db": "27",
+      "time": "20191003064500",
+      "consumption": "38",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1618",
+      "total_purchase": "2"
+    },
+    {
+      "db": "28",
+      "time": "20191003070000",
+      "consumption": "32",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1650",
+      "total_purchase": "2"
+    },
+    {
+      "db": "29",
+      "time": "20191003071500",
+      "consumption": "33",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1683",
+      "total_purchase": "2"
+    },
+    {
+      "db": "30",
+      "time": "20191003073000",
+      "consumption": "49",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1732",
+      "total_purchase": "2"
+    },
+    {
+      "db": "31",
+      "time": "20191003074500",
+      "consumption": "54",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1786",
+      "total_purchase": "2"
+    },
+    {
+      "db": "32",
+      "time": "20191003080000",
+      "consumption": "41",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1827",
+      "total_purchase": "2"
+    },
+    {
+      "db": "33",
+      "time": "20191003081500",
+      "consumption": "149",
+      "purchase": "0",
+      "self_suffi": "100",
+      "total_consumption": "1976",
+      "total_purchase": "2"
+    },
+    {
+      "db": "34",
+      "time": "20191003100000",
+      "consumption": "133",
+      "purchase": "33",
+      "self_suffi": "75.18797",
+      "total_consumption": "2109",
+      "total_purchase": "35"
+    },
+    {
+      "db": "35",
+      "time": "20191003121500",
+      "consumption": "909",
+      "purchase": "475",
+      "self_suffi": "47.74477",
+      "total_consumption": "3018",
+      "total_purchase": "510"
+    },
+    {
+      "db": "36",
+      "time": "20191003123000",
+      "consumption": "305",
+      "purchase": "5",
+      "self_suffi": "98.36066",
+      "total_consumption": "3323",
+      "total_purchase": "515"
+    },
+    {
+      "db": "37",
+      "time": "20191003124500",
+      "consumption": "162",
+      "purchase": "9",
+      "self_suffi": "94.44444",
+      "total_consumption": "3485",
+      "total_purchase": "524"
+    },
+    {
+      "db": "38",
+      "time": "20191003130000",
+      "consumption": "75",
+      "purchase": "3",
+      "self_suffi": "96",
+      "total_consumption": "3560",
+      "total_purchase": "527"
+    },
+    {
+      "db": "39",
+      "time": "20191003131500",
+      "consumption": "74",
+      "purchase": "4",
+      "self_suffi": "94.59459",
+      "total_consumption": "3634",
+      "total_purchase": "531"
+    },
+    {
+      "db": "40",
+      "time": "20191003133000",
+      "consumption": "275",
+      "purchase": "19",
+      "self_suffi": "93.09091",
+      "total_consumption": "3909",
+      "total_purchase": "550"
+    }
+  ]
+}
