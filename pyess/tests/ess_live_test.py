@@ -9,13 +9,12 @@ import os
 from uuid import UUID
 
 
-def is_valid_uuid(uuid_to_test, version=4):
+def parses_as_uuid(uuid_to_test, version=4):
     try:
-        uuid_obj = UUID(uuid_to_test, version=version)
+        uuid_obj = UUID("{"+uuid_to_test+"}", version=version)
     except ValueError:
         return False
-
-    return str(uuid_obj) == uuid_to_test
+    return True
 
 
 from pyess.ess import find_ess, find_all_esses, get_ess_pw, autodetect_ess, login
@@ -51,3 +50,4 @@ def test_get_password(test_ess):
 
 def test_login(password, test_ess):
     auth_key = login(test_ess[0], password)
+    assert parses_as_uuid(auth_key) # from observation we know these are uuids
