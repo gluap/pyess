@@ -45,7 +45,7 @@ def ess(test_ess, password):
 
 
 @pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query'])
-def test_init(password, test_ess):
+def test_offline_init(password, test_ess):
     def uip(self):
         return "192.168.1.253", "bla"
 
@@ -54,7 +54,7 @@ def test_init(password, test_ess):
 
 
 @pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query', 'body'])
-def test_get_password(test_ess):
+def test_offline_get_password(test_ess):
     # assuming we are not on ess' wifi
     with pytest.raises(Exception):
         pw = get_ess_pw(test_ess[0])
@@ -64,7 +64,7 @@ def test_get_password(test_ess):
 
 @pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query'])
 @pytest.mark.parametrize('dev,timespan', [(d, t) for d in GRAPH_DEVICES for t in GRAPH_TIMESPANS])
-def test_get_graph(ess, dev, timespan):
+def test_offline_get_graph(ess, dev, timespan):
     res = ess.get_graph(dev, timespan, datetime.datetime.now())
     example = json.load(open(os.path.dirname(__file__) + "/examples/" + dev + "_" + timespan + ".json", "r"))
     for key in example.keys():
@@ -76,7 +76,7 @@ def test_get_graph(ess, dev, timespan):
 
 @pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query'])
 @pytest.mark.parametrize("state", [(k) for k in STATE_URLS.keys()])
-def test_get_state(ess, state):
+def test_offline_get_state(ess, state):
     res = ess.get_state(state)
     example = json.load(open(os.path.dirname(__file__) + "/examples/" + state + ".json", "r"))
     for key in example.keys():
