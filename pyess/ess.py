@@ -16,16 +16,19 @@ logger = logging.getLogger(__name__)
 def get_ess_pw(ip="192.168.23.1"):
     """this method only works on the wifi provided by the box."""
     res = requests.post(f"https://{ip}/v1/user/setting/read/password", json={"key": "lgepmsuser!@#"},
-                        headers={"Charset": "UTF-8", "Content-Type": "application/json"}, verify=False, timeout=1).json()
+                        headers={"Charset": "UTF-8", "Content-Type": "application/json"}, verify=False,
+                        timeout=1).json()
     if res['status'] == 'success':
         return res['password']
     logger.exception("could not fetch password")
     raise LookupError("could not look up password")
 
+
 def autodetect_ess():
     name = find_all_esses()[0]
     name = re.sub(r"LGE_ESS-(.+)\._pmsctrl\._tcp\.local\.", "\g<1>", name)
     return find_ess(name)
+
 
 def find_ess(name: str):
     zeroconf = Zeroconf()
@@ -33,13 +36,9 @@ def find_ess(name: str):
     zeroconf.close()
     return [socket.inet_ntoa(ip) for ip in ess_info.addresses][0], ess_info.server
 
-prefix = "https://{}/"
-login_url = f"{prefix}v1/user/setting/login"
-timesync_url = f"{prefix}v1/user/setting/timesync"
-
 
 def login(ip, password):
-    url=login_url.format(ip)
+    url = login_url.format(ip)
     r = requests.put(url, json={"password": password}, verify=False, headers={"Content-Type": "application/json"})
     auth_key = r.json()["auth_key"]
     timesync_info = {
@@ -47,12 +46,16 @@ def login(ip, password):
         "by": "phone",
         "date_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
-    rt = requests.put(timesync_url.format(ip), json=timesync_info, verify=False, headers={"Content-Type": "application/json"})
+    rt = requests.put(timesync_url.format(ip), json=timesync_info, verify=False,
+                      headers={"Content-Type": "application/json"})
     assert rt.json()['status'] == 'success', rt.__dict__
     return auth_key
 
 
-#auth_key = login()
+
+prefix = "https://{}/"
+login_url = f"{prefix}v1/user/setting/login"
+timesync_url = f"{prefix}v1/user/setting/timesync"
 
 simple_urls = {
     "network": f"{prefix}v1/user/setting/network",
@@ -103,20 +106,22 @@ def switch_off(auth_key):
                         verify=False, headers={"Content-Type": "application/json"})
 
 
-#results = {}
-#for (name, url) in simple_urls.items():
+# results = {}
+# for (name, url) in simple_urls.items():
 #    results[name] = get_json_with_auth(url, auth_key)
-#print(results)
+# print(results)
 
 
 def find_all_esses():
     import zeroconf
     from zeroconf import ServiceBrowser, Zeroconf, ServiceInfo
-    esses=[]
+    esses = []
+
     class MyListener:
 
         def remove_service(self, zeroconf, type, name):
             pass
+
         def add_service(self, zeroconf, type, name):
             info = zeroconf.get_service_info(type, name)
             esses.append(info.name)
@@ -128,6 +133,7 @@ def find_all_esses():
     time.sleep(3)
     zeroconf.close()
     return esses
+
 
 def mitm_for_ess(name):
     import socket
@@ -143,5 +149,3 @@ def mitm_for_ess(name):
     zeroconf = Zeroconf()
     print("Registration of a service, press Ctrl-C to exit...")
     zeroconf.unregister_service(info)
-
-
