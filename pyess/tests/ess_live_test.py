@@ -51,3 +51,4 @@ def test_get_password(test_ess):
 def test_login(password, test_ess):
     auth_key = login(test_ess[0], password)
     assert parses_as_uuid(auth_key) # from observation we know these are uuids
+
