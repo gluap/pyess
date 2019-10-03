@@ -23,13 +23,13 @@ def parses_as_uuid(uuid_to_test, version=4):
 
 @pytest.fixture()
 def password():
-    return json.load(open(os.path.dirname(__file__) + "/credentials.json"))["password"]
+    return "ba5511008000"
 
 
 @pytest.fixture()
 def test_ess(cache=[]):
     if not cache:
-        ip, name = autodetect_ess()
+        ip, name = "192.168.1.253", "THE_ESS_NAME"
         cache.append(ip)
         cache.append(name)
     return cache
@@ -37,15 +37,23 @@ def test_ess(cache=[]):
 
 @pytest.fixture()
 def ess(test_ess, password):
+    def uip(self):
+        return "192.168.1.253", "THE_ESS_NAME"
+
+    ESS.update_ip = uip
     return ESS(test_ess[1], password)
 
 
-@pytest.mark.vcr()
+@pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query'])
 def test_init(password, test_ess):
+    def uip(self):
+        return "192.168.1.253", "bla"
+
+    ESS.update_ip = uip
     ess = ESS(test_ess[1], password)
 
 
-@pytest.mark.vcr()
+@pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query', 'body'])
 def test_get_password(test_ess):
     # assuming we are not on ess' wifi
     with pytest.raises(Exception):
@@ -54,7 +62,7 @@ def test_get_password(test_ess):
 
 # def test_get_state/
 
-@pytest.mark.vcr()
+@pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query'])
 @pytest.mark.parametrize('dev,timespan', [(d, t) for d in GRAPH_DEVICES for t in GRAPH_TIMESPANS])
 def test_get_graph(ess, dev, timespan):
     res = ess.get_graph(dev, timespan, datetime.datetime.now())
@@ -66,7 +74,7 @@ def test_get_graph(ess, dev, timespan):
             assert k in res[key]
 
 
-@pytest.mark.vcr()
+@pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query'])
 @pytest.mark.parametrize("state", [(k) for k in STATE_URLS.keys()])
 def test_get_state(ess, state):
     res = ess.get_state(state)
