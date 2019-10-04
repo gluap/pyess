@@ -1,7 +1,7 @@
 # coding=utf-8
 from setuptools import setup
 
-from pyesses import __version__ as version
+from pyess import __version__ as version
 
 setup(name='pyess',
       version=version,
@@ -22,7 +22,7 @@ setup(name='pyess',
       packages=['pyess'],
 
       install_requires=[
-          'zeroconf', 'requests'
+          'zeroconf', 'requests', 'graphyte'
       ],
 
       zip_safe=False,
