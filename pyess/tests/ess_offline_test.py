@@ -86,7 +86,7 @@ def test_offline_get_state(ess, state):
             assert k in res[key]
 
 @pytest.mark.vcr()
-def test_online_auto_reconnect(ess):
+def test_offline_auto_reconnect(ess):
     ess.auth_key = "asdf"
     res = ess.get_state("common")
     assert res != {'auth': 'auth_key failed'}
