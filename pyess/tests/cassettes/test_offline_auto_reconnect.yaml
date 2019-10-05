@@ -1,0 +1,247 @@
+interactions:
+- request:
+    body: '{"password": "ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"a98d108a-e7bf-11e9-a9b1-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Oct 2019 22:29:58 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "a98d108a-e7bf-11e9-a9b1-ba5511008000", "by": "phone", "date_time":
+      "2019-10-05 22:29:59"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '103'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Oct 2019 22:29:59 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "asdf"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '20'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: POST
+    uri: https://192.168.1.253/v1/user/essinfo/common
+  response:
+    body:
+      string: "{\n    \"auth\": \"auth_key failed\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Oct 2019 22:30:02 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 405
+      message: Method Not Allowed
+- request:
+    body: '{"password": "ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"ad0928a2-e7bf-11e9-a9b1-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Oct 2019 22:30:03 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "ad0928a2-e7bf-11e9-a9b1-ba5511008000", "by": "phone", "date_time":
+      "2019-10-05 22:30:04"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '103'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Oct 2019 22:30:04 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "ad0928a2-e7bf-11e9-a9b1-ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '52'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: POST
+    uri: https://192.168.1.253/v1/user/essinfo/common
+  response:
+    body:
+      string: "{\n    \"PV\":\n    {\n        \"brand\": \"LGE-SOLAR\",\n        \"\
+        capacity\": \"5850\",\n        \"pv1_voltage\": \"17.799999\",\n        \"\
+        pv2_voltage\": \"17.900000\",\n        \"pv1_power\": \"0\",\n        \"pv2_power\"\
+        : \"0\",\n        \"pv1_current\": \"0.000000\",\n        \"pv2_current\"\
+        : \"0.000000\",\n        \"today_pv_generation_sum\": \"0\",\n        \"today_month_pv_generation_sum\"\
+        : \"64108\"\n    },\n    \"BATT\":\n    {\n        \"status\": \"0\",\n  \
+        \      \"soc\": \"6.3\",\n        \"dc_power\": \"0\",\n        \"winter_setting\"\
+        : \"off\",\n        \"winter_status\": \"off\",\n        \"safty_soc\": \"\
+        20\",\n        \"today_batt_discharge_enery\": \"0\",\n        \"today_batt_charge_energy\"\
+        : \"0\",\n        \"month_batt_charge_energy\": \"27551\",\n        \"month_batt_discharge_energy\"\
+        : \"26862\"\n    },\n    \"GRID\":\n    {\n        \"active_power\": \"786.119995\"\
+        ,\n        \"a_phase\": \"235.399994\",\n        \"freq\": \"50.029999\",\n\
+        \        \"today_grid_feed_in_energy\": \"0\",\n        \"today_grid_power_purchase_energy\"\
+        : \"540\",\n        \"month_grid_feed_in_energy\": \"8758\",\n        \"month_grid_power_purchase_energy\"\
+        : \"23406\"\n    },\n    \"LOAD\":\n    {\n        \"load_power\": \"794\"\
+        ,\n        \"today_load_consumption_sum\": \"540\",\n        \"today_pv_direct_consumption_enegy\"\
+        : \"0\",\n        \"today_batt_discharge_enery\": \"0\",\n        \"today_grid_power_purchase_energy\"\
+        : \"540\",\n        \"month_load_consumption_sum\": \"78189\",\n        \"\
+        month_pv_direct_consumption_energy\": \"27921\",\n        \"month_batt_discharge_energy\"\
+        : \"26862\",\n        \"month_grid_power_purchase_energy\": \"23406\"\n  \
+        \  },\n    \"PCS\":\n    {\n        \"today_self_consumption\": \"0.0\",\n\
+        \        \"month_co2_reduction_accum\": \"45516\",\n        \"today_pv_generation_sum\"\
+        : \"0\",\n        \"month_pv_generation_sum\": \"64108\",\n        \"today_grid_feed_in_energy\"\
+        : \"0\",\n        \"month_grid_feed_in_energy\": \"8758\",\n        \"pcs_stauts\"\
+        : \"1\",\n        \"feed_in_limitation\": \"70\",\n        \"operation_mode\"\
+        : \"0\"\n    }\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Sat, 05 Oct 2019 22:30:04 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+version: 1
