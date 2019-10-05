@@ -1,0 +1,124 @@
+interactions:
+- request:
+    body: '{"password": "ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"5013a60c-e5dc-11e9-a9ae-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:50:01 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "5013a60c-e5dc-11e9-a9ae-ba5511008000", "by": "phone", "date_time":
+      "2019-10-03 12:50:01"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '103'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:50:01 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "5013a60c-e5dc-11e9-a9ae-ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '52'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: POST
+    uri: https://192.168.1.253/v1/user/essinfo/home
+  response:
+    body:
+      string: "{\n    \"statistics\":\n    {\n        \"pcs_pv_total_power\": \"1712\"\
+        ,\n        \"batconv_power\": \"848\",\n        \"bat_use\": \"1\",\n    \
+        \    \"bat_status\": \"1\",\n        \"bat_user_soc\": \"52.87357\",\n   \
+        \     \"load_power\": \"314\",\n        \"load_today\": \"0.0\",\n       \
+        \ \"grid_power\": \"550\",\n        \"current_day_self_consumption\": \"97.5\"\
+        ,\n        \"current_pv_generation_sum\": \"4238\",\n        \"current_grid_feed_in_energy\"\
+        : \"104\"\n    },\n    \"direction\":\n    {\n        \"is_direct_consuming_\"\
+        : \"1\",\n        \"is_battery_charging_\": \"1\",\n        \"is_battery_discharging_\"\
+        : \"0\",\n        \"is_grid_selling_\": \"1\",\n        \"is_grid_buying_\"\
+        : \"0\",\n        \"is_charging_from_grid_\": \"0\"\n    },\n    \"operation\"\
+        :\n    {\n        \"status\": \"start\",\n        \"mode\": \"1\"\n    },\n\
+        \    \"wintermode\":\n    {\n        \"winter_status\": \"off\"\n    },\n\
+        \    \"pcs_fault\":\n    {\n        \"pcs_status\": \"pcs_ok\"\n    }\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:50:01 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+version: 1

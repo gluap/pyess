@@ -40,12 +40,12 @@ def ess(test_online_ess, password):
     return ESS(test_online_ess[1], password)
 
 
-@pytest.mark.vcr()
+@pytest.mark.vcr(mode="all")
 def test_online_init(password, test_online_ess):
     ess = ESS(test_online_ess[1], password)
 
 
-@pytest.mark.vcr()
+@pytest.mark.vcr(mode="all")
 def test_online_get_password(test_online_ess):
     # assuming we are not on ess' wifi
     with pytest.raises(Exception):
@@ -54,7 +54,7 @@ def test_online_get_password(test_online_ess):
 
 # def test_online_get_state/
 
-@pytest.mark.vcr()
+@pytest.mark.vcr(mode="all")
 @pytest.mark.parametrize('dev,timespan', [(d, t) for d in GRAPH_DEVICES for t in GRAPH_TIMESPANS])
 def test_online_get_graph(ess, dev, timespan):
     res = ess.get_graph(dev, timespan, datetime.datetime.now())
@@ -76,3 +76,11 @@ def test_online_get_state(ess, state):
     for key in [k for k in example.keys() if isinstance(example[k], dict)]:
         for k in example[key].keys():
             assert k in res[key]
+
+
+@pytest.mark.vcr(mode="all")
+def test_online_auto_reconnect(ess):
+    ess.auth_key = "asdf"
+    res = ess.get_state("common")
+    assert res != {'auth': 'auth_key failed'}
+    pass

@@ -1,0 +1,298 @@
+interactions:
+- request:
+    body: '{"password": "ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"2eb4f2c2-e5dc-11e9-a9ae-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:05 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "2eb4f2c2-e5dc-11e9-a9ae-ba5511008000", "by": "phone", "date_time":
+      "2019-10-03 12:49:05"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '103'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:05 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "2eb4f2c2-e5dc-11e9-a9ae-ba5511008000", "year_month_day":
+      "20191003"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '82'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/load/day
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20191003000000\",\n    \"m_timeTo\": \"20191004000000\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20191003000000\",\n         \
+        \   \"consumption\": \"50\",\n            \"purchase\": \"0\",\n         \
+        \   \"self_suffi\": \"100\",\n            \"total_consumption\": \"50\",\n\
+        \            \"total_purchase\": \"0\"\n        },\n        {\n          \
+        \  \"db\": \"1\",\n            \"time\": \"20191003001500\",\n           \
+        \ \"consumption\": \"349\",\n            \"purchase\": \"2\",\n          \
+        \  \"self_suffi\": \"99.42693\",\n            \"total_consumption\": \"399\"\
+        ,\n            \"total_purchase\": \"2\"\n        },\n        {\n        \
+        \    \"db\": \"2\",\n            \"time\": \"20191003003000\",\n         \
+        \   \"consumption\": \"38\",\n            \"purchase\": \"0\",\n         \
+        \   \"self_suffi\": \"100\",\n            \"total_consumption\": \"437\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"3\",\n            \"time\": \"20191003004500\",\n           \
+        \ \"consumption\": \"120\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"557\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"4\",\n            \"time\": \"20191003010000\",\n           \
+        \ \"consumption\": \"152\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"709\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"5\",\n            \"time\": \"20191003011500\",\n           \
+        \ \"consumption\": \"45\",\n            \"purchase\": \"0\",\n           \
+        \ \"self_suffi\": \"100\",\n            \"total_consumption\": \"754\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"6\",\n            \"time\": \"20191003013000\",\n           \
+        \ \"consumption\": \"34\",\n            \"purchase\": \"0\",\n           \
+        \ \"self_suffi\": \"100\",\n            \"total_consumption\": \"788\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"7\",\n            \"time\": \"20191003014500\",\n           \
+        \ \"consumption\": \"38\",\n            \"purchase\": \"0\",\n           \
+        \ \"self_suffi\": \"100\",\n            \"total_consumption\": \"826\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"8\",\n            \"time\": \"20191003020000\",\n           \
+        \ \"consumption\": \"40\",\n            \"purchase\": \"0\",\n           \
+        \ \"self_suffi\": \"100\",\n            \"total_consumption\": \"866\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"9\",\n            \"time\": \"20191003021500\",\n           \
+        \ \"consumption\": \"70\",\n            \"purchase\": \"0\",\n           \
+        \ \"self_suffi\": \"100\",\n            \"total_consumption\": \"936\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"10\",\n            \"time\": \"20191003023000\",\n          \
+        \  \"consumption\": \"50\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"986\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"11\",\n            \"time\": \"20191003024500\",\n          \
+        \  \"consumption\": \"39\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1025\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"12\",\n            \"time\": \"20191003030000\",\n          \
+        \  \"consumption\": \"39\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1064\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"13\",\n            \"time\": \"20191003031500\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1102\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"14\",\n            \"time\": \"20191003033000\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1140\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"15\",\n            \"time\": \"20191003034500\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1178\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"16\",\n            \"time\": \"20191003040000\",\n          \
+        \  \"consumption\": \"37\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1215\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"17\",\n            \"time\": \"20191003041500\",\n          \
+        \  \"consumption\": \"31\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1246\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"18\",\n            \"time\": \"20191003043000\",\n          \
+        \  \"consumption\": \"44\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1290\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"19\",\n            \"time\": \"20191003044500\",\n          \
+        \  \"consumption\": \"41\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1331\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"20\",\n            \"time\": \"20191003050000\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1369\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"21\",\n            \"time\": \"20191003051500\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1407\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"22\",\n            \"time\": \"20191003053000\",\n          \
+        \  \"consumption\": \"35\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1442\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"23\",\n            \"time\": \"20191003054500\",\n          \
+        \  \"consumption\": \"31\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1473\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"24\",\n            \"time\": \"20191003060000\",\n          \
+        \  \"consumption\": \"31\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1504\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"25\",\n            \"time\": \"20191003061500\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1542\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"26\",\n            \"time\": \"20191003063000\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1580\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"27\",\n            \"time\": \"20191003064500\",\n          \
+        \  \"consumption\": \"38\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1618\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"28\",\n            \"time\": \"20191003070000\",\n          \
+        \  \"consumption\": \"32\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1650\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"29\",\n            \"time\": \"20191003071500\",\n          \
+        \  \"consumption\": \"33\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1683\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"30\",\n            \"time\": \"20191003073000\",\n          \
+        \  \"consumption\": \"49\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1732\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"31\",\n            \"time\": \"20191003074500\",\n          \
+        \  \"consumption\": \"54\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1786\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"32\",\n            \"time\": \"20191003080000\",\n          \
+        \  \"consumption\": \"41\",\n            \"purchase\": \"0\",\n          \
+        \  \"self_suffi\": \"100\",\n            \"total_consumption\": \"1827\",\n\
+        \            \"total_purchase\": \"2\"\n        },\n        {\n          \
+        \  \"db\": \"33\",\n            \"time\": \"20191003081500\",\n          \
+        \  \"consumption\": \"149\",\n            \"purchase\": \"0\",\n         \
+        \   \"self_suffi\": \"100\",\n            \"total_consumption\": \"1976\"\
+        ,\n            \"total_purchase\": \"2\"\n        },\n        {\n        \
+        \    \"db\": \"34\",\n            \"time\": \"20191003100000\",\n        \
+        \    \"consumption\": \"133\",\n            \"purchase\": \"33\",\n      \
+        \      \"self_suffi\": \"75.18797\",\n            \"total_consumption\": \"\
+        2109\",\n            \"total_purchase\": \"35\"\n        },\n        {\n \
+        \           \"db\": \"35\",\n            \"time\": \"20191003121500\",\n \
+        \           \"consumption\": \"909\",\n            \"purchase\": \"475\",\n\
+        \            \"self_suffi\": \"47.74477\",\n            \"total_consumption\"\
+        : \"3018\",\n            \"total_purchase\": \"510\"\n        },\n       \
+        \ {\n            \"db\": \"36\",\n            \"time\": \"20191003123000\"\
+        ,\n            \"consumption\": \"305\",\n            \"purchase\": \"5\"\
+        ,\n            \"self_suffi\": \"98.36066\",\n            \"total_consumption\"\
+        : \"3323\",\n            \"total_purchase\": \"515\"\n        },\n       \
+        \ {\n            \"db\": \"37\",\n            \"time\": \"20191003124500\"\
+        ,\n            \"consumption\": \"162\",\n            \"purchase\": \"9\"\
+        ,\n            \"self_suffi\": \"94.44444\",\n            \"total_consumption\"\
+        : \"3485\",\n            \"total_purchase\": \"524\"\n        },\n       \
+        \ {\n            \"db\": \"38\",\n            \"time\": \"20191003130000\"\
+        ,\n            \"consumption\": \"75\",\n            \"purchase\": \"3\",\n\
+        \            \"self_suffi\": \"96\",\n            \"total_consumption\": \"\
+        3560\",\n            \"total_purchase\": \"527\"\n        },\n        {\n\
+        \            \"db\": \"39\",\n            \"time\": \"20191003131500\",\n\
+        \            \"consumption\": \"74\",\n            \"purchase\": \"4\",\n\
+        \            \"self_suffi\": \"94.59459\",\n            \"total_consumption\"\
+        : \"3634\",\n            \"total_purchase\": \"531\"\n        },\n       \
+        \ {\n            \"db\": \"40\",\n            \"time\": \"20191003133000\"\
+        ,\n            \"consumption\": \"275\",\n            \"purchase\": \"19\"\
+        ,\n            \"self_suffi\": \"93.09091\",\n            \"total_consumption\"\
+        : \"3909\",\n            \"total_purchase\": \"550\"\n        },\n       \
+        \ {\n            \"db\": \"41\",\n            \"time\": \"20191003134500\"\
+        ,\n            \"consumption\": \"92\",\n            \"purchase\": \"3\",\n\
+        \            \"self_suffi\": \"96.73913\",\n            \"total_consumption\"\
+        : \"4001\",\n            \"total_purchase\": \"553\"\n        },\n       \
+        \ {\n            \"db\": \"42\",\n            \"time\": \"20191003140000\"\
+        ,\n            \"consumption\": \"57\",\n            \"purchase\": \"1\",\n\
+        \            \"self_suffi\": \"98.24561\",\n            \"total_consumption\"\
+        : \"4058\",\n            \"total_purchase\": \"554\"\n        },\n       \
+        \ {\n            \"db\": \"43\",\n            \"time\": \"20191003141500\"\
+        ,\n            \"consumption\": \"56\",\n            \"purchase\": \"0\",\n\
+        \            \"self_suffi\": \"100\",\n            \"total_consumption\":\
+        \ \"4114\",\n            \"total_purchase\": \"554\"\n        },\n       \
+        \ {\n            \"db\": \"44\",\n            \"time\": \"20191003143000\"\
+        ,\n            \"consumption\": \"70\",\n            \"purchase\": \"1\",\n\
+        \            \"self_suffi\": \"98.57143\",\n            \"total_consumption\"\
+        : \"4184\",\n            \"total_purchase\": \"555\"\n        },\n       \
+        \ {\n            \"db\": \"45\",\n            \"time\": \"20191003144500\"\
+        ,\n            \"consumption\": \"72\",\n            \"purchase\": \"1\",\n\
+        \            \"self_suffi\": \"98.61111\",\n            \"total_consumption\"\
+        : \"4256\",\n            \"total_purchase\": \"556\"\n        }\n    ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:05 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+version: 1

@@ -1,0 +1,130 @@
+interactions:
+- request:
+    body: '{"password": "ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"35dcb7b0-e5dc-11e9-a9ae-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:17 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "35dcb7b0-e5dc-11e9-a9ae-ba5511008000", "by": "phone", "date_time":
+      "2019-10-03 12:49:18"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '103'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:18 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "35dcb7b0-e5dc-11e9-a9ae-ba5511008000", "year_month_day":
+      "20191003"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '82'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/pv/week
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20190930000000\",\n    \"m_timeTo\": \"20191006224500\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20190930000000\",\n         \
+        \   \"generation\": \"5854\",\n            \"feed_in\": \"182\",\n       \
+        \     \"self_consum\": \"96.89101\",\n            \"total_generation\": \"\
+        5854\",\n            \"total_Feed_in\": \"182\"\n        },\n        {\n \
+        \           \"db\": \"1\",\n            \"time\": \"20191001000000\",\n  \
+        \          \"generation\": \"2517\",\n            \"feed_in\": \"138\",\n\
+        \            \"self_consum\": \"99.36432\",\n            \"total_generation\"\
+        : \"8371\",\n            \"total_Feed_in\": \"320\"\n        },\n        {\n\
+        \            \"db\": \"2\",\n            \"time\": \"20191002000000\",\n \
+        \           \"generation\": \"5619\",\n            \"feed_in\": \"95\",\n\
+        \            \"self_consum\": \"98.30931\",\n            \"total_generation\"\
+        : \"13990\",\n            \"total_Feed_in\": \"415\"\n        },\n       \
+        \ {\n            \"db\": \"3\",\n            \"time\": \"20191003000000\"\
+        ,\n            \"generation\": \"4238\",\n            \"feed_in\": \"104\"\
+        ,\n            \"self_consum\": \"97.54601\",\n            \"total_generation\"\
+        : \"18228\",\n            \"total_Feed_in\": \"519\"\n        }\n    ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:18 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+version: 1

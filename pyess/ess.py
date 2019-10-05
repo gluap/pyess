@@ -11,7 +11,7 @@ import requests
 from zeroconf import Zeroconf
 
 from pyess.constants import PREFIX, LOGIN_URL, TIMESYNC_URL, GRAPH_TIMESPANS, GRAPH_DEVICES, GRAPH_PARAMS, \
-    GRAPH_TFORMATS, SWITCH_URL, STATE_URLS
+    GRAPH_TFORMATS, SWITCH_URL, STATE_URLS, RETRIES
 
 
 class ESSException(Exception):
@@ -54,15 +54,26 @@ class ESS:
     def get_graph(self, device, timespan, date):
         assert device in GRAPH_DEVICES
         assert timespan in GRAPH_TIMESPANS
-        jsondata = {"auth_key": self.auth_key,
-                    GRAPH_PARAMS[timespan]: date.strftime(GRAPH_TFORMATS[GRAPH_PARAMS[timespan]])}
         url = f"https://{self.ip}/v1/user/graph/{device}/{timespan}"
-        r = requests.post(url, json=jsondata, verify=False, headers={"Content-Type": "application/json"})
-        return r.json()
+        # r = requests.post(url, json=jsondata, verify=False, headers={"Content-Type": "application/json"})
+        return self.post_json_with_auth(url, extra_json_data={
+            GRAPH_PARAMS[timespan]: date.strftime(GRAPH_TFORMATS[GRAPH_PARAMS[timespan]])})
 
-    def get_json_with_auth(self,url):
-        r = requests.post(url, json={"auth_key": self.auth_key}, verify=False, headers={"Content-Type": "application/json"})
-        return r.json()
+    def post_json_with_auth(self, url, retries=0, extra_json_data=None):
+        json = {"auth_key": self.auth_key}
+        error = False
+        if extra_json_data:
+            json.update(extra_json_data)
+        try:
+            r = requests.post(url, json=json, verify=False, headers={"Content-Type": "application/json"})
+        except (requests.ConnectionError, requests.ConnectTimeout):
+            error = True
+        if not error and (r.status_code == 200 or (r.json() != {'auth': 'auth_key failed'})):
+            return r.json()
+        logger.info("seems we got logged out, retrying after {} seconds".format(retries))
+        time.sleep(retries)
+        self.login()
+        self.post_json_with_auth(url, retries=retries + 1, extra_json_data=None)
 
     def get_network(self):
         return self.get_state("network")
@@ -79,8 +90,8 @@ class ESS:
     def get_common(self):
         return self.get_state("common")
 
-    def get_state(self,state):
-        return self.get_json_with_auth(STATE_URLS[state].format(self.ip))
+    def get_state(self, state):
+        return self.post_json_with_auth(STATE_URLS[state].format(self.ip))
 
     def switch_on(self):
         r = requests.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "start"},
@@ -150,6 +161,9 @@ def find_all_esses():
     browser = ServiceBrowser(zeroconf, "_pmsctrl._tcp.local.", listener)
     time.sleep(3)
     zeroconf.close()
+
+    if len(esses)==0:
+        raise ESSException("could not find any ESS devices via mdns")
     return esses
 
 

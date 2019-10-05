@@ -23,4 +23,6 @@ GRAPH_DATA_URL = {
     f"{PREFIX}v1/user/graph/{dev}/{ts}" for ts in GRAPH_TIMESPANS for dev in GRAPH_DEVICES
 }
 
+RETRIES=3
+
 SWITCH_URL = f"{PREFIX}/v1/user/operation/status"

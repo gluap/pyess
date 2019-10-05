@@ -1,0 +1,139 @@
+interactions:
+- request:
+    body: '{"password": "ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"53a8d22e-e5dc-11e9-a9ae-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:50:07 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "53a8d22e-e5dc-11e9-a9ae-ba5511008000", "by": "phone", "date_time":
+      "2019-10-03 12:50:08"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '103'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:50:08 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "53a8d22e-e5dc-11e9-a9ae-ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '52'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: POST
+    uri: https://192.168.1.253/v1/user/essinfo/common
+  response:
+    body:
+      string: "{\n    \"PV\":\n    {\n        \"brand\": \"LGE-SOLAR\",\n        \"\
+        capacity\": \"5850\",\n        \"pv1_voltage\": \"219.800003\",\n        \"\
+        pv2_voltage\": \"317.899994\",\n        \"pv1_power\": \"129\",\n        \"\
+        pv2_power\": \"1252\",\n        \"pv1_current\": \"0.580000\",\n        \"\
+        pv2_current\": \"3.930000\",\n        \"today_pv_generation_sum\": \"4238\"\
+        ,\n        \"today_month_pv_generation_sum\": \"12374\"\n    },\n    \"BATT\"\
+        :\n    {\n        \"status\": \"1\",\n        \"soc\": \"52.9\",\n       \
+        \ \"dc_power\": \"716\",\n        \"winter_setting\": \"off\",\n        \"\
+        winter_status\": \"off\",\n        \"safty_soc\": \"20\",\n        \"today_batt_discharge_enery\"\
+        : \"9388\",\n        \"today_batt_charge_energy\": \"2622\",\n        \"month_batt_charge_energy\"\
+        : \"7764\",\n        \"month_batt_discharge_energy\": \"12347\"\n    },\n\
+        \    \"GRID\":\n    {\n        \"active_power\": \"-371.769989\",\n      \
+        \  \"a_phase\": \"234.199997\",\n        \"freq\": \"50.000000\",\n      \
+        \  \"today_grid_feed_in_energy\": \"104\",\n        \"today_grid_power_purchase_energy\"\
+        : \"2140\",\n        \"month_grid_feed_in_energy\": \"337\",\n        \"month_grid_power_purchase_energy\"\
+        : \"8838\"\n    },\n    \"LOAD\":\n    {\n        \"load_power\": \"231\"\
+        ,\n        \"today_load_consumption_sum\": \"13040\",\n        \"today_pv_direct_consumption_enegy\"\
+        : \"1512\",\n        \"today_batt_discharge_enery\": \"9388\",\n        \"\
+        today_grid_power_purchase_energy\": \"2140\",\n        \"month_load_consumption_sum\"\
+        : \"25580\",\n        \"month_pv_direct_consumption_energy\": \"4395\",\n\
+        \        \"month_batt_discharge_energy\": \"12347\",\n        \"month_grid_power_purchase_energy\"\
+        : \"8838\"\n    },\n    \"PCS\":\n    {\n        \"today_self_consumption\"\
+        : \"97.5\",\n        \"month_co2_reduction_accum\": \"8785\",\n        \"\
+        today_pv_generation_sum\": \"4238\",\n        \"month_pv_generation_sum\"\
+        : \"12374\",\n        \"today_grid_feed_in_energy\": \"104\",\n        \"\
+        month_grid_feed_in_energy\": \"337\",\n        \"pcs_stauts\": \"3\",\n  \
+        \      \"feed_in_limitation\": \"70\",\n        \"operation_mode\": \"0\"\n\
+        \    }\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:50:08 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+version: 1

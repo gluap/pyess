@@ -84,3 +84,10 @@ def test_offline_get_state(ess, state):
     for key in [k for k in example.keys() if isinstance(example[k], dict)]:
         for k in example[key].keys():
             assert k in res[key]
+
+@pytest.mark.vcr()
+def test_online_auto_reconnect(ess):
+    ess.auth_key = "asdf"
+    res = ess.get_state("common")
+    assert res != {'auth': 'auth_key failed'}
+    pass

@@ -1,0 +1,291 @@
+interactions:
+- request:
+    body: '{"password": "ba5511008000"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '28'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"3d9a4ca6-e5dc-11e9-a9ae-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:30 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "3d9a4ca6-e5dc-11e9-a9ae-ba5511008000", "by": "phone", "date_time":
+      "2019-10-03 12:49:30"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '103'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:30 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+- request:
+    body: '{"auth_key": "3d9a4ca6-e5dc-11e9-a9ae-ba5511008000", "year_month_day":
+      "20191003"}'
+    headers:
+      Accept:
+      - '*/*'
+      Accept-Encoding:
+      - gzip, deflate
+      Connection:
+      - keep-alive
+      Content-Length:
+      - '82'
+      Content-Type:
+      - application/json
+      User-Agent:
+      - python-requests/2.22.0
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/pv/day
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20191003000000\",\n    \"m_timeTo\": \"20191004000000\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20191003000000\",\n         \
+        \   \"generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"\
+        self_consum\": \"0\",\n            \"total_generation\": \"0\",\n        \
+        \    \"total_Feed_in\": \"0\"\n        },\n        {\n            \"db\":\
+        \ \"1\",\n            \"time\": \"20191003001500\",\n            \"generation\"\
+        : \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\": \"\
+        0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"2\",\n            \"\
+        time\": \"20191003003000\",\n            \"generation\": \"0\",\n        \
+        \    \"feed_in\": \"0\",\n            \"self_consum\": \"0\",\n          \
+        \  \"total_generation\": \"0\",\n            \"total_Feed_in\": \"0\"\n  \
+        \      },\n        {\n            \"db\": \"3\",\n            \"time\": \"\
+        20191003004500\",\n            \"generation\": \"0\",\n            \"feed_in\"\
+        : \"0\",\n            \"self_consum\": \"0\",\n            \"total_generation\"\
+        : \"0\",\n            \"total_Feed_in\": \"0\"\n        },\n        {\n  \
+        \          \"db\": \"4\",\n            \"time\": \"20191003010000\",\n   \
+        \         \"generation\": \"0\",\n            \"feed_in\": \"0\",\n      \
+        \      \"self_consum\": \"0\",\n            \"total_generation\": \"0\",\n\
+        \            \"total_Feed_in\": \"0\"\n        },\n        {\n           \
+        \ \"db\": \"5\",\n            \"time\": \"20191003011500\",\n            \"\
+        generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\"\
+        : \"0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"6\",\n            \"\
+        time\": \"20191003013000\",\n            \"generation\": \"0\",\n        \
+        \    \"feed_in\": \"0\",\n            \"self_consum\": \"0\",\n          \
+        \  \"total_generation\": \"0\",\n            \"total_Feed_in\": \"0\"\n  \
+        \      },\n        {\n            \"db\": \"7\",\n            \"time\": \"\
+        20191003014500\",\n            \"generation\": \"0\",\n            \"feed_in\"\
+        : \"0\",\n            \"self_consum\": \"0\",\n            \"total_generation\"\
+        : \"0\",\n            \"total_Feed_in\": \"0\"\n        },\n        {\n  \
+        \          \"db\": \"8\",\n            \"time\": \"20191003020000\",\n   \
+        \         \"generation\": \"0\",\n            \"feed_in\": \"0\",\n      \
+        \      \"self_consum\": \"0\",\n            \"total_generation\": \"0\",\n\
+        \            \"total_Feed_in\": \"0\"\n        },\n        {\n           \
+        \ \"db\": \"9\",\n            \"time\": \"20191003021500\",\n            \"\
+        generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\"\
+        : \"0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"10\",\n            \"\
+        time\": \"20191003023000\",\n            \"generation\": \"0\",\n        \
+        \    \"feed_in\": \"0\",\n            \"self_consum\": \"0\",\n          \
+        \  \"total_generation\": \"0\",\n            \"total_Feed_in\": \"0\"\n  \
+        \      },\n        {\n            \"db\": \"11\",\n            \"time\": \"\
+        20191003024500\",\n            \"generation\": \"0\",\n            \"feed_in\"\
+        : \"0\",\n            \"self_consum\": \"0\",\n            \"total_generation\"\
+        : \"0\",\n            \"total_Feed_in\": \"0\"\n        },\n        {\n  \
+        \          \"db\": \"12\",\n            \"time\": \"20191003030000\",\n  \
+        \          \"generation\": \"0\",\n            \"feed_in\": \"0\",\n     \
+        \       \"self_consum\": \"0\",\n            \"total_generation\": \"0\",\n\
+        \            \"total_Feed_in\": \"0\"\n        },\n        {\n           \
+        \ \"db\": \"13\",\n            \"time\": \"20191003031500\",\n           \
+        \ \"generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"\
+        self_consum\": \"0\",\n            \"total_generation\": \"0\",\n        \
+        \    \"total_Feed_in\": \"0\"\n        },\n        {\n            \"db\":\
+        \ \"14\",\n            \"time\": \"20191003033000\",\n            \"generation\"\
+        : \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\": \"\
+        0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"15\",\n            \"\
+        time\": \"20191003034500\",\n            \"generation\": \"0\",\n        \
+        \    \"feed_in\": \"0\",\n            \"self_consum\": \"0\",\n          \
+        \  \"total_generation\": \"0\",\n            \"total_Feed_in\": \"0\"\n  \
+        \      },\n        {\n            \"db\": \"16\",\n            \"time\": \"\
+        20191003040000\",\n            \"generation\": \"0\",\n            \"feed_in\"\
+        : \"0\",\n            \"self_consum\": \"0\",\n            \"total_generation\"\
+        : \"0\",\n            \"total_Feed_in\": \"0\"\n        },\n        {\n  \
+        \          \"db\": \"17\",\n            \"time\": \"20191003041500\",\n  \
+        \          \"generation\": \"0\",\n            \"feed_in\": \"0\",\n     \
+        \       \"self_consum\": \"0\",\n            \"total_generation\": \"0\",\n\
+        \            \"total_Feed_in\": \"0\"\n        },\n        {\n           \
+        \ \"db\": \"18\",\n            \"time\": \"20191003043000\",\n           \
+        \ \"generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"\
+        self_consum\": \"0\",\n            \"total_generation\": \"0\",\n        \
+        \    \"total_Feed_in\": \"0\"\n        },\n        {\n            \"db\":\
+        \ \"19\",\n            \"time\": \"20191003044500\",\n            \"generation\"\
+        : \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\": \"\
+        0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"20\",\n            \"\
+        time\": \"20191003050000\",\n            \"generation\": \"0\",\n        \
+        \    \"feed_in\": \"0\",\n            \"self_consum\": \"0\",\n          \
+        \  \"total_generation\": \"0\",\n            \"total_Feed_in\": \"0\"\n  \
+        \      },\n        {\n            \"db\": \"21\",\n            \"time\": \"\
+        20191003051500\",\n            \"generation\": \"0\",\n            \"feed_in\"\
+        : \"0\",\n            \"self_consum\": \"0\",\n            \"total_generation\"\
+        : \"0\",\n            \"total_Feed_in\": \"0\"\n        },\n        {\n  \
+        \          \"db\": \"22\",\n            \"time\": \"20191003053000\",\n  \
+        \          \"generation\": \"0\",\n            \"feed_in\": \"0\",\n     \
+        \       \"self_consum\": \"0\",\n            \"total_generation\": \"0\",\n\
+        \            \"total_Feed_in\": \"0\"\n        },\n        {\n           \
+        \ \"db\": \"23\",\n            \"time\": \"20191003054500\",\n           \
+        \ \"generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"\
+        self_consum\": \"0\",\n            \"total_generation\": \"0\",\n        \
+        \    \"total_Feed_in\": \"0\"\n        },\n        {\n            \"db\":\
+        \ \"24\",\n            \"time\": \"20191003060000\",\n            \"generation\"\
+        : \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\": \"\
+        0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"25\",\n            \"\
+        time\": \"20191003061500\",\n            \"generation\": \"0\",\n        \
+        \    \"feed_in\": \"0\",\n            \"self_consum\": \"0\",\n          \
+        \  \"total_generation\": \"0\",\n            \"total_Feed_in\": \"0\"\n  \
+        \      },\n        {\n            \"db\": \"26\",\n            \"time\": \"\
+        20191003063000\",\n            \"generation\": \"0\",\n            \"feed_in\"\
+        : \"0\",\n            \"self_consum\": \"0\",\n            \"total_generation\"\
+        : \"0\",\n            \"total_Feed_in\": \"0\"\n        },\n        {\n  \
+        \          \"db\": \"27\",\n            \"time\": \"20191003064500\",\n  \
+        \          \"generation\": \"0\",\n            \"feed_in\": \"0\",\n     \
+        \       \"self_consum\": \"0\",\n            \"total_generation\": \"0\",\n\
+        \            \"total_Feed_in\": \"0\"\n        },\n        {\n           \
+        \ \"db\": \"28\",\n            \"time\": \"20191003070000\",\n           \
+        \ \"generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"\
+        self_consum\": \"0\",\n            \"total_generation\": \"0\",\n        \
+        \    \"total_Feed_in\": \"0\"\n        },\n        {\n            \"db\":\
+        \ \"29\",\n            \"time\": \"20191003071500\",\n            \"generation\"\
+        : \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\": \"\
+        0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"30\",\n            \"\
+        time\": \"20191003073000\",\n            \"generation\": \"0\",\n        \
+        \    \"feed_in\": \"0\",\n            \"self_consum\": \"0\",\n          \
+        \  \"total_generation\": \"0\",\n            \"total_Feed_in\": \"0\"\n  \
+        \      },\n        {\n            \"db\": \"31\",\n            \"time\": \"\
+        20191003074500\",\n            \"generation\": \"0\",\n            \"feed_in\"\
+        : \"0\",\n            \"self_consum\": \"0\",\n            \"total_generation\"\
+        : \"0\",\n            \"total_Feed_in\": \"0\"\n        },\n        {\n  \
+        \          \"db\": \"32\",\n            \"time\": \"20191003080000\",\n  \
+        \          \"generation\": \"0\",\n            \"feed_in\": \"0\",\n     \
+        \       \"self_consum\": \"0\",\n            \"total_generation\": \"0\",\n\
+        \            \"total_Feed_in\": \"0\"\n        },\n        {\n           \
+        \ \"db\": \"33\",\n            \"time\": \"20191003081500\",\n           \
+        \ \"generation\": \"0\",\n            \"feed_in\": \"0\",\n            \"\
+        self_consum\": \"0\",\n            \"total_generation\": \"0\",\n        \
+        \    \"total_Feed_in\": \"0\"\n        },\n        {\n            \"db\":\
+        \ \"34\",\n            \"time\": \"20191003100000\",\n            \"generation\"\
+        : \"0\",\n            \"feed_in\": \"0\",\n            \"self_consum\": \"\
+        0\",\n            \"total_generation\": \"0\",\n            \"total_Feed_in\"\
+        : \"0\"\n        },\n        {\n            \"db\": \"35\",\n            \"\
+        time\": \"20191003121500\",\n            \"generation\": \"1138\",\n     \
+        \       \"feed_in\": \"40\",\n            \"self_consum\": \"96.48506\",\n\
+        \            \"total_generation\": \"1138\",\n            \"total_Feed_in\"\
+        : \"40\"\n        },\n        {\n            \"db\": \"36\",\n           \
+        \ \"time\": \"20191003123000\",\n            \"generation\": \"431\",\n  \
+        \          \"feed_in\": \"6\",\n            \"self_consum\": \"98.60789\"\
+        ,\n            \"total_generation\": \"1569\",\n            \"total_Feed_in\"\
+        : \"46\"\n        },\n        {\n            \"db\": \"37\",\n           \
+        \ \"time\": \"20191003124500\",\n            \"generation\": \"365\",\n  \
+        \          \"feed_in\": \"15\",\n            \"self_consum\": \"95.89041\"\
+        ,\n            \"total_generation\": \"1934\",\n            \"total_Feed_in\"\
+        : \"61\"\n        },\n        {\n            \"db\": \"38\",\n           \
+        \ \"time\": \"20191003130000\",\n            \"generation\": \"308\",\n  \
+        \          \"feed_in\": \"7\",\n            \"self_consum\": \"97.72727\"\
+        ,\n            \"total_generation\": \"2242\",\n            \"total_Feed_in\"\
+        : \"68\"\n        },\n        {\n            \"db\": \"39\",\n           \
+        \ \"time\": \"20191003131500\",\n            \"generation\": \"264\",\n  \
+        \          \"feed_in\": \"5\",\n            \"self_consum\": \"98.10606\"\
+        ,\n            \"total_generation\": \"2506\",\n            \"total_Feed_in\"\
+        : \"73\"\n        },\n        {\n            \"db\": \"40\",\n           \
+        \ \"time\": \"20191003133000\",\n            \"generation\": \"346\",\n  \
+        \          \"feed_in\": \"22\",\n            \"self_consum\": \"93.64162\"\
+        ,\n            \"total_generation\": \"2852\",\n            \"total_Feed_in\"\
+        : \"95\"\n        },\n        {\n            \"db\": \"41\",\n           \
+        \ \"time\": \"20191003134500\",\n            \"generation\": \"450\",\n  \
+        \          \"feed_in\": \"5\",\n            \"self_consum\": \"98.88889\"\
+        ,\n            \"total_generation\": \"3302\",\n            \"total_Feed_in\"\
+        : \"100\"\n        },\n        {\n            \"db\": \"42\",\n          \
+        \  \"time\": \"20191003140000\",\n            \"generation\": \"133\",\n \
+        \           \"feed_in\": \"1\",\n            \"self_consum\": \"99.24812\"\
+        ,\n            \"total_generation\": \"3435\",\n            \"total_Feed_in\"\
+        : \"101\"\n        },\n        {\n            \"db\": \"43\",\n          \
+        \  \"time\": \"20191003141500\",\n            \"generation\": \"201\",\n \
+        \           \"feed_in\": \"1\",\n            \"self_consum\": \"99.50249\"\
+        ,\n            \"total_generation\": \"3636\",\n            \"total_Feed_in\"\
+        : \"102\"\n        },\n        {\n            \"db\": \"44\",\n          \
+        \  \"time\": \"20191003143000\",\n            \"generation\": \"289\",\n \
+        \           \"feed_in\": \"1\",\n            \"self_consum\": \"99.65398\"\
+        ,\n            \"total_generation\": \"3925\",\n            \"total_Feed_in\"\
+        : \"103\"\n        },\n        {\n            \"db\": \"45\",\n          \
+        \  \"time\": \"20191003144500\",\n            \"generation\": \"313\",\n \
+        \           \"feed_in\": \"1\",\n            \"self_consum\": \"99.68051\"\
+        ,\n            \"total_generation\": \"4238\",\n            \"total_Feed_in\"\
+        : \"104\"\n        }\n    ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin:
+      - '*'
+      Connection:
+      - keep-alive
+      Content-Type:
+      - application/json
+      Date:
+      - Thu, 03 Oct 2019 12:49:30 GMT
+      Server:
+      - nginx/1.10.3
+      Transfer-Encoding:
+      - chunked
+    status:
+      code: 200
+      message: OK
+version: 1
