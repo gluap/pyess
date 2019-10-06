@@ -1,0 +1,5 @@
+[run]
+omit =
+    # omit coverage on all "online" tests that have to be run against the actual device
+    pyess/tests/anonymize_cassettes.py
+    pyess/tests/ess_live_test.py
