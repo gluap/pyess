@@ -13,6 +13,10 @@ from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, GRAPH_TFORMATS, STAT
 from pyess.ess import find_all_esses, get_ess_pw, autodetect_ess, ESS
 
 
+def using_network():
+    return "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true"
+
+
 def parses_as_uuid(uuid_to_test, version=4):
     try:
         uuid_obj = UUID("{" + uuid_to_test + "}", version=version)
@@ -40,11 +44,13 @@ def ess(test_online_ess, password):
     return ESS(test_online_ess[1], password)
 
 
+@pytest.mark.skipif(not using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 def test_online_init(password, test_online_ess):
     ess = ESS(test_online_ess[1], password)
 
 
+@pytest.mark.skipif(not using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 def test_online_get_password(test_online_ess):
     # assuming we are not on ess' wifi
@@ -53,7 +59,7 @@ def test_online_get_password(test_online_ess):
 
 
 # def test_online_get_state/
-
+@pytest.mark.skipif(not using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 @pytest.mark.parametrize('dev,timespan', [(d, t) for d in GRAPH_DEVICES for t in GRAPH_TIMESPANS])
 def test_online_get_graph(ess, dev, timespan):
@@ -66,6 +72,7 @@ def test_online_get_graph(ess, dev, timespan):
             assert k in res[key]
 
 
+@pytest.mark.skipif(not using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 @pytest.mark.parametrize("state", [(k) for k in STATE_URLS.keys()])
 def test_online_get_state(ess, state):
@@ -78,6 +85,7 @@ def test_online_get_state(ess, state):
             assert k in res[key]
 
 
+@pytest.mark.skipif(not using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 def test_online_auto_reconnect(ess):
     ess.auth_key = "asdf"
