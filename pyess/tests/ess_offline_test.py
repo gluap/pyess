@@ -13,14 +13,6 @@ from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, GRAPH_TFORMATS, STAT
 from pyess.ess import find_all_esses, get_ess_pw, autodetect_ess, ESS
 
 
-def parses_as_uuid(uuid_to_test, version=4):
-    try:
-        uuid_obj = UUID("{" + uuid_to_test + "}", version=version)
-    except ValueError:
-        return False
-    return True
-
-
 @pytest.fixture()
 def password():
     return "ba5511008000"

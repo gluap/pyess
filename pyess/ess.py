@@ -45,13 +45,25 @@ class ESS:
         return auth_key
 
     def update_ip(self):
+        """
+        update IP by running mdns scan, return IP and server name (also update internal state)
+        :return:
+        """
         zeroconf = Zeroconf()
         ess_info = zeroconf.get_service_info("_pmsctrl._tcp.local.", f"LGE_ESS-{self.name}._pmsctrl._tcp.local.")
         zeroconf.close()
         self.ip = [socket.inet_ntoa(ip) for ip in ess_info.addresses][0]
         return self.ip, ess_info.server
 
-    def get_graph(self, device, timespan, date):
+    def get_graph(self, device: str, timespan: str, date: datetime.datetime):
+        """
+        Get the time series data about a device
+        :param device: the device in question ``["batt", "load", "pv"]``
+        :param timespan: the timespan in question ``["day", "week", "month", "year"]``
+        :param date: the date specifying the time span. (for week, month and year I guess any date within the timespan
+                     of interest will suffice)
+        :return:
+        """
         assert device in GRAPH_DEVICES
         assert timespan in GRAPH_TIMESPANS
         url = f"https://{self.ip}/v1/user/graph/{device}/{timespan}"
@@ -59,7 +71,14 @@ class ESS:
         return self.post_json_with_auth(url, extra_json_data={
             GRAPH_PARAMS[timespan]: date.strftime(GRAPH_TFORMATS[GRAPH_PARAMS[timespan]])})
 
-    def post_json_with_auth(self, url, retries=0, extra_json_data=None):
+    def post_json_with_auth(self, url: str, retries: int = 0, extra_json_data: dict = None):
+        """
+        wrapper that posts json data after adding auth data. Optionally takes an extra_json_data argument.
+        :param url: URL to fetch
+        :param retries: internal parameter for recoursive calls
+        :param extra_json_data: extra json data to pass
+        :return:
+        """
         json = {"auth_key": self.auth_key}
         error = False
         if extra_json_data:
@@ -73,7 +92,7 @@ class ESS:
         logger.info("seems we got logged out, retrying after {} seconds".format(retries))
         time.sleep(retries)
         self.login()
-        self.post_json_with_auth(url, retries=retries + 1, extra_json_data=None)
+        return self.post_json_with_auth(url, retries=retries + 1, extra_json_data=None)
 
     def get_network(self):
         return self.get_state("network")
@@ -94,10 +113,18 @@ class ESS:
         return self.post_json_with_auth(STATE_URLS[state].format(self.ip))
 
     def switch_on(self):
+        """
+        switch on operation.
+        :return:
+        """
         r = requests.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "start"},
                          verify=False, headers={"Content-Type": "application/json"})
 
     def switch_off(self):
+        """
+        switch off operation.
+        :return:
+        """
         r = requests.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "stop"},
                          verify=False, headers={"Content-Type": "application/json"})
         # if not r.json()["status"] == "success":
@@ -131,17 +158,6 @@ def extract_name_from_zeroconf(name):
     return name
 
 
-def get_json_with_auth(url, auth_key):
-    r = requests.post(url, json={"auth_key": auth_key}, verify=False, headers={"Content-Type": "application/json"})
-    return r.json()
-
-
-# results = {}
-# for (name, url) in simple_urls.items():
-#    results[name] = get_json_with_auth(url, auth_key)
-# print(results)
-
-
 def find_all_esses():
     from zeroconf import ServiceBrowser, Zeroconf
     esses = []
@@ -162,7 +178,7 @@ def find_all_esses():
     time.sleep(3)
     zeroconf.close()
 
-    if len(esses)==0:
+    if len(esses) == 0:
         raise ESSException("could not find any ESS devices via mdns")
     return esses
 

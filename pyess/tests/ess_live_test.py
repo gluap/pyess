@@ -17,14 +17,6 @@ def using_network():
     return "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true"
 
 
-def parses_as_uuid(uuid_to_test, version=4):
-    try:
-        uuid_obj = UUID("{" + uuid_to_test + "}", version=version)
-    except ValueError:
-        return False
-    return True
-
-
 @pytest.fixture()
 def password():
     return json.load(open(os.path.dirname(__file__) + "/credentials.json"))["password"]
