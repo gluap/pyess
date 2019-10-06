@@ -3,14 +3,11 @@
 import datetime
 import pytest
 import json
-import re
 import os
 
-from uuid import UUID
+from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, STATE_URLS
 
-from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, GRAPH_TFORMATS, STATE_URLS
-
-from pyess.ess import find_all_esses, get_ess_pw, autodetect_ess, ESS
+from pyess.ess import get_ess_pw, autodetect_ess, ESS
 
 
 def using_network():
