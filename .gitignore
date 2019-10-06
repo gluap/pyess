@@ -4,4 +4,7 @@ test_online*.yaml
 pyess.egg-info
 tox
 .pytest_cache
+.coverage
+.htmlcov
+.tox
 
