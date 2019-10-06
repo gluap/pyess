@@ -11,9 +11,10 @@ dist:
 #    - python: 3.7
 #      dist: xenial
 #      sudo: true
-install: pip install tox-travis coveralls pytest-vcr
+install:
+  - pip install tox-travis coveralls pytest-vcr
+  - python setup.py develop
 script:
-  - tox
   - coverage run --source pyess -m py.test
   - coverage report -m
 after_success:
