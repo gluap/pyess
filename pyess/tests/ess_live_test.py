@@ -14,9 +14,7 @@ def using_network():
     return "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true"
 
 
-@pytest.fixture()
-def password():
-    return json.load(open(os.path.dirname(__file__) + "/credentials.json"))["password"]
+
 
 
 @pytest.fixture()

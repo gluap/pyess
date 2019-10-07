@@ -22,7 +22,7 @@ logger = logging.getLogger(__name__)
 
 
 class ESS:
-    def __init__(self, name, pw):
+    def __init__(self, name, pw, ip=None):
         self.name = name
         self.pw = pw
         self.ip = self.update_ip()[0]
@@ -49,11 +49,9 @@ class ESS:
         update IP by running mdns scan, return IP and server name (also update internal state)
         :return:
         """
-        zeroconf = Zeroconf()
-        ess_info = zeroconf.get_service_info("_pmsctrl._tcp.local.", f"LGE_ESS-{self.name}._pmsctrl._tcp.local.")
-        zeroconf.close()
-        self.ip = [socket.inet_ntoa(ip) for ip in ess_info.addresses][0]
-        return self.ip, ess_info.server
+        ip, server = get_ess_ip(self.name)
+        self.ip = ip
+        return self.ip, server
 
     def get_graph(self, device: str, timespan: str, date: datetime.datetime):
         """
@@ -131,6 +129,14 @@ class ESS:
         #    raise ESSException("switching unsuccessful")
 
 
+def get_ess_ip(name):
+    zeroconf = Zeroconf()
+    ess_info = zeroconf.get_service_info("_pmsctrl._tcp.local.", f"LGE_ESS-{name}._pmsctrl._tcp.local.")
+    zeroconf.close()
+    ip = [socket.inet_ntoa(ip) for ip in ess_info.addresses][0]
+    return ip, ess_info.server
+
+
 def get_ess_pw(ip="192.168.23.1"):
     """this method only works on the wifi provided by the box."""
     res = requests.post(f"https://{ip}/v1/user/setting/read/password", json={"key": "lgepmsuser!@#"},
@@ -154,7 +160,7 @@ def autodetect_ess():
 
 
 def extract_name_from_zeroconf(name):
-    name = re.sub(r"LGE_ESS-(.+)\._pmsctrl\._tcp\.local\.", "\g<1>", name)
+    name = re.sub(r"LGE_ESS-(.+)\._pmsctrl\._tcp\.local\.", r"\g<1>", name)
     return name
 
 

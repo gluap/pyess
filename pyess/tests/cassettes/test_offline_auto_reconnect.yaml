@@ -18,7 +18,7 @@ interactions:
     uri: https://192.168.1.253/v1/user/setting/login
   response:
     body:
-      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"a98d108a-e7bf-11e9-a9b1-ba5511008000\"\
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"cc311fe4-e87f-11e9-a9b2-ba5511008000\"\
         ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
     headers:
       Access-Control-Allow-Origin:
@@ -28,7 +28,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 05 Oct 2019 22:29:58 GMT
+      - Sun, 06 Oct 2019 21:25:19 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:
@@ -37,8 +37,8 @@ interactions:
       code: 200
       message: OK
 - request:
-    body: '{"auth_key": "a98d108a-e7bf-11e9-a9b1-ba5511008000", "by": "phone", "date_time":
-      "2019-10-05 22:29:59"}'
+    body: '{"auth_key": "cc311fe4-e87f-11e9-a9b2-ba5511008000", "by": "phone", "date_time":
+      "2019-10-06 21:25:20"}'
     headers:
       Accept:
       - '*/*'
@@ -65,7 +65,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 05 Oct 2019 22:29:59 GMT
+      - Sun, 06 Oct 2019 21:25:21 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:
@@ -101,7 +101,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 05 Oct 2019 22:30:02 GMT
+      - Sun, 06 Oct 2019 21:25:21 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:
@@ -128,7 +128,7 @@ interactions:
     uri: https://192.168.1.253/v1/user/setting/login
   response:
     body:
-      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"ad0928a2-e7bf-11e9-a9b1-ba5511008000\"\
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"cd9567fa-e87f-11e9-a9b2-ba5511008000\"\
         ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
     headers:
       Access-Control-Allow-Origin:
@@ -138,7 +138,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 05 Oct 2019 22:30:03 GMT
+      - Sun, 06 Oct 2019 21:25:21 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:
@@ -147,8 +147,8 @@ interactions:
       code: 200
       message: OK
 - request:
-    body: '{"auth_key": "ad0928a2-e7bf-11e9-a9b1-ba5511008000", "by": "phone", "date_time":
-      "2019-10-05 22:30:04"}'
+    body: '{"auth_key": "cd9567fa-e87f-11e9-a9b2-ba5511008000", "by": "phone", "date_time":
+      "2019-10-06 21:25:22"}'
     headers:
       Accept:
       - '*/*'
@@ -175,7 +175,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 05 Oct 2019 22:30:04 GMT
+      - Sun, 06 Oct 2019 21:25:22 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:
@@ -184,7 +184,7 @@ interactions:
       code: 200
       message: OK
 - request:
-    body: '{"auth_key": "ad0928a2-e7bf-11e9-a9b1-ba5511008000"}'
+    body: '{"auth_key": "cd9567fa-e87f-11e9-a9b2-ba5511008000"}'
     headers:
       Accept:
       - '*/*'
@@ -203,30 +203,32 @@ interactions:
   response:
     body:
       string: "{\n    \"PV\":\n    {\n        \"brand\": \"LGE-SOLAR\",\n        \"\
-        capacity\": \"5850\",\n        \"pv1_voltage\": \"17.799999\",\n        \"\
-        pv2_voltage\": \"17.900000\",\n        \"pv1_power\": \"0\",\n        \"pv2_power\"\
-        : \"0\",\n        \"pv1_current\": \"0.000000\",\n        \"pv2_current\"\
-        : \"0.000000\",\n        \"today_pv_generation_sum\": \"0\",\n        \"today_month_pv_generation_sum\"\
-        : \"64108\"\n    },\n    \"BATT\":\n    {\n        \"status\": \"0\",\n  \
-        \      \"soc\": \"6.3\",\n        \"dc_power\": \"0\",\n        \"winter_setting\"\
-        : \"off\",\n        \"winter_status\": \"off\",\n        \"safty_soc\": \"\
-        20\",\n        \"today_batt_discharge_enery\": \"0\",\n        \"today_batt_charge_energy\"\
-        : \"0\",\n        \"month_batt_charge_energy\": \"27551\",\n        \"month_batt_discharge_energy\"\
-        : \"26862\"\n    },\n    \"GRID\":\n    {\n        \"active_power\": \"786.119995\"\
-        ,\n        \"a_phase\": \"235.399994\",\n        \"freq\": \"50.029999\",\n\
-        \        \"today_grid_feed_in_energy\": \"0\",\n        \"today_grid_power_purchase_energy\"\
-        : \"540\",\n        \"month_grid_feed_in_energy\": \"8758\",\n        \"month_grid_power_purchase_energy\"\
-        : \"23406\"\n    },\n    \"LOAD\":\n    {\n        \"load_power\": \"794\"\
-        ,\n        \"today_load_consumption_sum\": \"540\",\n        \"today_pv_direct_consumption_enegy\"\
-        : \"0\",\n        \"today_batt_discharge_enery\": \"0\",\n        \"today_grid_power_purchase_energy\"\
-        : \"540\",\n        \"month_load_consumption_sum\": \"78189\",\n        \"\
-        month_pv_direct_consumption_energy\": \"27921\",\n        \"month_batt_discharge_energy\"\
-        : \"26862\",\n        \"month_grid_power_purchase_energy\": \"23406\"\n  \
-        \  },\n    \"PCS\":\n    {\n        \"today_self_consumption\": \"0.0\",\n\
-        \        \"month_co2_reduction_accum\": \"45516\",\n        \"today_pv_generation_sum\"\
-        : \"0\",\n        \"month_pv_generation_sum\": \"64108\",\n        \"today_grid_feed_in_energy\"\
-        : \"0\",\n        \"month_grid_feed_in_energy\": \"8758\",\n        \"pcs_stauts\"\
-        : \"1\",\n        \"feed_in_limitation\": \"70\",\n        \"operation_mode\"\
+        capacity\": \"5850\",\n        \"pv1_voltage\": \"26.200001\",\n        \"\
+        pv2_voltage\": \"26.100000\",\n        \"pv1_power\": \"0\",\n        \"pv2_power\"\
+        : \"0\",\n        \"pv1_current\": \"0.110000\",\n        \"pv2_current\"\
+        : \"0.000000\",\n        \"today_pv_generation_sum\": \"2380\",\n        \"\
+        today_month_pv_generation_sum\": \"66488\"\n    },\n    \"BATT\":\n    {\n\
+        \        \"status\": \"0\",\n        \"soc\": \"0.0\",\n        \"dc_power\"\
+        : \"0\",\n        \"winter_setting\": \"on\",\n        \"winter_status\":\
+        \ \"on\",\n        \"safty_soc\": \"20\",\n        \"today_batt_discharge_enery\"\
+        : \"404\",\n        \"today_batt_charge_energy\": \"1080\",\n        \"month_batt_charge_energy\"\
+        : \"28631\",\n        \"month_batt_discharge_energy\": \"27266\"\n    },\n\
+        \    \"GRID\":\n    {\n        \"active_power\": \"180.649994\",\n       \
+        \ \"a_phase\": \"235.600006\",\n        \"freq\": \"50.000000\",\n       \
+        \ \"today_grid_feed_in_energy\": \"102\",\n        \"today_grid_power_purchase_energy\"\
+        : \"13397\",\n        \"month_grid_feed_in_energy\": \"8860\",\n        \"\
+        month_grid_power_purchase_energy\": \"36803\"\n    },\n    \"LOAD\":\n   \
+        \ {\n        \"load_power\": \"180\",\n        \"today_load_consumption_sum\"\
+        : \"14999\",\n        \"today_pv_direct_consumption_enegy\": \"1198\",\n \
+        \       \"today_batt_discharge_enery\": \"404\",\n        \"today_grid_power_purchase_energy\"\
+        : \"13397\",\n        \"month_load_consumption_sum\": \"93188\",\n       \
+        \ \"month_pv_direct_consumption_energy\": \"29119\",\n        \"month_batt_discharge_energy\"\
+        : \"27266\",\n        \"month_grid_power_purchase_energy\": \"36803\"\n  \
+        \  },\n    \"PCS\":\n    {\n        \"today_self_consumption\": \"95.7\",\n\
+        \        \"month_co2_reduction_accum\": \"47206\",\n        \"today_pv_generation_sum\"\
+        : \"2380\",\n        \"month_pv_generation_sum\": \"66488\",\n        \"today_grid_feed_in_energy\"\
+        : \"102\",\n        \"month_grid_feed_in_energy\": \"8860\",\n        \"pcs_stauts\"\
+        : \"3\",\n        \"feed_in_limitation\": \"70\",\n        \"operation_mode\"\
         : \"0\"\n    }\n}\n"
     headers:
       Access-Control-Allow-Origin:
@@ -236,7 +238,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Sat, 05 Oct 2019 22:30:04 GMT
+      - Sun, 06 Oct 2019 21:25:22 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:

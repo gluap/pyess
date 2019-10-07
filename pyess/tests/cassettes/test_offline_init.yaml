@@ -18,7 +18,7 @@ interactions:
     uri: https://192.168.1.253/v1/user/setting/login
   response:
     body:
-      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"14996fbc-e5dc-11e9-a9ae-ba5511008000\"\
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"cb722954-e94c-11e9-a9b3-ba5511008000\"\
         ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
     headers:
       Access-Control-Allow-Origin:
@@ -28,7 +28,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 03 Oct 2019 12:48:21 GMT
+      - Mon, 07 Oct 2019 21:52:45 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:
@@ -37,8 +37,8 @@ interactions:
       code: 200
       message: OK
 - request:
-    body: '{"auth_key": "14996fbc-e5dc-11e9-a9ae-ba5511008000", "by": "phone", "date_time":
-      "2019-10-03 12:48:21"}'
+    body: '{"auth_key": "cb722954-e94c-11e9-a9b3-ba5511008000", "by": "phone", "date_time":
+      "2019-10-07 21:52:46"}'
     headers:
       Accept:
       - '*/*'
@@ -65,7 +65,7 @@ interactions:
       Content-Type:
       - application/json
       Date:
-      - Thu, 03 Oct 2019 12:48:21 GMT
+      - Mon, 07 Oct 2019 21:52:46 GMT
       Server:
       - nginx/1.10.3
       Transfer-Encoding:
