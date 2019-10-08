@@ -6,7 +6,7 @@ import pytest
 
 
 @pytest.fixture()
-def password():
+def password():#pragma: no cover
     if "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true":
         return json.load(open(os.path.dirname(__file__) + "/credentials.json"))["password"]
     else:
