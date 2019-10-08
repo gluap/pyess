@@ -7,7 +7,7 @@ import os
 
 from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, STATE_URLS
 
-from pyess.ess import get_ess_pw, ESS
+from pyess.ess import get_ess_pw, ESS, mitm_for_ess, find_all_esses
 
 
 @pytest.fixture()
@@ -74,9 +74,16 @@ def test_offline_get_state(ess, state):
         for k in example[key].keys():
             assert k in res[key]
 
+
 @pytest.mark.vcr()
 def test_offline_auto_reconnect(ess):
     ess.auth_key = "asdf"
     res = ess.get_state("common")
     assert res != {'auth': 'auth_key failed'}
+    pass
+
+
+def test_actual_list_devices():
+    mitm_for_ess("THE_ESS_NAME")
+    esses = find_all_esses()
     pass

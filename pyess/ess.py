@@ -8,7 +8,7 @@ import time
 
 import requests
 
-from zeroconf import Zeroconf
+from zeroconf import Zeroconf, ServiceInfo
 
 from pyess.constants import PREFIX, LOGIN_URL, TIMESYNC_URL, GRAPH_TIMESPANS, GRAPH_DEVICES, GRAPH_PARAMS, \
     GRAPH_TFORMATS, SWITCH_URL, STATE_URLS, RETRIES
@@ -194,7 +194,7 @@ def mitm_for_ess(name):
     info = ServiceInfo(
         "_pmsctrl._tcp.local.",
         f"LGE_ESS-{name}._pmsctrl._tcp.local.",
-        addresses=[socket.inet_aton("192.168.1.24")],
+        addresses=[socket.inet_aton("127.0.0.1")],
         port=80,
         properties={b'Device': b'LGEESS', b'HWRevison': b'1.5'},
         server="myaddress.local.",
@@ -202,4 +202,4 @@ def mitm_for_ess(name):
 
     zeroconf = Zeroconf()
     print("Registration of a service, press Ctrl-C to exit...")
-    zeroconf.unregister_service(info)
+    zeroconf.register_service(info)
