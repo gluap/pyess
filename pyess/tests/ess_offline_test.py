@@ -7,10 +7,13 @@ import os
 
 from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, STATE_URLS
 
-from pyess.ess import get_ess_pw, ESS, mitm_for_ess, find_all_esses, ESSException,extract_name_from_zeroconf
+from pyess.ess import get_ess_pw, ESS, mitm_for_ess, find_all_esses, ESSException, extract_name_from_zeroconf, \
+    autodetect_ess, get_ess_ip
+
 
 def using_network():
     return "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true"
+
 
 @pytest.fixture()
 def password():
@@ -84,6 +87,7 @@ def test_offline_auto_reconnect(ess):
     assert res != {'auth': 'auth_key failed'}
     pass
 
+
 @pytest.mark.skipif(using_network(), reason="not running dummy test on actual network")
 def test_find_no_ess_devices():
     with pytest.raises(ESSException):
@@ -94,3 +98,15 @@ def test_actual_list_devices():
     mitm_for_ess("THE_ESS_NAME")
     esses = find_all_esses()
     assert "THE_ESS_NAME" in [extract_name_from_zeroconf(n) for n in esses]
+
+
+def test_find_ess():
+    mitm_for_ess("THE_ESS_NAME")
+    res = autodetect_ess()
+    assert res[0] == "127.0.0.1"
+    assert res[1] == "THE_ESS_NAME"
+
+def test_get_ess_ip():
+    mitm_for_ess("THE_ESS_NAME")
+    res = get_ess_ip("THE_ESS_NAME")
+    assert res[0] == "127.0.0.1"
