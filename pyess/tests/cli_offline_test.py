@@ -26,3 +26,7 @@ def test_offline_cli_get_data(password,mocker):
     mocker.patch('pyess.ess.get_ess_ip', return_value=["192.168.1.253", "THE_ESS_NAME"])
 
     pyess.cli.main(["--action", "get_data",  "--password", password])
+
+def test_offline_list_all_esses(mocker):
+    mocker.patch('pyess.cli.find_all_esses', return_value=["THE_ESS_NAME"])
+    pyess.cli.list_esses(None)
