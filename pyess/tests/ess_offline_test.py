@@ -84,7 +84,7 @@ def test_offline_auto_reconnect(ess):
     assert res != {'auth': 'auth_key failed'}
     pass
 
-@pytest.mark.skipif(using_network(), "not running dummy test on actual network")
+@pytest.mark.skipif(using_network(), reason="not running dummy test on actual network")
 def test_find_no_ess_devices():
     with pytest.raises(ESSException):
         esses = find_all_esses()
