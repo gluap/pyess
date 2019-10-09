@@ -24,7 +24,7 @@ class ESS:
     def __init__(self, name, pw, ip=None):
         self.name = name
         self.pw = pw
-        self.ip = self.update_ip()[0]
+        self.ip = self.update_ip()
         self.auth_key = self._login()
 
     def _login(self):
