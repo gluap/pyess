@@ -24,10 +24,10 @@ on my phone - crashes at least twice for every successful startup.
 For this python module I reverse-engineered the communication between the *LG EnerVu Plus 1.2.3* Android
 App and the Energy Storage / Inverter device, so there is some likelihood that it will work for devices that
 can be accessed via that app. Nevertheless it looks like some of the interface is delivered by the ESS as html via the
-network so it may be that not all commands funcition against all boxes. I only have customer-level access to my own
-box, so this module only offers those parts of the API that are accessible to me as a customer (as opposed to the
-installer who has higher privileges and can fiddle with internal parameters of the system as I saw him do when he
-installed the system).
+network. Therefore it may be that not all commands work against all boxes. I only have customer-level access to my own
+box, so this module only offers those parts of the API that are accessible to me as a customer. As far as I can tell
+the installer has higher privileges and can fiddle with internal parameters of the system from what I saw him do when he
+installed the system.
 
 
 Usage
@@ -62,6 +62,11 @@ fetch a bunch of json states as json and display the result on the command line:
 
     esscli --action get_state --password <your_ess_password>
 
+Examples for the data available:
+- current power from and to the grid and the battery
+- current voltage and power from both strings of the photovoltaic system independently
+- current ip address
+- details on grid power, battery state, daily and monthly statistics
 
 Log ess state into a graphite server
 ....................................
@@ -74,8 +79,17 @@ the command line::
 API
 ---
 For the time being please use the docstrings in the code on https://github.com/gluap/pyess as documentation for the
-API. A good place to start is pyess/cli.py where you can find the implementation of the CLI.
+API. A good place to start is pyess/cli.py where you can find the implementation of the CLI. One thing available
+via the API but not yet via the CLI is the data for the daily / weekly / monthly / yearly statistics graphs that can
+be accessed via the EnerVu App.
 
+
+Changelog
+=========
+
+**2019-10-09 0.0.1**
+- More documentation
+- Initial commit for pypi relase
 
 **License**::
 
