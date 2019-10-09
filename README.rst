@@ -1,5 +1,12 @@
+=====
 pyess
------
+=====
+
+------------------------------------------------------------------------------
+Python library for LG ESS Solar power converters with EnerVU app compatibility
+------------------------------------------------------------------------------
+
+
 .. image:: https://travis-ci.org/gluap/pyess.svg?branch=master
     :target: https://travis-ci.org/gluap/pyess?branch=master
 .. image:: https://coveralls.io/repos/github/gluap/pyess/badge.svg?branch=master
@@ -24,7 +31,50 @@ installed the system).
 
 
 Usage
------
+=====
+
+
+Command Line
+------------
+This module comes with a rudimentary command line interface that allows for the following actions.
+
+Fetch the device password
+.........................
+
+Caveat: **To fetch the device password you need to be connected to the devices wifi.** Once you are on the wifi you can
+run the following to get the password. Write it down, it seems it is a static password per device::
+
+    esscli --action get_password
+
+The command assumes that the ess device is listening on ``192.168.23.1`` on its own wifi, in my setup it reproducibly
+chooses that IP.
+
+Find the esses on your network
+..............................
+Get a list of ESS devices on the local network (your home wifi, not the one of ess)::
+
+    esscli --action list_ess
+
+
+Fetch the state from ess as json
+................................
+fetch a bunch of json states as json and display the result on the command line::
+
+    esscli --action get_state --password <your_ess_password>
+
+
+Log ess state into a graphite server
+....................................
+This command will fetch the ``home`` and ``common`` info from ess every 10 seconds and log them against a graphite
+server (assuming standard port and udp as protocol). Running this command requires the ess password to be passed on
+the command line::
+
+    esscli --action log_against_graphite --password <your_ess_password> --graphite <ip_of_graphite_server>
+
+API
+---
+For the time being please use the docstrings in the code on https://github.com/gluap/pyess as documentation for the
+API. A good place to start is pyess/cli.py where you can find the implementation of the CLI.
 
 
 **License**::
