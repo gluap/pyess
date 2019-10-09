@@ -109,4 +109,4 @@ def test_find_ess():
 def test_get_ess_ip():
     mitm_for_ess("THE_ESS_NAME")
     res = get_ess_ip("THE_ESS_NAME")
-    assert res[0] == "127.0.0.1"
+    assert res == "127.0.0.1"

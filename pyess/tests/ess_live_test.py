@@ -14,9 +14,6 @@ def using_network():
     return "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true"
 
 
-
-
-
 @pytest.fixture()
 def test_online_ess(cache=[]):
     if not cache:

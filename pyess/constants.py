@@ -1,3 +1,5 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
 PREFIX = "https://{}/"
 LOGIN_URL = f"{PREFIX}v1/user/setting/login"
 TIMESYNC_URL = f"{PREFIX}v1/user/setting/timesync"

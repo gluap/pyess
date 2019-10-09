@@ -7,11 +7,10 @@ import socket
 import time
 
 import requests
-
 from zeroconf import Zeroconf, ServiceInfo
 
-from pyess.constants import PREFIX, LOGIN_URL, TIMESYNC_URL, GRAPH_TIMESPANS, GRAPH_DEVICES, GRAPH_PARAMS, \
-    GRAPH_TFORMATS, SWITCH_URL, STATE_URLS, RETRIES
+from pyess.constants import LOGIN_URL, TIMESYNC_URL, GRAPH_TIMESPANS, GRAPH_DEVICES, GRAPH_PARAMS, \
+    GRAPH_TFORMATS, SWITCH_URL, STATE_URLS
 
 
 class ESSException(Exception):
@@ -26,9 +25,13 @@ class ESS:
         self.name = name
         self.pw = pw
         self.ip = self.update_ip()[0]
-        self.auth_key = self.login()
+        self.auth_key = self._login()
 
-    def login(self):
+    def _login(self):
+        """
+        Login to the ESS device. Called by __init__
+        :return:
+        """
         url = LOGIN_URL.format(self.ip)
         logger.info("fetching auth key")
         r = requests.put(url, json={"password": self.pw}, verify=False, headers={"Content-Type": "application/json"})
@@ -51,7 +54,7 @@ class ESS:
         """
         ip, server = get_ess_ip(self.name)
         self.ip = ip
-        return self.ip, server
+        return self.ip
 
     def get_graph(self, device: str, timespan: str, date: datetime.datetime):
         """
@@ -89,22 +92,22 @@ class ESS:
             return r.json()
         logger.info("seems we got logged out, retrying after {} seconds".format(retries))
         time.sleep(retries)
-        self.login()
+        self._login()
         return self.post_json_with_auth(url, retries=retries + 1, extra_json_data=None)
 
-    def get_network(self):
+    def get_network(self):  # pragma: no cover
         return self.get_state("network")
 
-    def get_systeminfo(self):
+    def get_systeminfo(self):  # pragma: no cover
         return self.get_state("systeminfo")
 
-    def get_batt(self):
+    def get_batt(self):  # pragma: no cover
         return self.get_state("batt")
 
-    def get_home(self):
+    def get_home(self):  # pragma: no cover
         return self.get_state("home")
 
-    def get_common(self):
+    def get_common(self):  # pragma: no cover
         return self.get_state("common")
 
     def get_state(self, state):
@@ -130,15 +133,27 @@ class ESS:
 
 
 def get_ess_ip(name):
+    """
+    Resolve the ESS Device name ``Name`` to an IP Address. Makes sense to find the ESS when its IP is dynamic.
+    :param name: The ESS Name to resolve
+    :return: ip
+    """
     zeroconf = Zeroconf()
     ess_info = zeroconf.get_service_info("_pmsctrl._tcp.local.", f"LGE_ESS-{name}._pmsctrl._tcp.local.")
     zeroconf.close()
     ip = [socket.inet_ntoa(ip) for ip in ess_info.addresses][0]
-    return ip, ess_info.server
+    return ip
 
 
 def get_ess_pw(ip="192.168.23.1"):
-    """this method only works on the wifi provided by the box."""
+    """
+    This method only works on the wifi provided by the box.
+    Contact the box and fetch the password that belongs to the box.
+
+    (my box uses 192.168.23.1 for its ip on its own wifi so that is the default)
+    :param ip: the IP to contact
+    :return: password
+    """
     res = requests.post(f"https://{ip}/v1/user/setting/read/password", json={"key": "lgepmsuser!@#"},
                         headers={"Charset": "UTF-8", "Content-Type": "application/json"}, verify=False,
                         timeout=1).json()
@@ -149,6 +164,13 @@ def get_ess_pw(ip="192.168.23.1"):
 
 
 def autodetect_ess():
+    """
+    Runs an mdns scan and returns the first ESS device that is found as a list of two strings, IP and Name
+
+    >>> ip, name = autodetect_ess()
+
+    :return: ip, name
+    """
     name = find_all_esses()[0]
     name = extract_name_from_zeroconf(name)
 
@@ -159,12 +181,21 @@ def autodetect_ess():
     return ip, name
 
 
-def extract_name_from_zeroconf(name):
-    name = re.sub(r"LGE_ESS-(.+)\._pmsctrl\._tcp\.local\.", r"\g<1>", name)
+def extract_name_from_zeroconf(zeroconf_name):
+    """
+    helper function to extract ESS name from zeroconf host name
+    :param zeroconf_name:
+    :return: name
+    """
+    name = re.sub(r"LGE_ESS-(.+)\._pmsctrl\._tcp\.local\.", r"\g<1>", zeroconf_name)
     return name
 
 
 def find_all_esses():
+    """
+    scan for all esses via mdns and return a list of mdns name strings.
+    :return:
+    """
     from zeroconf import ServiceBrowser, Zeroconf
     esses = []
 
@@ -189,17 +220,22 @@ def find_all_esses():
     return esses
 
 
-def mitm_for_ess(name):
+def mitm_for_ess(name, ip="127.0.0.1"):
+    """
+    Announce an IP address via mdns just like an actual LG ESS device would announce itsself
+    Useful for unit tests
+    :param name: The name to announce on the network
+    :return:
+    """
     import socket
     info = ServiceInfo(
         "_pmsctrl._tcp.local.",
         f"LGE_ESS-{name}._pmsctrl._tcp.local.",
-        addresses=[socket.inet_aton("127.0.0.1")],
+        addresses=[socket.inet_aton(ip)],
         port=80,
         properties={b'Device': b'LGEESS', b'HWRevison': b'1.5'},
         server="myaddress.local.",
     )
 
     zeroconf = Zeroconf()
-    print("Registration of a service, press Ctrl-C to exit...")
     zeroconf.register_service(info)
