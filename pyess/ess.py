@@ -52,7 +52,7 @@ class ESS:
         update IP by running mdns scan, return IP and server name (also update internal state)
         :return:
         """
-        ip, server = get_ess_ip(self.name)
+        ip = get_ess_ip(self.name)
         self.ip = ip
         return self.ip
 
