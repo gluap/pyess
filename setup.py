@@ -5,13 +5,14 @@ from pyess import __version__ as version
 
 setup(name='pyess',
       version=version,
-      description='Library for communicating with LG ESS photovoltaics systems',
+      description='Library for communicating with LG ESS solar power converters/batteries',
       classifiers=[
           'Development Status :: 3 - Alpha',
           'License :: OSI Approved :: MIT License',
           'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7',
-
+          'Programming Language :: Python :: 3.8',
+          "Operating System :: OS Independent",
       ],
 
       url='https://github.com/gluap/pyess',
