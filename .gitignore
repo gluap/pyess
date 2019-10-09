@@ -5,6 +5,8 @@ pyess.egg-info
 tox
 .pytest_cache
 .coverage
-.htmlcov
+htmlcov
 .tox
+build
+dist
 
