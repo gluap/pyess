@@ -32,7 +32,7 @@ def test_ess(cache=[]):
 @pytest.fixture()
 def ess(test_ess, password):
     def uip(self):
-        return "192.168.1.253", "THE_ESS_NAME"
+        return "192.168.1.253"
 
     ESS.update_ip = uip
     return ESS(test_ess[1], password)
@@ -41,7 +41,7 @@ def ess(test_ess, password):
 @pytest.mark.vcr(match_on=['method', 'scheme', 'host', 'port', 'path', 'query'])
 def test_offline_init(password, test_ess):
     def uip(self):
-        return "192.168.1.253", "bla"
+        return "192.168.1.253"
 
     ESS.update_ip = uip
     ess = ESS(test_ess[1], password)
