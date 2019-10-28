@@ -5,6 +5,7 @@ import logging
 import re
 import socket
 import time
+from json import JSONDecodeError
 
 import requests
 from zeroconf import Zeroconf, ServiceInfo
@@ -27,7 +28,7 @@ class ESS:
         self.ip = self.update_ip()
         self.auth_key = self._login()
 
-    def _login(self):
+    def _login(self, retry=1):
         """
         Login to the ESS device. Called by __init__
         :return:
@@ -43,7 +44,11 @@ class ESS:
         }
         rt = requests.put(TIMESYNC_URL.format(self.ip), json=timesync_info, verify=False,
                           headers={"Content-Type": "application/json"})
-        assert rt.json()['status'] == 'success', rt.__dict__
+        try:
+            assert rt.json()['status'] == 'success', rt.__dict__
+        except JSONDecodeError:
+            time.sleep(retry)
+            return self._login(retry=retry*2)
         self.auth_key = auth_key
         return auth_key
 
