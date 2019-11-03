@@ -31,7 +31,7 @@ class ESS:
         self.pw = pw
         self.ip = ip
         self.auth_key = None
-        self.session = aiohttp.ClientSession(connector=aiohttp.TCPConnector(verify_ssl=False))
+        self.session = aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False))
 
     async def _login(self, retry=1):
         """
@@ -121,7 +121,7 @@ class ESS:
     async def get_state(self, state):
         return await self.post_json_with_auth(STATE_URLS[state].format(self.ip))
 
-    async def switch_on(self):
+    async def switch_on(self): # pragma: no cover
         """
         switch on operation.
         :return:
@@ -129,7 +129,7 @@ class ESS:
         async with self.session.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "start"}) as r:
             response_json = await r.json()
 
-    async def switch_off(self):
+    async def switch_off(self): # pragma: no cover
         """
         switch off operation.
         :return:

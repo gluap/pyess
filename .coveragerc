@@ -4,3 +4,4 @@ omit =
     pyess/tests/anonymize_cassettes.py
     pyess/tests/ess_live_test.py
     pyess/tests/cli_live_test.py
+    pyess/tests/aio_ess_live_test.py
