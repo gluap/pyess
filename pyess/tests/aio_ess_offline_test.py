@@ -35,17 +35,17 @@ async def aioess(test_online_ess, password):
 @pytest.mark.skipif(using_network(), reason="only when using network")
 @pytest.mark.asyncio
 @pytest.mark.vcr(mode="all")
-async def test_aio_online_init(password, test_online_ess):
+async def test_aio_offline_init(password, test_online_ess):
     ip, name = test_online_ess
     ess = await ESS.create(name, password, ip)
 
 
-# def test_aio_online_get_state/
+# def test_aio_offline_get_state/
 @pytest.mark.skipif(using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 @pytest.mark.asyncio
 @pytest.mark.parametrize('dev,timespan', [(d, t) for d in GRAPH_DEVICES for t in GRAPH_TIMESPANS])
-async def test_aio_online_get_graph(test_online_ess, password, dev, timespan):
+async def test_aio_offline_get_graph(test_online_ess, password, dev, timespan):
     ip, name = test_online_ess
     ess = await ESS.create(name, password, ip)
     res = await ess.get_graph(dev, timespan, datetime.datetime.now())
@@ -61,7 +61,7 @@ async def test_aio_online_get_graph(test_online_ess, password, dev, timespan):
 @pytest.mark.vcr(mode="all")
 @pytest.mark.parametrize("state", [(k) for k in STATE_URLS.keys()])
 @pytest.mark.asyncio
-async def test_aio_online_get_state(aioess, state):
+async def test_aio_offline_get_state(aioess, state):
     res = await aioess.get_state(state)
     example = json.load(open(os.path.dirname(__file__) + "/examples/" + state + ".json", "r"))
     for key in example.keys():
@@ -74,7 +74,7 @@ async def test_aio_online_get_state(aioess, state):
 @pytest.mark.skipif(using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 @pytest.mark.asyncio
-async def test_aio_online_auto_reconnect(aioess):
+async def test_aio_offline_auto_reconnect(aioess):
     aioess.auth_key = "asdf"
     res = await aioess.get_state("common")
     assert res != {'auth': 'auth_key failed'}
