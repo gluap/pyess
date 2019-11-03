@@ -101,7 +101,7 @@ class ESS:
         logger.info("seems we got logged out, retrying after {} seconds".format(retries))
         time.sleep(retries)
         await self._login()
-        return await self.post_json_with_auth(url, retries=retries + 1, extra_json_data=None)
+        return await self.post_json_with_auth(url, retries=retries * 2, extra_json_data=extra_json_data)
 
     async def get_network(self):  # pragma: no cover
         return await self.get_state("network")
