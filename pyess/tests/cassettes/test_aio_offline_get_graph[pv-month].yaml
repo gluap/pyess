@@ -1,0 +1,73 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"03c6912e-fe73-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:14 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:16 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/pv/month
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20191101000000\",\n    \"m_timeTo\": \"20191130224500\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20191101000000\",\n         \
+        \   \"generation\": \"1294\",\n            \"feed_in\": \"143\",\n       \
+        \     \"self_consum\": \"88.949\",\n            \"total_generation\": \"1294\"\
+        ,\n            \"total_feed_in\": \"143\"\n        },\n        {\n       \
+        \     \"db\": \"1\",\n            \"time\": \"20191102000000\",\n        \
+        \    \"generation\": \"4355\",\n            \"feed_in\": \"216\",\n      \
+        \      \"self_consum\": \"95.04018\",\n            \"total_generation\": \"\
+        5649\",\n            \"total_feed_in\": \"359\"\n        },\n        {\n \
+        \           \"db\": \"2\",\n            \"time\": \"20191103000000\",\n  \
+        \          \"generation\": \"4686\",\n            \"feed_in\": \"116\",\n\
+        \            \"self_consum\": \"97.52454\",\n            \"total_generation\"\
+        : \"10335\",\n            \"total_feed_in\": \"475\"\n        }\n    ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:16 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/graph/pv/month
+version: 1

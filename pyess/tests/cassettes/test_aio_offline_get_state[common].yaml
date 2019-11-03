@@ -1,0 +1,87 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"ab6a8f58-fe72-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:46:46 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:46:47 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/essinfo/common
+  response:
+    body:
+      string: "{\n    \"PV\":\n    {\n        \"brand\": \"LGE-SOLAR\",\n        \"\
+        capacity\": \"5850\",\n        \"pv1_voltage\": \"26.100000\",\n        \"\
+        pv2_voltage\": \"26.200001\",\n        \"pv1_power\": \"0\",\n        \"pv2_power\"\
+        : \"0\",\n        \"pv1_current\": \"0.110000\",\n        \"pv2_current\"\
+        : \"0.000000\",\n        \"today_pv_generation_sum\": \"4686\",\n        \"\
+        today_month_pv_generation_sum\": \"10335\"\n    },\n    \"BATT\":\n    {\n\
+        \        \"status\": \"0\",\n        \"soc\": \"0.0\",\n        \"dc_power\"\
+        : \"0\",\n        \"winter_setting\": \"on\",\n        \"winter_status\":\
+        \ \"on\",\n        \"safty_soc\": \"20\",\n        \"today_batt_discharge_enery\"\
+        : \"1831\",\n        \"today_batt_charge_energy\": \"2145\",\n        \"month_batt_charge_energy\"\
+        : \"4629\",\n        \"month_batt_discharge_energy\": \"4935\"\n    },\n \
+        \   \"GRID\":\n    {\n        \"active_power\": \"645.320007\",\n        \"\
+        a_phase\": \"233.399994\",\n        \"freq\": \"49.990002\",\n        \"today_grid_feed_in_energy\"\
+        : \"116\",\n        \"today_grid_power_purchase_energy\": \"4310\",\n    \
+        \    \"month_grid_feed_in_energy\": \"475\",\n        \"month_grid_power_purchase_energy\"\
+        : \"14414\"\n    },\n    \"LOAD\":\n    {\n        \"load_power\": \"653\"\
+        ,\n        \"today_load_consumption_sum\": \"8566\",\n        \"today_pv_direct_consumption_enegy\"\
+        : \"2425\",\n        \"today_batt_discharge_enery\": \"1831\",\n        \"\
+        today_grid_power_purchase_energy\": \"4310\",\n        \"month_load_consumption_sum\"\
+        : \"24580\",\n        \"month_pv_direct_consumption_energy\": \"5231\",\n\
+        \        \"month_batt_discharge_energy\": \"4935\",\n        \"month_grid_power_purchase_energy\"\
+        : \"14414\"\n    },\n    \"PCS\":\n    {\n        \"today_self_consumption\"\
+        : \"97.5\",\n        \"month_co2_reduction_accum\": \"7337\",\n        \"\
+        today_pv_generation_sum\": \"4686\",\n        \"month_pv_generation_sum\"\
+        : \"10335\",\n        \"today_grid_feed_in_energy\": \"116\",\n        \"\
+        month_grid_feed_in_energy\": \"475\",\n        \"pcs_stauts\": \"3\",\n  \
+        \      \"feed_in_limitation\": \"70\",\n        \"operation_mode\": \"0\"\n\
+        \    }\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:46:47 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/essinfo/common
+version: 1

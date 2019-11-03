@@ -1,0 +1,82 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"fd15b65c-fe72-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:03 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:05 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/load/year
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20190101000000\",\n    \"m_timeTo\": \"20191231234500\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20190201000000\",\n         \
+        \   \"consumption\": \"4918\",\n            \"purchase\": \"406\",\n     \
+        \       \"self_suffi\": \"91.74461\",\n            \"total_consumption\":\
+        \ \"4918\",\n            \"total_purchase\": \"406\"\n        },\n       \
+        \ {\n            \"db\": \"1\",\n            \"time\": \"20190901000000\"\
+        ,\n            \"consumption\": \"130093\",\n            \"purchase\": \"\
+        47311\",\n            \"self_suffi\": \"63.63294\",\n            \"total_consumption\"\
+        : \"135011\",\n            \"total_purchase\": \"47717\"\n        },\n   \
+        \     {\n            \"db\": \"2\",\n            \"time\": \"20191001000000\"\
+        ,\n            \"consumption\": \"274231\",\n            \"purchase\": \"\
+        71800\",\n            \"self_suffi\": \"73.8177\",\n            \"total_consumption\"\
+        : \"409242\",\n            \"total_purchase\": \"119517\"\n        },\n  \
+        \      {\n            \"db\": \"3\",\n            \"time\": \"20191001010000\"\
+        ,\n            \"consumption\": \"320911\",\n            \"purchase\": \"\
+        87411\",\n            \"self_suffi\": \"72.7616\",\n            \"total_consumption\"\
+        : \"730153\",\n            \"total_purchase\": \"206928\"\n        },\n  \
+        \      {\n            \"db\": \"4\",\n            \"time\": \"20191101000000\"\
+        ,\n            \"consumption\": \"24580\",\n            \"purchase\": \"14414\"\
+        ,\n            \"self_suffi\": \"41.35883\",\n            \"total_consumption\"\
+        : \"754733\",\n            \"total_purchase\": \"221342\"\n        }\n   \
+        \ ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:05 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/graph/load/year
+version: 1

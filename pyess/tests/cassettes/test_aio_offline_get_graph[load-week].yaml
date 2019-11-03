@@ -1,0 +1,90 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"fbf447ac-fe72-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:01 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:03 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/load/week
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20191028000000\",\n    \"m_timeTo\": \"20191103224500\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20191028000000\",\n         \
+        \   \"consumption\": \"8551\",\n            \"purchase\": \"3874\",\n    \
+        \        \"self_suffi\": \"54.69535\",\n            \"total_consumption\"\
+        : \"8551\",\n            \"total_purchase\": \"3874\"\n        },\n      \
+        \  {\n            \"db\": \"1\",\n            \"time\": \"20191029000000\"\
+        ,\n            \"consumption\": \"10890\",\n            \"purchase\": \"4654\"\
+        ,\n            \"self_suffi\": \"57.26355\",\n            \"total_consumption\"\
+        : \"19441\",\n            \"total_purchase\": \"8528\"\n        },\n     \
+        \   {\n            \"db\": \"2\",\n            \"time\": \"20191030000000\"\
+        ,\n            \"consumption\": \"7918\",\n            \"purchase\": \"941\"\
+        ,\n            \"self_suffi\": \"88.11568\",\n            \"total_consumption\"\
+        : \"27359\",\n            \"total_purchase\": \"9469\"\n        },\n     \
+        \   {\n            \"db\": \"3\",\n            \"time\": \"20191031000000\"\
+        ,\n            \"consumption\": \"10084\",\n            \"purchase\": \"393\"\
+        ,\n            \"self_suffi\": \"96.10274\",\n            \"total_consumption\"\
+        : \"37443\",\n            \"total_purchase\": \"9862\"\n        },\n     \
+        \   {\n            \"db\": \"4\",\n            \"time\": \"20191101000000\"\
+        ,\n            \"consumption\": \"5108\",\n            \"purchase\": \"3010\"\
+        ,\n            \"self_suffi\": \"41.07283\",\n            \"total_consumption\"\
+        : \"42551\",\n            \"total_purchase\": \"12872\"\n        },\n    \
+        \    {\n            \"db\": \"5\",\n            \"time\": \"20191102000000\"\
+        ,\n            \"consumption\": \"8952\",\n            \"purchase\": \"5140\"\
+        ,\n            \"self_suffi\": \"42.58266\",\n            \"total_consumption\"\
+        : \"51503\",\n            \"total_purchase\": \"18012\"\n        },\n    \
+        \    {\n            \"db\": \"6\",\n            \"time\": \"20191103000000\"\
+        ,\n            \"consumption\": \"8566\",\n            \"purchase\": \"4310\"\
+        ,\n            \"self_suffi\": \"49.6848\",\n            \"total_consumption\"\
+        : \"60069\",\n            \"total_purchase\": \"22322\"\n        }\n    ]\n\
+        }\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:03 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/graph/load/week
+version: 1

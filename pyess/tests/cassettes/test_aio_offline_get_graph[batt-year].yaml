@@ -1,0 +1,79 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"0271c2da-fe73-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:12 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:14 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/batt/year
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20190101000000\",\n    \"m_timeTo\": \"20191231234500\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20190201000000\",\n         \
+        \   \"charge\": \"2583\",\n            \"discharge\": \"1506\",\n        \
+        \    \"total_charge\": \"2583\",\n            \"total_discharge\": \"1506\"\
+        \n        },\n        {\n            \"db\": \"1\",\n            \"time\"\
+        : \"20190901000000\",\n            \"charge\": \"41820\",\n            \"\
+        discharge\": \"42173\",\n            \"total_charge\": \"44403\",\n      \
+        \      \"total_discharge\": \"43679\"\n        },\n        {\n           \
+        \ \"db\": \"2\",\n            \"time\": \"20191001000000\",\n            \"\
+        charge\": \"112749\",\n            \"discharge\": \"107880\",\n          \
+        \  \"total_charge\": \"157152\",\n            \"total_discharge\": \"151559\"\
+        \n        },\n        {\n            \"db\": \"3\",\n            \"time\"\
+        : \"20191001010000\",\n            \"charge\": \"132581\",\n            \"\
+        discharge\": \"125451\",\n            \"total_charge\": \"289733\",\n    \
+        \        \"total_discharge\": \"277010\"\n        },\n        {\n        \
+        \    \"db\": \"4\",\n            \"time\": \"20191101000000\",\n         \
+        \   \"charge\": \"4629\",\n            \"discharge\": \"4935\",\n        \
+        \    \"total_charge\": \"294362\",\n            \"total_discharge\": \"281945\"\
+        \n        }\n    ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:14 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/graph/batt/year
+version: 1

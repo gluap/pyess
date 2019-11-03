@@ -23,7 +23,7 @@ setup(name='pyess',
       packages=['pyess'],
 
       install_requires=[
-          'zeroconf', 'requests', 'graphyte'
+          'zeroconf', 'requests', 'graphyte', 'aiohttp'
       ],
 
       zip_safe=False,

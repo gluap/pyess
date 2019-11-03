@@ -1,0 +1,344 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"ff7f3652-fe72-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:07 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:08 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/batt/day
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20191103000000\",\n    \"m_timeTo\": \"20191104000000\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20191103003000\",\n         \
+        \   \"charge\": \"0\",\n            \"discharge\": \"0\",\n            \"\
+        total_charge\": \"0\",\n            \"total_discharge\": \"0\",\n        \
+        \    \"soc\": \"0\"\n        },\n        {\n            \"db\": \"1\",\n \
+        \           \"time\": \"20191103004500\",\n            \"charge\": \"0\",\n\
+        \            \"discharge\": \"0\",\n            \"total_charge\": \"0\",\n\
+        \            \"total_discharge\": \"0\",\n            \"soc\": \"0\"\n   \
+        \     },\n        {\n            \"db\": \"2\",\n            \"time\": \"\
+        20191103010000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"3\",\n            \"time\": \"20191103011500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"4\",\n            \"time\"\
+        : \"20191103013000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"5\",\n            \"time\": \"20191103014500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"6\",\n            \"time\"\
+        : \"20191103020000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"7\",\n            \"time\": \"20191103021500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"8\",\n            \"time\"\
+        : \"20191103023000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"9\",\n            \"time\": \"20191103024500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"10\",\n            \"time\"\
+        : \"20191103030000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"11\",\n            \"time\": \"20191103031500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"12\",\n            \"time\"\
+        : \"20191103033000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"13\",\n            \"time\": \"20191103034500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"14\",\n            \"time\"\
+        : \"20191103040000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"15\",\n            \"time\": \"20191103041500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"16\",\n            \"time\"\
+        : \"20191103043000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"17\",\n            \"time\": \"20191103044500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"18\",\n            \"time\"\
+        : \"20191103050000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"19\",\n            \"time\": \"20191103051500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"20\",\n            \"time\"\
+        : \"20191103053000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"21\",\n            \"time\": \"20191103054500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"22\",\n            \"time\"\
+        : \"20191103060000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"23\",\n            \"time\": \"20191103061500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"24\",\n            \"time\"\
+        : \"20191103063000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"25\",\n            \"time\": \"20191103064500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"26\",\n            \"time\"\
+        : \"20191103070000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"27\",\n            \"time\": \"20191103071500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"28\",\n            \"time\"\
+        : \"20191103073000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"29\",\n            \"time\": \"20191103074500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"30\",\n            \"time\"\
+        : \"20191103080000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"31\",\n            \"time\": \"20191103081500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"32\",\n            \"time\"\
+        : \"20191103083000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"33\",\n            \"time\": \"20191103094500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"34\",\n            \"time\"\
+        : \"20191103100000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"0\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"35\",\n            \"time\": \"20191103101500\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"0\",\n            \"total_discharge\": \"0\",\n            \"soc\": \"\
+        0\"\n        },\n        {\n            \"db\": \"36\",\n            \"time\"\
+        : \"20191103103000\",\n            \"charge\": \"64\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"64\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"\
+        db\": \"37\",\n            \"time\": \"20191103104500\",\n            \"charge\"\
+        : \"80\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"144\",\n            \"total_discharge\": \"0\",\n            \"soc\":\
+        \ \"0\"\n        },\n        {\n            \"db\": \"38\",\n            \"\
+        time\": \"20191103110000\",\n            \"charge\": \"59\",\n           \
+        \ \"discharge\": \"0\",\n            \"total_charge\": \"203\",\n        \
+        \    \"total_discharge\": \"0\",\n            \"soc\": \"0\"\n        },\n\
+        \        {\n            \"db\": \"39\",\n            \"time\": \"20191103111500\"\
+        ,\n            \"charge\": \"70\",\n            \"discharge\": \"0\",\n  \
+        \          \"total_charge\": \"273\",\n            \"total_discharge\": \"\
+        0\",\n            \"soc\": \"0\"\n        },\n        {\n            \"db\"\
+        : \"40\",\n            \"time\": \"20191103113000\",\n            \"charge\"\
+        : \"115\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"388\",\n            \"total_discharge\": \"0\",\n            \"soc\":\
+        \ \"2.777778\"\n        },\n        {\n            \"db\": \"41\",\n     \
+        \       \"time\": \"20191103114500\",\n            \"charge\": \"151\",\n\
+        \            \"discharge\": \"0\",\n            \"total_charge\": \"539\"\
+        ,\n            \"total_discharge\": \"0\",\n            \"soc\": \"6.25\"\n\
+        \        },\n        {\n            \"db\": \"42\",\n            \"time\"\
+        : \"20191103120000\",\n            \"charge\": \"306\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"845\",\n            \"total_discharge\"\
+        : \"0\",\n            \"soc\": \"13.19444\"\n        },\n        {\n     \
+        \       \"db\": \"43\",\n            \"time\": \"20191103121500\",\n     \
+        \       \"charge\": \"360\",\n            \"discharge\": \"0\",\n        \
+        \    \"total_charge\": \"1205\",\n            \"total_discharge\": \"0\",\n\
+        \            \"soc\": \"20.83333\"\n        },\n        {\n            \"\
+        db\": \"44\",\n            \"time\": \"20191103123000\",\n            \"charge\"\
+        : \"210\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"1415\",\n            \"total_discharge\": \"0\",\n            \"soc\"\
+        : \"25.69444\"\n        },\n        {\n            \"db\": \"45\",\n     \
+        \       \"time\": \"20191103124500\",\n            \"charge\": \"106\",\n\
+        \            \"discharge\": \"25\",\n            \"total_charge\": \"1521\"\
+        ,\n            \"total_discharge\": \"25\",\n            \"soc\": \"27.08333\"\
+        \n        },\n        {\n            \"db\": \"46\",\n            \"time\"\
+        : \"20191103130000\",\n            \"charge\": \"67\",\n            \"discharge\"\
+        : \"144\",\n            \"total_charge\": \"1588\",\n            \"total_discharge\"\
+        : \"169\",\n            \"soc\": \"25.69444\"\n        },\n        {\n   \
+        \         \"db\": \"47\",\n            \"time\": \"20191103131500\",\n   \
+        \         \"charge\": \"69\",\n            \"discharge\": \"0\",\n       \
+        \     \"total_charge\": \"1657\",\n            \"total_discharge\": \"169\"\
+        ,\n            \"soc\": \"26.38889\"\n        },\n        {\n            \"\
+        db\": \"48\",\n            \"time\": \"20191103133000\",\n            \"charge\"\
+        : \"28\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"1685\",\n            \"total_discharge\": \"169\",\n            \"soc\"\
+        : \"27.08333\"\n        },\n        {\n            \"db\": \"49\",\n     \
+        \       \"time\": \"20191103134500\",\n            \"charge\": \"1\",\n  \
+        \          \"discharge\": \"31\",\n            \"total_charge\": \"1686\"\
+        ,\n            \"total_discharge\": \"200\",\n            \"soc\": \"27.08333\"\
+        \n        },\n        {\n            \"db\": \"50\",\n            \"time\"\
+        : \"20191103140000\",\n            \"charge\": \"2\",\n            \"discharge\"\
+        : \"24\",\n            \"total_charge\": \"1688\",\n            \"total_discharge\"\
+        : \"224\",\n            \"soc\": \"27.08333\"\n        },\n        {\n   \
+        \         \"db\": \"51\",\n            \"time\": \"20191103141500\",\n   \
+        \         \"charge\": \"0\",\n            \"discharge\": \"40\",\n       \
+        \     \"total_charge\": \"1688\",\n            \"total_discharge\": \"264\"\
+        ,\n            \"soc\": \"27.08333\"\n        },\n        {\n            \"\
+        db\": \"52\",\n            \"time\": \"20191103143000\",\n            \"charge\"\
+        : \"22\",\n            \"discharge\": \"31\",\n            \"total_charge\"\
+        : \"1710\",\n            \"total_discharge\": \"295\",\n            \"soc\"\
+        : \"26.38889\"\n        },\n        {\n            \"db\": \"53\",\n     \
+        \       \"time\": \"20191103144500\",\n            \"charge\": \"106\",\n\
+        \            \"discharge\": \"57\",\n            \"total_charge\": \"1816\"\
+        ,\n            \"total_discharge\": \"352\",\n            \"soc\": \"27.08333\"\
+        \n        },\n        {\n            \"db\": \"54\",\n            \"time\"\
+        : \"20191103150000\",\n            \"charge\": \"174\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"1990\",\n            \"total_discharge\"\
+        : \"352\",\n            \"soc\": \"30.55556\"\n        },\n        {\n   \
+        \         \"db\": \"55\",\n            \"time\": \"20191103151500\",\n   \
+        \         \"charge\": \"93\",\n            \"discharge\": \"0\",\n       \
+        \     \"total_charge\": \"2083\",\n            \"total_discharge\": \"352\"\
+        ,\n            \"soc\": \"32.63889\"\n        },\n        {\n            \"\
+        db\": \"56\",\n            \"time\": \"20191103153000\",\n            \"charge\"\
+        : \"36\",\n            \"discharge\": \"0\",\n            \"total_charge\"\
+        : \"2119\",\n            \"total_discharge\": \"352\",\n            \"soc\"\
+        : \"33.33334\"\n        },\n        {\n            \"db\": \"57\",\n     \
+        \       \"time\": \"20191103154500\",\n            \"charge\": \"25\",\n \
+        \           \"discharge\": \"105\",\n            \"total_charge\": \"2144\"\
+        ,\n            \"total_discharge\": \"457\",\n            \"soc\": \"31.25\"\
+        \n        },\n        {\n            \"db\": \"58\",\n            \"time\"\
+        : \"20191103160000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"90\",\n            \"total_charge\": \"2144\",\n            \"total_discharge\"\
+        : \"547\",\n            \"soc\": \"29.16667\"\n        },\n        {\n   \
+        \         \"db\": \"59\",\n            \"time\": \"20191103161500\",\n   \
+        \         \"charge\": \"0\",\n            \"discharge\": \"25\",\n       \
+        \     \"total_charge\": \"2144\",\n            \"total_discharge\": \"572\"\
+        ,\n            \"soc\": \"29.16667\"\n        },\n        {\n            \"\
+        db\": \"60\",\n            \"time\": \"20191103163000\",\n            \"charge\"\
+        : \"1\",\n            \"discharge\": \"36\",\n            \"total_charge\"\
+        : \"2145\",\n            \"total_discharge\": \"608\",\n            \"soc\"\
+        : \"28.47222\"\n        },\n        {\n            \"db\": \"61\",\n     \
+        \       \"time\": \"20191103164500\",\n            \"charge\": \"0\",\n  \
+        \          \"discharge\": \"393\",\n            \"total_charge\": \"2145\"\
+        ,\n            \"total_discharge\": \"1001\",\n            \"soc\": \"19.44444\"\
+        \n        },\n        {\n            \"db\": \"62\",\n            \"time\"\
+        : \"20191103170000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"167\",\n            \"total_charge\": \"2145\",\n            \"total_discharge\"\
+        : \"1168\",\n            \"soc\": \"15.97222\"\n        },\n        {\n  \
+        \          \"db\": \"63\",\n            \"time\": \"20191103171500\",\n  \
+        \          \"charge\": \"0\",\n            \"discharge\": \"191\",\n     \
+        \       \"total_charge\": \"2145\",\n            \"total_discharge\": \"1359\"\
+        ,\n            \"soc\": \"11.11111\"\n        },\n        {\n            \"\
+        db\": \"64\",\n            \"time\": \"20191103173000\",\n            \"charge\"\
+        : \"0\",\n            \"discharge\": \"198\",\n            \"total_charge\"\
+        : \"2145\",\n            \"total_discharge\": \"1557\",\n            \"soc\"\
+        : \"6.944445\"\n        },\n        {\n            \"db\": \"65\",\n     \
+        \       \"time\": \"20191103174500\",\n            \"charge\": \"0\",\n  \
+        \          \"discharge\": \"216\",\n            \"total_charge\": \"2145\"\
+        ,\n            \"total_discharge\": \"1773\",\n            \"soc\": \"2.083333\"\
+        \n        },\n        {\n            \"db\": \"66\",\n            \"time\"\
+        : \"20191103180000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"58\",\n            \"total_charge\": \"2145\",\n            \"total_discharge\"\
+        : \"1831\",\n            \"soc\": \"0\"\n        },\n        {\n         \
+        \   \"db\": \"67\",\n            \"time\": \"20191103181500\",\n         \
+        \   \"charge\": \"0\",\n            \"discharge\": \"0\",\n            \"\
+        total_charge\": \"2145\",\n            \"total_discharge\": \"1831\",\n  \
+        \          \"soc\": \"0\"\n        },\n        {\n            \"db\": \"68\"\
+        ,\n            \"time\": \"20191103183000\",\n            \"charge\": \"0\"\
+        ,\n            \"discharge\": \"0\",\n            \"total_charge\": \"2145\"\
+        ,\n            \"total_discharge\": \"1831\",\n            \"soc\": \"0\"\n\
+        \        },\n        {\n            \"db\": \"69\",\n            \"time\"\
+        : \"20191103184500\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"2145\",\n            \"total_discharge\"\
+        : \"1831\",\n            \"soc\": \"0\"\n        },\n        {\n         \
+        \   \"db\": \"70\",\n            \"time\": \"20191103190000\",\n         \
+        \   \"charge\": \"0\",\n            \"discharge\": \"0\",\n            \"\
+        total_charge\": \"2145\",\n            \"total_discharge\": \"1831\",\n  \
+        \          \"soc\": \"0\"\n        },\n        {\n            \"db\": \"71\"\
+        ,\n            \"time\": \"20191103191500\",\n            \"charge\": \"0\"\
+        ,\n            \"discharge\": \"0\",\n            \"total_charge\": \"2145\"\
+        ,\n            \"total_discharge\": \"1831\",\n            \"soc\": \"0\"\n\
+        \        },\n        {\n            \"db\": \"72\",\n            \"time\"\
+        : \"20191103193000\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"2145\",\n            \"total_discharge\"\
+        : \"1831\",\n            \"soc\": \"0\"\n        },\n        {\n         \
+        \   \"db\": \"73\",\n            \"time\": \"20191103194500\",\n         \
+        \   \"charge\": \"0\",\n            \"discharge\": \"0\",\n            \"\
+        total_charge\": \"2145\",\n            \"total_discharge\": \"1831\",\n  \
+        \          \"soc\": \"0\"\n        },\n        {\n            \"db\": \"74\"\
+        ,\n            \"time\": \"20191103200000\",\n            \"charge\": \"0\"\
+        ,\n            \"discharge\": \"0\",\n            \"total_charge\": \"2145\"\
+        ,\n            \"total_discharge\": \"1831\",\n            \"soc\": \"0\"\n\
+        \        },\n        {\n            \"db\": \"75\",\n            \"time\"\
+        : \"20191103201500\",\n            \"charge\": \"0\",\n            \"discharge\"\
+        : \"0\",\n            \"total_charge\": \"2145\",\n            \"total_discharge\"\
+        : \"1831\",\n            \"soc\": \"0\"\n        },\n        {\n         \
+        \   \"db\": \"76\",\n            \"time\": \"20191103203000\",\n         \
+        \   \"charge\": \"0\",\n            \"discharge\": \"0\",\n            \"\
+        total_charge\": \"2145\",\n            \"total_discharge\": \"1831\",\n  \
+        \          \"soc\": \"0\"\n        },\n        {\n            \"db\": \"77\"\
+        ,\n            \"time\": \"20191103204500\",\n            \"charge\": \"0\"\
+        ,\n            \"discharge\": \"0\",\n            \"total_charge\": \"2145\"\
+        ,\n            \"total_discharge\": \"1831\",\n            \"soc\": \"0\"\n\
+        \        }\n    ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:08 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/graph/batt/day
+version: 1

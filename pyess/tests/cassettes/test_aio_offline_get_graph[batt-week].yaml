@@ -1,0 +1,85 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"00326c0e-fe73-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:08 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:12 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/batt/week
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20191028000000\",\n    \"m_timeTo\": \"20191103224500\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20191028000000\",\n         \
+        \   \"charge\": \"3180\",\n            \"discharge\": \"2331\",\n        \
+        \    \"total_charge\": \"3180\",\n            \"total_discharge\": \"2331\"\
+        \n        },\n        {\n            \"db\": \"1\",\n            \"time\"\
+        : \"20191029000000\",\n            \"charge\": \"5065\",\n            \"discharge\"\
+        : \"4645\",\n            \"total_charge\": \"8245\",\n            \"total_discharge\"\
+        : \"6976\"\n        },\n        {\n            \"db\": \"2\",\n          \
+        \  \"time\": \"20191030000000\",\n            \"charge\": \"5144\",\n    \
+        \        \"discharge\": \"3028\",\n            \"total_charge\": \"13389\"\
+        ,\n            \"total_discharge\": \"10004\"\n        },\n        {\n   \
+        \         \"db\": \"3\",\n            \"time\": \"20191031000000\",\n    \
+        \        \"charge\": \"4992\",\n            \"discharge\": \"5417\",\n   \
+        \         \"total_charge\": \"18381\",\n            \"total_discharge\": \"\
+        15421\"\n        },\n        {\n            \"db\": \"4\",\n            \"\
+        time\": \"20191101000000\",\n            \"charge\": \"84\",\n           \
+        \ \"discharge\": \"1031\",\n            \"total_charge\": \"18465\",\n   \
+        \         \"total_discharge\": \"16452\"\n        },\n        {\n        \
+        \    \"db\": \"5\",\n            \"time\": \"20191102000000\",\n         \
+        \   \"charge\": \"2400\",\n            \"discharge\": \"2073\",\n        \
+        \    \"total_charge\": \"20865\",\n            \"total_discharge\": \"18525\"\
+        \n        },\n        {\n            \"db\": \"6\",\n            \"time\"\
+        : \"20191103000000\",\n            \"charge\": \"2145\",\n            \"discharge\"\
+        : \"1831\",\n            \"total_charge\": \"23010\",\n            \"total_discharge\"\
+        : \"20356\"\n        }\n    ]\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:12 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/graph/batt/week
+version: 1

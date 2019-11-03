@@ -1,0 +1,82 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"06a98b4e-fe73-11e9-a9be-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:19 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:20 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/graph/pv/year
+  response:
+    body:
+      string: "{\n    \"m_timeFrom\": \"20190101000000\",\n    \"m_timeTo\": \"20191231234500\"\
+        ,\n    \"db\": \"success\",\n    \"loginfo\":\n    [\n        {\n        \
+        \    \"db\": \"0\",\n            \"time\": \"20190201000000\",\n         \
+        \   \"generation\": \"5810\",\n            \"feed_in\": \"221\",\n       \
+        \     \"self_consum\": \"96.19621\",\n            \"total_generation\": \"\
+        5810\",\n            \"total_Feed_in\": \"221\"\n        },\n        {\n \
+        \           \"db\": \"1\",\n            \"time\": \"20190901000000\",\n  \
+        \          \"generation\": \"93686\",\n            \"feed_in\": \"11379\"\
+        ,\n            \"self_consum\": \"87.98433\",\n            \"total_generation\"\
+        : \"99496\",\n            \"total_Feed_in\": \"11600\"\n        },\n     \
+        \   {\n            \"db\": \"2\",\n            \"time\": \"20191001000000\"\
+        ,\n            \"generation\": \"281025\",\n            \"feed_in\": \"73847\"\
+        ,\n            \"self_consum\": \"73.76568\",\n            \"total_generation\"\
+        : \"380521\",\n            \"total_Feed_in\": \"85447\"\n        },\n    \
+        \    {\n            \"db\": \"3\",\n            \"time\": \"20191001010000\"\
+        ,\n            \"generation\": \"332123\",\n            \"feed_in\": \"91493\"\
+        ,\n            \"self_consum\": \"72.45207\",\n            \"total_generation\"\
+        : \"712644\",\n            \"total_Feed_in\": \"176940\"\n        },\n   \
+        \     {\n            \"db\": \"4\",\n            \"time\": \"20191101000000\"\
+        ,\n            \"generation\": \"10335\",\n            \"feed_in\": \"475\"\
+        ,\n            \"self_consum\": \"95.40397\",\n            \"total_generation\"\
+        : \"722979\",\n            \"total_Feed_in\": \"177415\"\n        }\n    ]\n\
+        }\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 03 Nov 2019 19:49:20 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/graph/pv/year
+version: 1
