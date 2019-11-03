@@ -87,6 +87,12 @@ be accessed via the EnerVu App.
 Changelog
 =========
 
+**2019-11-03 0.0.3**
+- add aiohttp-based backend for use with asyncio
+
+**2019-10-12 0.0.2**
+- some minor fixes
+
 **2019-10-09 0.0.1**
 - More documentation
 - Initial commit for pypi relase
