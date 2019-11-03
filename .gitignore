@@ -1,6 +1,7 @@
 venv
 credentials.json
 test_online*.yaml
+test_aio_online*.yaml
 pyess.egg-info
 tox
 .pytest_cache
