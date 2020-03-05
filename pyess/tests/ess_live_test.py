@@ -1,12 +1,12 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
 import datetime
-import pytest
 import json
 import os
 
-from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, STATE_URLS
+import pytest
 
+from pyess.constants import GRAPH_DEVICES, GRAPH_TIMESPANS, STATE_URLS
 from pyess.ess import get_ess_pw, autodetect_ess, ESS
 
 
@@ -76,3 +76,25 @@ def test_online_auto_reconnect(ess):
     res = ess.get_state("common")
     assert res != {'auth': 'auth_key failed'}
     pass
+
+
+@pytest.mark.skipif(not using_network(), reason="only when using network")
+@pytest.mark.vcr(mode="all")
+def test_online_winter_on_off(ess):
+    res = ess.winter_off()
+    res2 = ess.get_batt_settings()
+    assert res2["winter_setting"] == "off"
+    res = ess.winter_on()
+    res2 = ess.get_batt_settings()
+    assert res2["winter_setting"] == "on"
+
+
+@pytest.mark.skipif(not using_network(), reason="only when using network")
+@pytest.mark.vcr(mode="all")
+def test_online_fastcharge_on_off(ess):
+    res = ess.fastcharge_off()
+    res2 = ess.get_batt_settings()
+    assert res2["alg_setting"] == "off"
+    res = ess.fastcharge_on()
+    res2 = ess.get_batt_settings()
+    assert res2["alg_setting"] == "on"

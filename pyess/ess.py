@@ -11,7 +11,7 @@ import requests
 from zeroconf import Zeroconf, ServiceInfo
 
 from pyess.constants import LOGIN_URL, TIMESYNC_URL, GRAPH_TIMESPANS, GRAPH_DEVICES, GRAPH_PARAMS, \
-    GRAPH_TFORMATS, SWITCH_URL, STATE_URLS
+    GRAPH_TFORMATS, SWITCH_URL, STATE_URLS, BATT_URL
 
 
 class ESSException(Exception):
@@ -123,7 +123,7 @@ class ESS:
         switch on operation.
         :return:
         """
-        r = requests.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "start"},
+        r = requests.put(SWITCH_URL.format(self.ip), json={"auth_key": self.auth_key, "operation": "start"},
                          verify=False, headers={"Content-Type": "application/json"})
 
     def switch_off(self):
@@ -131,10 +131,49 @@ class ESS:
         switch off operation.
         :return:
         """
-        r = requests.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "stop"},
+        r = requests.put(SWITCH_URL.format(self.ip), json={"auth_key": self.auth_key, "operation": "stop"},
                          verify=False, headers={"Content-Type": "application/json"})
         # if not r.json()["status"] == "success":
         #    raise ESSException("switching unsuccessful")
+
+    def get_batt_settings(self):
+        """
+        fetch current batt settings
+        :return: dict with current settings
+        """
+        return self.post_json_with_auth(BATT_URL.format(self.ip))
+
+    def set_batt_settings(self, command):
+        command.update({"auth_key": self.auth_key})
+        requests.put(BATT_URL.format(self.ip), json=command, verify=False)
+
+    def winter_off(self):  # pragma: no cover
+        """
+        switch off winter mode
+        :return:
+        """
+        self.set_batt_settings({"wintermode": "off"})
+
+    def winter_on(self):  # pragma:no cover
+        """
+        switch off winter mode
+        :return:
+        """
+        self.set_batt_settings({"wintermode": "on"})
+
+    def fastcharge_on(self):  # pragma:no cover
+        """
+        switch off winter mode
+        :return:
+        """
+        self.set_batt_settings({"alg_setting": "on"})
+
+    def fastcharge_off(self):  # pragma:no cover
+        """
+        switch off winter mode
+        :return:
+        """
+        self.set_batt_settings({"alg_setting": "off"})
 
 
 def get_ess_ip(name):

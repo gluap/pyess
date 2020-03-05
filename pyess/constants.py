@@ -28,3 +28,5 @@ GRAPH_DATA_URL = {
 RETRIES=3
 
 SWITCH_URL = f"{PREFIX}/v1/user/operation/status"
+
+BATT_URL = f"{PREFIX}/v1/user/setting/batt"
