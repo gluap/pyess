@@ -148,40 +148,40 @@ class ESS:
         fetch current batt settings
         :return: dict with current settings
         """
-        return self.post_json_with_auth(BATT_URL)
+        return await self.post_json_with_auth(BATT_URL.format(self.ip))
 
-    def set_batt_settings(self, command):
+    async def set_batt_settings(self, command):
         command.update({"auth_key": self.auth_key})
         async with self.session.put(BATT_URL.format(self.ip), json=command) as r:
-            return await r.json()
+            await r.json()
 
     async def winter_off(self):  # pragma: no cover
         """
         switch off winter mode
         :return:
         """
-        self.set_batt_settings({"wintermode": "off"})
+        return await self.set_batt_settings({"wintermode": "off"})
 
     async def winter_on(self):  # pragma:no cover
         """
         switch off winter mode
         :return:
         """
-        self.set_batt_settings({"wintermode": "off"})
+        return await self.set_batt_settings({"wintermode": "on"})
 
     async def fastcharge_on(self):  # pragma:no cover
         """
         switch off winter mode
         :return:
         """
-        self.set_batt_settings({"alg_setting": "on"})
+        return await self.set_batt_settings({"alg_setting": "on"})
 
     async def fastcharge_off(self):  # pragma:no cover
         """
         switch off winter mode
         :return:
         """
-        self.set_batt_settings({"alg_setting": "off"})
+        return await self.set_batt_settings({"alg_setting": "off"})
 
     # setting winter start and end dates:
     # "startdate" "MMDD"

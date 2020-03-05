@@ -76,3 +76,39 @@ async def test_aio_online_auto_reconnect(aioess):
     res = await aioess.get_state("common")
     assert res != {'auth': 'auth_key failed'}
     pass
+
+@pytest.mark.skipif(not using_network(), reason="only when using network")
+@pytest.mark.vcr(mode="all")
+@pytest.mark.asyncio
+async def test_aio_online_fastcharge_on_off(aioess):
+    res = await aioess.fastcharge_off()
+    import time
+    time.sleep(2)
+
+    res2 = await aioess.get_batt_settings()
+
+    assert res2["alg_setting"] == "off"
+    res = await aioess.fastcharge_on()
+    res2 = await aioess.get_batt_settings()
+    assert res2["alg_setting"] == "on"
+
+    assert res != {'auth': 'auth_key failed'}
+    pass
+
+
+@pytest.mark.skipif(not using_network(), reason="only when using network")
+@pytest.mark.vcr(mode="all")
+@pytest.mark.asyncio
+async def test_aio_online_winter_mode_on_off(aioess):
+    res = await aioess.winter_off()
+    import time
+    time.sleep(2)
+    res2 = await aioess.get_batt_settings()
+
+    assert res2["winter_setting"] == "off"
+    res = await aioess.winter_on()
+    res2 = await aioess.get_batt_settings()
+    assert res2["alg_setting"] == "on"
+
+    assert res != {'auth': 'auth_key failed'}
+    pass

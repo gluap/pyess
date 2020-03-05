@@ -1,0 +1,121 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.24/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"278546e2-5f11-11ea-a9c6-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Thu, 05 Mar 2020 18:43:07 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.24/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.24/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Thu, 05 Mar 2020 18:43:07 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.24/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.24//v1/user/setting/batt
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Thu, 05 Mar 2020 18:43:07 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.24//v1/user/setting/batt
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.24//v1/user/setting/batt
+  response:
+    body:
+      string: "{\n    \"winter_setting\": \"on\",\n    \"winter_status\": \"off\"\
+        ,\n    \"alg_setting\": \"off\",\n    \"safty_soc\": \"20\",\n    \"startdate\"\
+        : \"1002\",\n    \"stopdate\": \"0227\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Thu, 05 Mar 2020 18:43:09 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.24//v1/user/setting/batt
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.24//v1/user/setting/batt
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Thu, 05 Mar 2020 18:43:09 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.24//v1/user/setting/batt
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.24//v1/user/setting/batt
+  response:
+    body:
+      string: "{\n    \"winter_setting\": \"on\",\n    \"winter_status\": \"off\"\
+        ,\n    \"alg_setting\": \"on\",\n    \"safty_soc\": \"20\",\n    \"startdate\"\
+        : \"1002\",\n    \"stopdate\": \"0227\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Thu, 05 Mar 2020 18:43:09 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.24//v1/user/setting/batt
+version: 1
