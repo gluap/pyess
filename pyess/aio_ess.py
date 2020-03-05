@@ -7,7 +7,6 @@ import time
 from json import JSONDecodeError
 
 import aiohttp
-
 from pyess.constants import LOGIN_URL, TIMESYNC_URL, GRAPH_TIMESPANS, GRAPH_DEVICES, GRAPH_PARAMS, \
     GRAPH_TFORMATS, SWITCH_URL, STATE_URLS
 
@@ -16,13 +15,17 @@ class ESSException(Exception):
     pass
 
 
+class ESSAuthException(ESSException):
+    pass
+
+
 logger = logging.getLogger(__name__)
 
 
 class ESS:
     @classmethod
-    async def create(cls, name, pw, ip):
-        ess = cls(name, pw, ip)
+    async def create(cls, name=None, password=None, ip=None):
+        ess = cls(name, password, ip)
         await ess._login()
         return ess
 
@@ -42,6 +45,8 @@ class ESS:
         logger.info("fetching auth key")
         async with self.session.put(url, json={"password": self.pw}) as r:
             response_json = await r.json()
+        if "status" in response_json and response_json["status"] == "password mismatched":
+            raise ESSAuthException("wrong password")
         # r = requests.put(url, json={"password": self.pw}, verify=False, headers={"Content-Type": "application/json"})
         auth_key = response_json["auth_key"]
         timesync_info = {
@@ -121,7 +126,7 @@ class ESS:
     async def get_state(self, state):
         return await self.post_json_with_auth(STATE_URLS[state].format(self.ip))
 
-    async def switch_on(self): # pragma: no cover
+    async def switch_on(self):  # pragma: no cover
         """
         switch on operation.
         :return:
@@ -129,7 +134,7 @@ class ESS:
         async with self.session.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "start"}) as r:
             response_json = await r.json()
 
-    async def switch_off(self): # pragma: no cover
+    async def switch_off(self):  # pragma: no cover
         """
         switch off operation.
         :return:
@@ -137,9 +142,20 @@ class ESS:
         async with self.session.put(SWITCH_URL, json={"auth_key": self.auth_key, "operation": "stop"}) as r:
             response_json = await r.json()
 
-    def __del__(self):
+    def __del__(self, *args):
         """
         tear down connector to avoid warnings, especially in unit tests.
         :return:
         """
-        asyncio.ensure_future(self.session.close())
+        try:
+            asyncio.ensure_future(self.session.close())
+        except RuntimeError:
+            # if there's no event loop we don't have to close the aiohttp session
+            pass
+
+    async def destruct(self, *args):
+        """
+        tear down connector to avoid warnings, especially in unit tests.
+        :return:
+        """
+        await self.session.close()
