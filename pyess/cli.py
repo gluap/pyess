@@ -61,7 +61,7 @@ def log_against_graphite(args):
 def get_password(args):  # pragma: no cover
     print(
         "Fetching ess password. For this you must be connected to the ESS wifi (or recently have been connected to it)")
-    pw = get_ess_pw("192.168.1.253")
+    pw = get_ess_pw("192.168.23.1")
     logger.info("password: {}".format(pw))
     return
 
