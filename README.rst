@@ -60,7 +60,7 @@ Fetch the state from ess as json
 ................................
 fetch a bunch of json states as json and display the result on the command line::
 
-    esscli --action get_state --password <your_ess_password>
+    esscli --action get_data --password <your ess_password>
 
 Examples for the data available:
 - current power from and to the grid and the battery
