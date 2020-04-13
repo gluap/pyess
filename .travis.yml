@@ -12,7 +12,7 @@ dist:
 #      dist: xenial
 #      sudo: true
 install:
-  - pip install tox-travis coveralls pytest-vcr pytest-mock pytest-asyncio
+  - pip install tox-travis coveralls pytest-vcr pytest-mock pytest-asyncio hbmqtt
   - python setup.py develop
 script:
   - coverage run --source pyess -m py.test
