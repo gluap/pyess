@@ -16,7 +16,9 @@ def using_network():
 @pytest.mark.skipif(using_network(), reason="only when not using network")
 @pytest.mark.vcr(mode="all")
 def test_offline_log_against_mqtt(password, hbmqtt,mocker):
-    mocker.patch('pyess.cli.autodetect_ess', return_value=["192.168.1.253", "THE_ESS_NAME"])
+    mocker.patch('pyess.ess.autodetect_ess', return_value=["192.168.1.253", "THE_ESS_NAME"])
+    mocker.patch('pyess.essmqtt.autodetect_ess', return_value=["192.168.1.253", "THE_ESS_NAME"])
+
     mocker.patch('pyess.ess.get_ess_ip', return_value="192.168.1.253")
     time.sleep(5)
 
