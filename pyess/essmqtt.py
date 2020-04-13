@@ -1,6 +1,7 @@
 import argparse
 import asyncio
 import logging
+import sys
 
 from asyncio_mqtt import Client
 
@@ -24,10 +25,11 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
 
-async def send_loop(client, ess):
+async def send_loop(client, ess, once=False):
     logger.info("starting send loop")
     while True:
-        await asyncio.sleep(1)
+        if not once:
+            await asyncio.sleep(1)
         home = await ess.get_state("home")
         common = await ess.get_state("common")
         for key in home:
@@ -42,7 +44,10 @@ async def send_loop(client, ess):
                     await client.publish("ess/common/" + key + "/" + key2, common[key][key2])
                 except:
                     pass
+        if once:
+            break
         await asyncio.sleep(9)
+
 
 
 def main(arguments=None):
@@ -59,13 +64,13 @@ async def _main(arguments=None):
     )
     # parser.add_argument("--action", default="list_ess", help="what to do", choices=actions.keys())
     parser.add_argument("--ess_password", default=None, help="password (required for everything but get_password)")
-    parser.add_argument("--mqtt_server", default="192.168.1.220", help="server")
-    parser.add_argument("--mqtt_port", default=1883, type=int, help="server")
-    parser.add_argument("--mqtt_password", default=None, help="server")
-    parser.add_argument("--mqtt_user", default=None, help="server")
+    parser.add_argument("--mqtt_server", default="192.168.1.220", help="mqtt server")
+    parser.add_argument("--mqtt_port", default=1883, type=int, help="mqtt port")
+    parser.add_argument("--mqtt_password", default=None, help="mqtt password")
+    parser.add_argument("--mqtt_user", default=None, help="mqtt user")
+    parser.add_argument("--once", default=False, type=bool, help="no loop, only one pass")
 
     args = parser.parse_args(arguments)
-
     ip, name = autodetect_ess()
     ess = await ESS.create(name, args.ess_password, ip)
 
@@ -110,4 +115,8 @@ async def _main(arguments=None):
         await client.subscribe('/ess/control/#')
         asyncio.create_task(handle_messages(client))
 
-        await send_loop(client, ess)
+        await send_loop(client, ess, once=args.once)
+
+
+if __name__ == "__main__":
+    main(sys.argv[1:])

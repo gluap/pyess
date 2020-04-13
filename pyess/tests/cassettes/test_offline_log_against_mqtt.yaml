@@ -1,0 +1,118 @@
+interactions:
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"70583e0c-7d97-11ea-9950-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Mon, 13 Apr 2020 14:59:56 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Mon, 13 Apr 2020 14:59:57 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/essinfo/home
+  response:
+    body:
+      string: "{\n    \"statistics\":\n    {\n        \"pcs_pv_total_power\": \"592\"\
+        ,\n        \"batconv_power\": \"405\",\n        \"bat_use\": \"1\",\n    \
+        \    \"bat_status\": \"1\",\n        \"bat_user_soc\": \"49.30555\",\n   \
+        \     \"load_power\": \"189\",\n        \"load_today\": \"0.0\",\n       \
+        \ \"grid_power\": \"2\",\n        \"current_day_self_consumption\": \"95.3\"\
+        ,\n        \"current_pv_generation_sum\": \"5597\",\n        \"current_grid_feed_in_energy\"\
+        : \"262\"\n    },\n    \"direction\":\n    {\n        \"is_direct_consuming_\"\
+        : \"1\",\n        \"is_battery_charging_\": \"1\",\n        \"is_battery_discharging_\"\
+        : \"0\",\n        \"is_grid_selling_\": \"0\",\n        \"is_grid_buying_\"\
+        : \"1\",\n        \"is_charging_from_grid_\": \"0\"\n    },\n    \"operation\"\
+        :\n    {\n        \"status\": \"start\",\n        \"mode\": \"1\"\n    },\n\
+        \    \"wintermode\":\n    {\n        \"winter_status\": \"on\"\n    },\n \
+        \   \"pcs_fault\":\n    {\n        \"pcs_status\": \"pcs_ok\"\n    }\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Mon, 13 Apr 2020 14:59:58 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/essinfo/home
+- request:
+    body: null
+    headers: {}
+    method: POST
+    uri: https://192.168.1.253/v1/user/essinfo/common
+  response:
+    body:
+      string: "{\n    \"PV\":\n    {\n        \"brand\": \"LGE-SOLAR\",\n        \"\
+        capacity\": \"5850\",\n        \"pv1_voltage\": \"308.600006\",\n        \"\
+        pv2_voltage\": \"327.899994\",\n        \"pv1_power\": \"336\",\n        \"\
+        pv2_power\": \"256\",\n        \"pv1_current\": \"1.080000\",\n        \"\
+        pv2_current\": \"0.780000\",\n        \"today_pv_generation_sum\": \"5597\"\
+        ,\n        \"today_month_pv_generation_sum\": \"378800\"\n    },\n    \"BATT\"\
+        :\n    {\n        \"status\": \"1\",\n        \"soc\": \"49.3\",\n       \
+        \ \"dc_power\": \"405\",\n        \"winter_setting\": \"on\",\n        \"\
+        winter_status\": \"on\",\n        \"safty_soc\": \"20\",\n        \"today_batt_discharge_enery\"\
+        : \"1931\",\n        \"today_batt_charge_energy\": \"2911\",\n        \"month_batt_charge_energy\"\
+        : \"59433\",\n        \"month_batt_discharge_energy\": \"42117\"\n    },\n\
+        \    \"GRID\":\n    {\n        \"active_power\": \"4.650000\",\n        \"\
+        a_phase\": \"233.199997\",\n        \"freq\": \"49.970001\",\n        \"today_grid_feed_in_energy\"\
+        : \"262\",\n        \"today_grid_power_purchase_energy\": \"1017\",\n    \
+        \    \"month_grid_feed_in_energy\": \"235667\",\n        \"month_grid_power_purchase_energy\"\
+        : \"6491\"\n    },\n    \"LOAD\":\n    {\n        \"load_power\": \"189\"\
+        ,\n        \"today_load_consumption_sum\": \"5372\",\n        \"today_pv_direct_consumption_enegy\"\
+        : \"2424\",\n        \"today_batt_discharge_enery\": \"1931\",\n        \"\
+        today_grid_power_purchase_energy\": \"1017\",\n        \"month_load_consumption_sum\"\
+        : \"132308\",\n        \"month_pv_direct_consumption_energy\": \"83700\",\n\
+        \        \"month_batt_discharge_energy\": \"42117\",\n        \"month_grid_power_purchase_energy\"\
+        : \"6491\"\n    },\n    \"PCS\":\n    {\n        \"today_self_consumption\"\
+        : \"95.3\",\n        \"month_co2_reduction_accum\": \"268948\",\n        \"\
+        today_pv_generation_sum\": \"5597\",\n        \"month_pv_generation_sum\"\
+        : \"378800\",\n        \"today_grid_feed_in_energy\": \"262\",\n        \"\
+        month_grid_feed_in_energy\": \"235667\",\n        \"pcs_stauts\": \"3\",\n\
+        \        \"feed_in_limitation\": \"70\",\n        \"operation_mode\": \"0\"\
+        \n    }\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Mon, 13 Apr 2020 14:59:58 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/essinfo/common
+version: 1
