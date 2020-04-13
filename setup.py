@@ -23,7 +23,7 @@ setup(name='pyess',
       packages=['pyess'],
 
       install_requires=[
-          'zeroconf', 'requests', 'graphyte', 'aiohttp'
+          'zeroconf', 'requests', 'graphyte', 'aiohttp', 'asyncio-mqtt'
       ],
 
       zip_safe=False,
@@ -33,6 +33,6 @@ setup(name='pyess',
           'tox', 'pytest'
       ],
 
-      entry_points={'console_scripts': ['esscli=pyess.cli:main']},
+      entry_points={'console_scripts': ['esscli=pyess.cli:main', 'essmqtt=pyess.essmqtt:main']},
       long_description=open('README.rst', 'r').read()
       )
