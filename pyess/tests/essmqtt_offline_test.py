@@ -12,7 +12,7 @@ def using_network():
     return "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true"
 
 
-@pytest.mark.skipif(not using_network(), reason="only when using network")
+@pytest.mark.skipif(using_network(), reason="only when not using network")
 @pytest.mark.vcr(mode="all")
 def test_online_log_against_mqtt(password):
     hbmqtt = subprocess.Popen(["hbmqtt","-c","data/hbmqtt.conf"])
@@ -23,4 +23,6 @@ def test_online_log_against_mqtt(password):
           "--mqtt_password", "test",
           "--ess_password", password,
           "--once", "true"])
+
+    hbmqtt.kill()
 
