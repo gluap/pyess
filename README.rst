@@ -87,6 +87,11 @@ be accessed via the EnerVu App.
 Changelog
 =========
 
+**2020-04-15 0.1.0**
+- fix issue with fetch_password using wrong IP
+- fix documentation
+- add new mqtt synchronization service script
+
 **2019-11-03 0.0.3**
 - add aiohttp-based backend for use with asyncio
 
