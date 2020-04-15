@@ -20,3 +20,4 @@ def test_online_log_against_graphite(password):
 @pytest.mark.vcr(mode="all")
 def test_online_cli_get_data(password):
     main(["--action", "get_data",  "--password", password])
+

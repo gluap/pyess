@@ -9,7 +9,6 @@ setup(name='pyess',
       classifiers=[
           'Development Status :: 3 - Alpha',
           'License :: OSI Approved :: MIT License',
-          'Programming Language :: Python :: 3.6',
           'Programming Language :: Python :: 3.7',
           'Programming Language :: Python :: 3.8',
           "Operating System :: OS Independent",
@@ -23,7 +22,7 @@ setup(name='pyess',
       packages=['pyess'],
 
       install_requires=[
-          'zeroconf', 'requests', 'graphyte', 'aiohttp'
+          'zeroconf', 'requests', 'graphyte', 'aiohttp', 'asyncio-mqtt>=0.3.0'
       ],
 
       zip_safe=False,
@@ -33,6 +32,6 @@ setup(name='pyess',
           'tox', 'pytest'
       ],
 
-      entry_points={'console_scripts': ['esscli=pyess.cli:main']},
+      entry_points={'console_scripts': ['esscli=pyess.cli:main', 'essmqtt=pyess.essmqtt:main']},
       long_description=open('README.rst', 'r').read()
       )
