@@ -76,6 +76,96 @@ the command line::
 
     esscli --action log_against_graphite --password <your_ess_password> --graphite <ip_of_graphite_server>
 
+
+Sync ess state with an mqtt server (also accepts commands)
+..........................................................
+
+To connect your ESS with an mqtt server run the following in your venv::
+
+    essmqtt --mqtt_server=<your_mqtt_server> --mqtt_user <your_mqtt_username> --mqtt_password <your_mqtt_password> --ess_password <your_ess_password>
+
+Your ESS will show up in /ess/# on mqtt.
+
+Available values to control the ess (write true/false) **Remember that this is an MIT-Licensed software and I take no responsibility for the usage of this library. That being said I send the same commands the app would send to trigger these actions to my best knowledge.**::
+
+   /ess/control/winter_mode
+   /ess/control/fastcharge
+   /ess/control/active
+
+Available paths with metrics to read from::
+
+    ess/home/statistics/pcs_pv_total_power 0
+    ess/home/statistics/batconv_power 190
+    ess/home/statistics/bat_use 1
+    ess/home/statistics/bat_status 2
+    ess/home/statistics/bat_user_soc 81.25
+    ess/home/statistics/load_power 191
+    ess/home/statistics/load_today 0.0
+    ess/home/statistics/grid_power 1
+    ess/home/statistics/current_day_self_consumption 0.0
+    ess/home/statistics/current_pv_generation_sum 0
+    ess/home/statistics/current_grid_feed_in_energy 0
+    ess/home/direction/is_direct_consuming_ 0
+    ess/home/direction/is_battery_charging_ 0
+    ess/home/direction/is_battery_discharging_ 1
+    ess/home/direction/is_grid_selling_ 0
+    ess/home/direction/is_grid_buying_ 1
+    ess/home/direction/is_charging_from_grid_ 0
+    ess/home/operation/status start
+    ess/home/operation/mode 1
+    ess/home/wintermode/winter_status on
+    ess/home/pcs_fault/pcs_status pcs_ok
+    ess/common/PV/brand LGE-SOLAR
+    ess/common/PV/capacity 5850
+    ess/common/PV/pv1_voltage 26.500000
+    ess/common/PV/pv2_voltage 26.700001
+    ess/common/PV/pv1_power 0
+    ess/common/PV/pv2_power 0
+    ess/common/PV/pv1_current 0.110000
+    ess/common/PV/pv2_current 0.000000
+    ess/common/PV/today_pv_generation_sum 0
+    ess/common/PV/today_month_pv_generation_sum 438389
+    ess/common/BATT/status 2
+    ess/common/BATT/soc 81.2
+    ess/common/BATT/dc_power 190
+    ess/common/BATT/winter_setting on
+    ess/common/BATT/winter_status on
+    ess/common/BATT/safty_soc 20
+    ess/common/BATT/today_batt_discharge_enery 135
+    ess/common/BATT/today_batt_charge_energy 0
+    ess/common/BATT/month_batt_charge_energy 72692
+    ess/common/BATT/month_batt_discharge_energy 51250
+    ess/common/GRID/active_power 2.790000
+    ess/common/GRID/a_phase 230.899994
+    ess/common/GRID/freq 49.959999
+    ess/common/GRID/today_grid_feed_in_energy 0
+    ess/common/GRID/today_grid_power_purchase_energy 0
+    ess/common/GRID/month_grid_feed_in_energy 266094
+    ess/common/GRID/month_grid_power_purchase_energy 7037
+    ess/common/LOAD/load_power 191
+    ess/common/LOAD/today_load_consumption_sum 135
+    ess/common/LOAD/today_pv_direct_consumption_enegy 0
+    ess/common/LOAD/today_batt_discharge_enery 135
+    ess/common/LOAD/today_grid_power_purchase_energy 0
+    ess/common/LOAD/month_load_consumption_sum 157890
+    ess/common/LOAD/month_pv_direct_consumption_energy 99603
+    ess/common/LOAD/month_batt_discharge_energy 51250
+    ess/common/LOAD/month_grid_power_purchase_energy 7037
+    ess/common/PCS/today_self_consumption 0.0
+    ess/common/PCS/month_co2_reduction_accum 311256
+    ess/common/PCS/today_pv_generation_sum 0
+    ess/common/PCS/month_pv_generation_sum 438389
+    ess/common/PCS/today_grid_feed_in_energy 0
+    ess/common/PCS/month_grid_feed_in_energy 266094
+    ess/common/PCS/pcs_stauts 3
+    ess/common/PCS/feed_in_limitation 70
+    ess/common/PCS/operation_mode 0
+
+I use ``mosquitto_sub`` to find the values I'm interested in while debugging like so::
+
+    mosquitto_sub -v -h <your_mqtt_server> -p 1883 -u <your_mqtt_user> -P <your_mqtt_password> -t "#"
+
+
 API
 ---
 For the time being please use the docstrings in the code on https://github.com/gluap/pyess as documentation for the
