@@ -49,7 +49,6 @@ async def send_loop(client, ess, once=False):
         await asyncio.sleep(9)
 
 
-
 def main(arguments=None):
     loop = asyncio.get_event_loop()
     asyncio.run(_main(arguments))
@@ -97,23 +96,31 @@ async def _main(arguments=None):
         else:
             await ess.switch_off()
 
-    async def handle_messages(client):
-        async with client.unfiltered_messages() as messages:
+    async def handle_winter(client):
+        async with client.filtered_messages("/ess/control/winter_mode") as messages:
             async for msg in messages:
-                if msg.topic == "/ess/control/winter_mode":
-                    await switch_winter(bool(msg.payload))
-                elif msg.topic == "/ess/control/fastcharge":
-                    await switch_fastcharge(bool(msg.payload))
-                elif msg.topic == "/ess/control/active":
-                    await switch_active(bool(msg.payload))
+                logger.info(f"control message received {msg}")
+                await switch_winter(msg.lower() == b"true")
 
-                logger.info(f"Received msg: {msg}")
+    async def handle_fast(client):
+        async with client.filtered_messages("/ess/control/fastcharge") as messages:
+            async for msg in messages:
+                logger.info(f"control message received {msg}")
+                await switch_fastcharge(msg.lower() == b"true")
+
+    async def handle_active(client):
+        async with client.filtered_messages("/ess/control/active") as messages:
+            async for msg in messages:
+                logger.info(f"control message received {msg}")
+                await switch_active(msg.lower() == b"true")
 
     async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
                       password=args.mqtt_password) as client:
 
         await client.subscribe('/ess/control/#')
-        asyncio.create_task(handle_messages(client))
+        asyncio.create_task(handle_fast(client))
+        asyncio.create_task(handle_winter(client))
+        asyncio.create_task(handle_active(client))
 
         await send_loop(client, ess, once=args.once)
 
