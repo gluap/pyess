@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import logging
 import sys
+from distutils.util import strtobool
 
 from asyncio_mqtt import Client
 
@@ -101,19 +102,19 @@ async def _main(arguments=None):
         async with client.filtered_messages("/ess/control/winter_mode") as messages:
             async for msg in messages:
                 logger.info(f"control message received {msg}")
-                await switch_winter(msg.lower() == b"true")
+                await switch_winter(strtobool(msg.decode()))
 
     async def handle_fast(client):
         async with client.filtered_messages("/ess/control/fastcharge") as messages:
             async for msg in messages:
                 logger.info(f"control message received {msg}")
-                await switch_fastcharge(msg.lower() == b"true")
+                await switch_fastcharge(strtobool(msg.decode()))
 
     async def handle_active(client):
         async with client.filtered_messages("/ess/control/active") as messages:
             async for msg in messages:
                 logger.info(f"control message received {msg}")
-                await switch_active(msg.lower() == b"true")
+                await switch_active(strtobool(msg.decode()))
 
     async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
                       password=args.mqtt_password) as client:
