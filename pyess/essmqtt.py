@@ -25,7 +25,7 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
 
-async def send_loop(client, ess, once=False):
+async def send_loop(client, ess, once=False, interval_seconds=10):
     logger.info("starting send loop")
     while True:
         if not once:
@@ -46,7 +46,7 @@ async def send_loop(client, ess, once=False):
                     pass
         if once:
             break
-        await asyncio.sleep(9)
+        await asyncio.sleep(interval_seconds - 1)
 
 
 def main(arguments=None):
@@ -68,6 +68,7 @@ async def _main(arguments=None):
     parser.add_argument("--mqtt_password", default=None, help="mqtt password")
     parser.add_argument("--mqtt_user", default=None, help="mqtt user")
     parser.add_argument("--once", default=False, type=bool, help="no loop, only one pass")
+    parser.add_argument("--interval_seconds", default=10, type=int, help="update interval (default: 10 seconds)")
 
     args = parser.parse_args(arguments)
     ip, name = autodetect_ess()
@@ -122,7 +123,7 @@ async def _main(arguments=None):
         asyncio.create_task(handle_winter(client))
         asyncio.create_task(handle_active(client))
 
-        await send_loop(client, ess, once=args.once)
+        await send_loop(client, ess, once=args.once, interval_seconds=args.interval_seconds)
 
 
 if __name__ == "__main__":
