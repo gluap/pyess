@@ -8,7 +8,7 @@ dist:
 
 install:
   - python setup.py develop
-  - pip install tox-travis coveralls pytest-vcr pytest-mock pytest-asyncio hbmqtt
+  - pip install pytest tox-travis coveralls pytest-vcr pytest-mock pytest-asyncio hbmqtt
 
 script:
   - coverage run --source pyess -m py.test
