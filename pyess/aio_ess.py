@@ -4,6 +4,9 @@ import asyncio
 import datetime
 import logging
 import time
+
+from aiohttp.client_exceptions import ContentTypeError
+
 from json import JSONDecodeError
 
 import aiohttp
@@ -62,7 +65,7 @@ class ESS:
                 #                          headers={"Content-Type": "application/json"})
 
                 assert response_json['status'] == 'success', response_json
-            except JSONDecodeError:
+            except (JSONDecodeError, ContentTypeError):
                 time.sleep(retry)
                 return await self._login(retry=retry * 2)
         self.auth_key = auth_key

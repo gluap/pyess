@@ -98,31 +98,24 @@ async def _main(arguments=None):
         else:
             await ess.switch_off()
 
-    async def handle_winter(client):
-        async with client.filtered_messages("/ess/control/winter_mode") as messages:
+    async def handle_control(client,control,path):
+        async with client.filtered_messages(path) as messages:
             async for msg in messages:
                 logger.info(f"control message received {msg}")
-                await switch_winter(strtobool(msg.decode()))
+                try:
+                    state = strtobool(msg.decode())
+                    await control(state)
+                except ValueError:
+                    logger.warning(f"ignoring incompatible value {msg} for switching")
 
-    async def handle_fast(client):
-        async with client.filtered_messages("/ess/control/fastcharge") as messages:
-            async for msg in messages:
-                logger.info(f"control message received {msg}")
-                await switch_fastcharge(strtobool(msg.decode()))
-
-    async def handle_active(client):
-        async with client.filtered_messages("/ess/control/active") as messages:
-            async for msg in messages:
-                logger.info(f"control message received {msg}")
-                await switch_active(strtobool(msg.decode()))
 
     async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
                       password=args.mqtt_password) as client:
 
         await client.subscribe('/ess/control/#')
-        asyncio.create_task(handle_fast(client))
-        asyncio.create_task(handle_winter(client))
-        asyncio.create_task(handle_active(client))
+        asyncio.create_task(handle_control(client, switch_winter, "/ess/control/winter_mode"))
+        asyncio.create_task(handle_control(client, switch_fastcharge, "/ess/control/fastcharge"))
+        asyncio.create_task(handle_control(client, switch_active, "/ess/control/active"))
 
         await send_loop(client, ess, once=args.once, interval_seconds=args.interval_seconds)
 
