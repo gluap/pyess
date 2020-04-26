@@ -108,7 +108,7 @@ class ESS:
                                        (response_json != {'auth': 'auth failed'}))):
             return response_json
         logger.info("seems we got logged out, retrying after {} seconds".format(retries))
-        time.sleep(retries)
+        await asyncio.sleep(retries)
         await self._login()
         return await self.post_json_with_auth(url, retries=retries * 2, extra_json_data=extra_json_data)
 
