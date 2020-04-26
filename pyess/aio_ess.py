@@ -87,7 +87,7 @@ class ESS:
         return await self.post_json_with_auth(url, extra_json_data={
             GRAPH_PARAMS[timespan]: date.strftime(GRAPH_TFORMATS[GRAPH_PARAMS[timespan]])})
 
-    async def post_json_with_auth(self, url: str, retries: int = 0, extra_json_data: dict = None):
+    async def post_json_with_auth(self, url: str, retries: int = 1, extra_json_data: dict = None):
         """
         wrapper that posts json data after adding auth data. Optionally takes an extra_json_data argument.
         :param url: URL to fetch
