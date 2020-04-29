@@ -71,8 +71,6 @@ Examples for the data available:
 Log ess state into a graphite server
 ....................................
 
-**This should not be used at the same time as the mqtt synchronization. only one client at a time can talk to ess.** Furthermore if this is used the mobile app will slightly glitch: It logs into the ess and can fetch data but as soon as the next poll is run by the graphite syncer, the app is logged out. There is an unresolved bug report that indicates that using state sync for mqtt may mess with the state history on the lg web site or in the app https://github.com/gluap/pyess/issues/2 . If this is the case on an ess it is likely that the same is true for the graphite integration
-
 This command will fetch the ``home`` and ``common`` info from ess every 10 seconds and log them against a graphite
 server (assuming standard port and udp as protocol). Running this command requires the ess password to be passed on
 the command line::
@@ -82,8 +80,6 @@ the command line::
 
 Sync ess state with an mqtt server (also accepts commands)
 ..........................................................
-
-**This should not be used at the same time as the graphite synchronization, only one client at a time can talk to ess** Furthermore if this is used the mobile phone app will slightly glitch: It logs into the ess and can fetch data but as soon as the next poll is run by the graphite syncer, the app is logged out. There is an unresolved bug report that indicates that using state sync for mqtt may mess with the state history on the lg web site or in the app https://github.com/gluap/pyess/issues/2 .
 
 To connect your ESS with an mqtt server run the following in your venv::
 
