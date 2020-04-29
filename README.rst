@@ -181,6 +181,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2020-04-29 0.1.2**
+ - fix issue where esscli and essmqtt were incompatible with the app and confusing the web interface
+
 **2020-04-26 0.1.1**
  - fix issue where commands via mqtt were not working
  - add ``--interval_seconds`` parameter for mqtt client to allow experimenting with poll timeouts on user side
