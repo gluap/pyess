@@ -56,7 +56,7 @@ class ESS:
         timesync_info = {
             "auth_key": auth_key,
             "by": "phone",
-            "date_time": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+            "date_time": time.strftime("%Y-%m-%d %H:%M:%S", time.gmtime())
         }
         async with self.session.put(TIMESYNC_URL.format(self.ip), json=timesync_info) as r:
             try:
