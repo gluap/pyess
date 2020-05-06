@@ -2,6 +2,7 @@ import argparse
 import asyncio
 import logging
 import sys
+import socket
 from distutils.util import strtobool
 
 from asyncio_mqtt import Client
@@ -48,6 +49,13 @@ async def send_loop(client, ess, once=False, interval_seconds=10):
         if once:
             break
         await asyncio.sleep(interval_seconds - 1)
+
+class MQTTWillClient(Client):
+    async def connect(self):
+        self._client.will_set("ess/online","false", qos=1, retain=True)
+        self._client.connect(self._hostname, self._port, 60)
+        await self._connected
+        self._client.socket().setsockopt(socket.SOL_SOCKET, socket.SO_SNDBUF, 2048)
 
 
 def main(arguments=None):
@@ -109,13 +117,13 @@ async def _main(arguments=None):
                     logger.warning(f"ignoring incompatible value {msg} for switching")
 
 
-    async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
+    async with MQTTWillClient(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
                       password=args.mqtt_password) as client:
-
-        await client.subscribe('/ess/control/#')
-        asyncio.create_task(handle_control(client, switch_winter, "/ess/control/winter_mode"))
-        asyncio.create_task(handle_control(client, switch_fastcharge, "/ess/control/fastcharge"))
-        asyncio.create_task(handle_control(client, switch_active, "/ess/control/active"))
+        await client.subscribe('ess/control/#')
+        await client.publish('ess/online',"true")
+        asyncio.create_task(handle_control(client, switch_winter, "ess/control/winter_mode"))
+        asyncio.create_task(handle_control(client, switch_fastcharge, "ess/control/fastcharge"))
+        asyncio.create_task(handle_control(client, switch_active, "ess/control/active"))
 
         await send_loop(client, ess, once=args.once, interval_seconds=args.interval_seconds)
 
