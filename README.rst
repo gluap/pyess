@@ -177,6 +177,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2020-05-05 0.1.3**
+ - add argument to set ess hostname explicitly (avoiding mdns timeouts if necessary)
+
 **2020-04-29 0.1.2**
  - fix issue where esscli and essmqtt were incompatible with the app and confusing the web interface
 
