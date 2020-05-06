@@ -81,6 +81,8 @@ async def _main(arguments=None):
 
     logging.basicConfig(level=args.loglevel.upper())
 
+    ess = await ESS.create(name, args.ess_password, ip)
+
     async def switch_winter(state: bool):
         logger.info(f"switching winter mode to {state}")
         if state:
