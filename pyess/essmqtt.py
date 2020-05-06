@@ -62,18 +62,22 @@ async def _main(arguments=None):
         '--loglevel', default='info', help='Log level',
         choices=['debug', 'info', 'warning', 'error', 'critical'],
     )
-    # parser.add_argument("--action", default="list_ess", help="what to do", choices=actions.keys())
+
     parser.add_argument("--ess_password", default=None, help="password (required for everything but get_password)")
     parser.add_argument("--mqtt_server", default="192.168.1.220", help="mqtt server")
     parser.add_argument("--mqtt_port", default=1883, type=int, help="mqtt port")
     parser.add_argument("--mqtt_password", default=None, help="mqtt password")
     parser.add_argument("--mqtt_user", default=None, help="mqtt user")
+    parser.add_argument("--ess_host", default=None, help="hostname or IP of mqtt host (discover via mdns if not set)")
     parser.add_argument("--once", default=False, type=bool, help="no loop, only one pass")
     parser.add_argument("--interval_seconds", default=10, type=int, help="update interval (default: 10 seconds)")
 
     args = parser.parse_args(arguments)
-    ip, name = autodetect_ess()
-    ess = await ESS.create(name, args.ess_password, ip)
+
+    if args.ess_host is None:
+        ip, name = autodetect_ess()
+    else:
+        ip, name = args.ess_host, args.ess_host
 
     logging.basicConfig(level=args.loglevel.upper())
 
