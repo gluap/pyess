@@ -78,6 +78,8 @@ the command line::
     esscli --action log_against_graphite --password <your_ess_password> --graphite <ip_of_graphite_server>
 
 
+MQTT wrapper
+------------
 Sync ess state with an mqtt server (also accepts commands)
 ..........................................................
 
@@ -166,6 +168,38 @@ I use ``mosquitto_sub`` to find the values I'm interested in while debugging lik
 
     mosquitto_sub -v -h <your_mqtt_server> -p 1883 -u <your_mqtt_user> -P <your_mqtt_password> -t "#"
 
+
+essmqtt as systemd service
+..........................
+To set up ``essmqtt`` as a daemon (systemd service) it is recommended to install it in a venv first::
+
+  python3.7 -m venv <path_to_venv>
+  <path_to_venv>/bin/pip install pyess
+
+from then on ``essmqtt`` can be called via <path_to_venv>/bin/essmqtt.
+
+A systemd service file ``/etc/systemd/system/essmqtt.service`` could look like so::
+
+    [Unit]
+    Description=ESS MQTT wrapper
+
+    [Service]
+    # all essmqtt command line arguments can be used here.
+    ExecStart=<path_to_venv>/bin/essmqtt --mqtt_server=<MQTT SERVER IP> --ess_password <PW> --interval_seconds <POLL INTERVALL> --mqtt_user <MQTT_USER> --mqtt_passwort <MQTT_PASSWORD>
+    # Restart will keep the service alive for instance in case the mqtt server goes down or isn't up yet
+    # when esmqqt starts
+    Restart=on-failure
+    # a sensible restart delay prevents fast restart loops potentially denial-of-servicing the ess.
+    RestartSec=10
+
+    [Install]
+    # we'd like to start, but only after network is up
+    WantedBy=default.target
+    Wants=network-online.target
+
+It can be started like any regular service via ``systemctl start essmqtt`` or enabled for boot up starts via
+``systemctl enable essmqtt``. Logs can be displayed using systemctl as well via ``systemctl status essmqtt`` or for
+more lines ``systemctl status -n 100 essmqtt```
 
 API
 ---
