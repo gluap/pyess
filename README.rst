@@ -211,6 +211,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2020-05-13 0.1.3**
+ - add argument to increase polling time for "common" by a factor.
+
 **2020-05-05 0.1.3**
  - add argument to set ess hostname explicitly (avoiding mdns timeouts if necessary)
 
