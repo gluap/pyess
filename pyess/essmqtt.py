@@ -26,25 +26,28 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
 
-async def send_loop(client, ess, once=False, interval_seconds=10):
+async def send_loop(client, ess, once=False, interval_seconds=10, common_divisor=1):
     logger.info("starting send loop")
+    i=0
     while True:
         if not once:
             await asyncio.sleep(1)
         home = await ess.get_state("home")
-        common = await ess.get_state("common")
         for key in home:
             for key2 in home[key]:
                 try:
                     await client.publish("ess/home/" + key + "/" + key2, home[key][key2])
                 except:
                     pass
-        for key in common:
-            for key2 in common[key]:
-                try:
-                    await client.publish("ess/common/" + key + "/" + key2, common[key][key2])
-                except:
-                    pass
+        if i % common_divisor == 0:
+            common = await ess.get_state("common")
+            for key in common:
+                for key2 in common[key]:
+                    try:
+                        await client.publish("ess/common/" + key + "/" + key2, common[key][key2])
+                    except:
+                        pass
+        i+=1
         if once:
             break
         await asyncio.sleep(interval_seconds - 1)
@@ -70,6 +73,7 @@ async def _main(arguments=None):
     parser.add_argument("--mqtt_user", default=None, help="mqtt user")
     parser.add_argument("--ess_host", default=None, help="hostname or IP of mqtt host (discover via mdns if not set)")
     parser.add_argument("--once", default=False, type=bool, help="no loop, only one pass")
+    parser.add_argument("--common_divisor", default=1, type=int, help="multiply interval_seconds for values below 'common' by this factor")
     parser.add_argument("--interval_seconds", default=10, type=int, help="update interval (default: 10 seconds)")
 
     args = parser.parse_args(arguments)
@@ -123,7 +127,8 @@ async def _main(arguments=None):
         asyncio.create_task(handle_control(client, switch_fastcharge, "/ess/control/fastcharge"))
         asyncio.create_task(handle_control(client, switch_active, "/ess/control/active"))
 
-        await send_loop(client, ess, once=args.once, interval_seconds=args.interval_seconds)
+        await send_loop(client, ess, once=args.once, interval_seconds=args.interval_seconds,
+                        common_divisor=args.common_divisor)
 
 
 if __name__ == "__main__":
