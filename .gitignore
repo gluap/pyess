@@ -10,4 +10,6 @@ htmlcov
 .tox
 build
 dist
-
+.idea
+.DS_Store
+__pycache__
