@@ -26,30 +26,31 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
 
+async def recursive_publish_dict(mqtt_client, publish_root, dictionary):
+    for key, value in dictionary.items():
+        if isinstance(value, dict):
+            await recursive_publish_dict(mqtt_client, f"{publish_root}/{key}", value)
+        else:
+            try:
+                await mqtt_client.publish(f"{publish_root}/{key}", value)
+            except:
+                logger.exception(f"exception while publishing {value} to {publish_root}/{key}")
+
+
 async def send_loop(ess, mqtt_client=None, graphite_client=None, once=False, interval_seconds=10, common_divisor=1):
     logger.info("starting send loop")
-    i=0
+    i = 0
     while True:
         if not once:
             await asyncio.sleep(1)
         home = await ess.get_state("home")
-        for key in home:
-            for key2 in home[key]:
-                try:
-                    await mqtt_client.publish("ess/home/" + key + "/" + key2, home[key][key2])
-                except:
-                    logger.exception("exception while sending to mqtt")
-                    pass
+        await recursive_publish_dict(mqtt_client, "ess/home", home)
+
         if i % common_divisor == 0:
             common = await ess.get_state("common")
-            for key in common:
-                for key2 in common[key]:
-                    try:
-                        await mqtt_client.publish("ess/common/" + key + "/" + key2, common[key][key2])
-                    except:
-                        logger.exception("exception while sending to mqtt")
-                        pass
-        i+=1
+            await recursive_publish_dict(mqtt_client, "ess/common", home)
+
+        i += 1
         if once:
             break
         await asyncio.sleep(interval_seconds - 1)
@@ -62,11 +63,10 @@ def main(arguments=None):
 
 
 async def _main(arguments=None):
-
     parser = configargparse.ArgumentParser(prog='essmqtt', description='Mqtt connector for pyess',
                                            add_config_file_help=True,
                                            default_config_files=['/etc/essmqtt.conf', '~/.essmqtt.conf'],
-                                           args_for_setting_config_path=["--config_file"],)
+                                           args_for_setting_config_path=["--config_file"], )
 
     parser.add_argument(
         '--loglevel', default='info', help='Log level',
@@ -80,7 +80,8 @@ async def _main(arguments=None):
     parser.add_argument("--mqtt_user", default=None, help="mqtt user")
     parser.add_argument("--ess_host", default=None, help="hostname or IP of mqtt host (discover via mdns if not set)")
     parser.add_argument("--once", default=False, type=bool, help="no loop, only one pass")
-    parser.add_argument("--common_divisor", default=1, type=int, help="multiply interval_seconds for values below 'common' by this factor")
+    parser.add_argument("--common_divisor", default=1, type=int,
+                        help="multiply interval_seconds for values below 'common' by this factor")
     parser.add_argument("--interval_seconds", default=10, type=int, help="update interval (default: 10 seconds)")
 
     args = parser.parse_args(arguments)
@@ -115,7 +116,7 @@ async def _main(arguments=None):
         else:
             await ess.switch_off()
 
-    async def handle_control(client,control,path):
+    async def handle_control(client, control, path):
         async with client.filtered_messages(path) as messages:
             async for msg in messages:
                 logger.info(f"control message received {msg}")
@@ -127,7 +128,7 @@ async def _main(arguments=None):
 
     if args.mqtt_server is not None:
         async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
-                      password=args.mqtt_password) as client:
+                          password=args.mqtt_password) as client:
             # seems that a leading slash is frowned upon in mqtt, but we keep this for backwards compatibility
             await client.subscribe('/ess/control/#')
             asyncio.create_task(handle_control(client, switch_winter, "/ess/control/winter_mode"))
@@ -145,6 +146,7 @@ async def _main(arguments=None):
 
     else:
         pass
+
 
 if __name__ == "__main__":
     main(sys.argv[1:])
