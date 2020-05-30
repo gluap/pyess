@@ -91,9 +91,9 @@ Your ESS will show up in /ess/# on mqtt.
 
 Available values to control the ess (write true/false) **Remember that this is an MIT-Licensed software and I take no responsibility for the usage of this library. That being said I send the same commands the app would send to trigger these actions to my best knowledge.**::
 
-   /ess/control/winter_mode
-   /ess/control/fastcharge
-   /ess/control/active
+   ess/control/winter_mode
+   ess/control/fastcharge
+   ess/control/active
 
 Available paths with metrics to read from::
 
@@ -211,6 +211,10 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+
+**2020-05-30 0.1.5**
+ - some extra logging, timeouts and exception handling. Might fix #7
+
 **2020-05-13 0.1.3**
  - add argument to increase polling time for "common" by a factor.
 
