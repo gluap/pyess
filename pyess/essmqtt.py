@@ -48,7 +48,7 @@ async def send_loop(ess, mqtt_client=None, graphite_client=None, once=False, int
 
         if i % common_divisor == 0:
             common = await ess.get_state("common")
-            await recursive_publish_dict(mqtt_client, "ess/common", home)
+            await recursive_publish_dict(mqtt_client, "ess/common", common)
 
         i += 1
         if once:
