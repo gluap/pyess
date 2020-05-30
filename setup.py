@@ -22,7 +22,7 @@ setup(name='pyess',
       packages=['pyess'],
 
       install_requires=[
-          'zeroconf', 'requests', 'graphyte', 'aiohttp', 'asyncio-mqtt>=0.3.0'
+          'zeroconf', 'requests', 'graphyte', 'aiohttp', 'asyncio-mqtt>=0.3.0', 'ConfigArgParse'
       ],
 
       zip_safe=False,

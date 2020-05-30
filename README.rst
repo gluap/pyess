@@ -87,7 +87,7 @@ To connect your ESS with an mqtt server run the following in your venv::
 
     essmqtt --mqtt_server=<your_mqtt_server> --mqtt_user <your_mqtt_username> --mqtt_password <your_mqtt_password> --ess_password <your_ess_password>
 
-Your ESS will show up in /ess/# on mqtt.
+Your ESS will show up in ``ess/#`` on mqtt.
 
 Available values to control the ess (write true/false) **Remember that this is an MIT-Licensed software and I take no responsibility for the usage of this library. That being said I send the same commands the app would send to trigger these actions to my best knowledge.**::
 
@@ -169,6 +169,18 @@ I use ``mosquitto_sub`` to find the values I'm interested in while debugging lik
     mosquitto_sub -v -h <your_mqtt_server> -p 1883 -u <your_mqtt_user> -P <your_mqtt_password> -t "#"
 
 
+Configuring essmqtt with a config file
+......................................
+
+To permanently configure essmqtt you can create a config file in either ``/etc/essmqtt.conf`` or ``~/essmqtt.conf``
+of the user running ``essmqtt`` or you can specify which config file to load by using the argument ``--config_file``.
+The config file can contain any of the command line arguments. Example::
+
+   ess_password = <your_ess_password>
+   mqtt_server = <your_mqtt_server>
+   mqtt_user = <your_mqtt_username>
+   mqtt_password = <your_mqtt_password>
+
 essmqtt as systemd service
 ..........................
 To set up ``essmqtt`` as a daemon (systemd service) it is recommended to install it in a venv first::
@@ -176,7 +188,7 @@ To set up ``essmqtt`` as a daemon (systemd service) it is recommended to install
   python3.7 -m venv <path_to_venv>
   <path_to_venv>/bin/pip install pyess
 
-from then on ``essmqtt`` can be called via <path_to_venv>/bin/essmqtt.
+from then on ``essmqtt`` can be called via ``<path_to_venv>/bin/essmqtt``.
 
 A systemd service file ``/etc/systemd/system/essmqtt.service`` could look like so::
 
@@ -184,8 +196,9 @@ A systemd service file ``/etc/systemd/system/essmqtt.service`` could look like s
     Description=ESS MQTT wrapper
 
     [Service]
-    # all essmqtt command line arguments can be used here.
-    ExecStart=<path_to_venv>/bin/essmqtt --mqtt_server=<MQTT SERVER IP> --ess_password <PW> --interval_seconds <POLL INTERVALL> --mqtt_user <MQTT_USER> --mqtt_passwort <MQTT_PASSWORD>
+    # all essmqtt command line arguments can be used here. it is recommended to configure essmqtt in a config file
+    # for this use case
+    ExecStart=<path_to_venv>/bin/essmqtt
     # Restart will keep the service alive for instance in case the mqtt server goes down or isn't up yet
     # when esmqqt starts
     Restart=on-failure
@@ -211,6 +224,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+
+**2020-05-30 0.1.7**
+ - add config file
 
 **2020-05-30 0.1.6**
  - repair crash introduced with 0.1.5

@@ -1,4 +1,4 @@
-import argparse
+import configargparse
 import asyncio
 import logging
 import sys
@@ -62,7 +62,12 @@ def main(arguments=None):
 
 
 async def _main(arguments=None):
-    parser = argparse.ArgumentParser(prog='pyess', description='Command line interface for pyess')
+
+    parser = configargparse.ArgumentParser(prog='essmqtt', description='Mqtt connector for pyess',
+                                           add_config_file_help=True,
+                                           default_config_files=['/etc/essmqtt.conf', '~/.essmqtt.conf'],
+                                           args_for_setting_config_path=["--config_file"],)
+
     parser.add_argument(
         '--loglevel', default='info', help='Log level',
         choices=['debug', 'info', 'warning', 'error', 'critical'],
