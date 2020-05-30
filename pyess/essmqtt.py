@@ -26,7 +26,7 @@ def on_message(client, userdata, msg):
     print(msg.topic + " " + str(msg.payload))
 
 
-async def send_loop(client, ess, once=False, interval_seconds=10, common_divisor=1):
+async def send_loop(ess, mqtt_client=None, graphite_client=None, once=False, interval_seconds=10, common_divisor=1):
     logger.info("starting send loop")
     i=0
     while True:
@@ -36,16 +36,18 @@ async def send_loop(client, ess, once=False, interval_seconds=10, common_divisor
         for key in home:
             for key2 in home[key]:
                 try:
-                    await client.publish("ess/home/" + key + "/" + key2, home[key][key2])
+                    await mqtt_client.publish("ess/home/" + key + "/" + key2, home[key][key2])
                 except:
+                    logger.exception("exception while sending to mqtt")
                     pass
         if i % common_divisor == 0:
             common = await ess.get_state("common")
             for key in common:
                 for key2 in common[key]:
                     try:
-                        await client.publish("ess/common/" + key + "/" + key2, common[key][key2])
+                        await mqtt_client.publish("ess/common/" + key + "/" + key2, common[key][key2])
                     except:
+                        logger.exception("exception while sending to mqtt")
                         pass
         i+=1
         if once:
@@ -118,18 +120,26 @@ async def _main(arguments=None):
                 except ValueError:
                     logger.warning(f"ignoring incompatible value {msg} for switching")
 
-
-    async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
+    if args.mqtt_server is not None:
+        async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
                       password=args.mqtt_password) as client:
+            # seems that a leading slash is frowned upon in mqtt, but we keep this for backwards compatibility
+            await client.subscribe('/ess/control/#')
+            asyncio.create_task(handle_control(client, switch_winter, "/ess/control/winter_mode"))
+            asyncio.create_task(handle_control(client, switch_fastcharge, "/ess/control/fastcharge"))
+            asyncio.create_task(handle_control(client, switch_active, "/ess/control/active"))
 
-        await client.subscribe('/ess/control/#')
-        asyncio.create_task(handle_control(client, switch_winter, "/ess/control/winter_mode"))
-        asyncio.create_task(handle_control(client, switch_fastcharge, "/ess/control/fastcharge"))
-        asyncio.create_task(handle_control(client, switch_active, "/ess/control/active"))
+            # also subscribe without leading slash for better style
+            await client.subscribe('ess/control/#')
+            asyncio.create_task(handle_control(client, switch_winter, "ess/control/winter_mode"))
+            asyncio.create_task(handle_control(client, switch_fastcharge, "ess/control/fastcharge"))
+            asyncio.create_task(handle_control(client, switch_active, "ess/control/active"))
 
-        await send_loop(client, ess, once=args.once, interval_seconds=args.interval_seconds,
-                        common_divisor=args.common_divisor)
+            await send_loop(ess, client, once=args.once, interval_seconds=args.interval_seconds,
+                            common_divisor=args.common_divisor)
 
+    else:
+        pass
 
 if __name__ == "__main__":
     main(sys.argv[1:])

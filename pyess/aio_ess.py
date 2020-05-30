@@ -37,8 +37,10 @@ class ESS:
         self.name = name
         self.pw = pw
         self.ip = ip
+        self.logged_in = False
         self.auth_key = None
-        self.session = aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False))
+        self.session = aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False), read_timeout=60,
+                                             conn_timeout=60, timeout=120)
 
     async def _login(self, retry=1):
         """
@@ -69,6 +71,7 @@ class ESS:
                 time.sleep(retry)
                 return await self._login(retry=retry * 2)
         self.auth_key = auth_key
+        self.logged_in = True
         return auth_key
 
     async def get_graph(self, device: str, timespan: str, date: datetime.datetime):
@@ -87,7 +90,7 @@ class ESS:
         return await self.post_json_with_auth(url, extra_json_data={
             GRAPH_PARAMS[timespan]: date.strftime(GRAPH_TFORMATS[GRAPH_PARAMS[timespan]])})
 
-    async def post_json_with_auth(self, url: str, retries: int = 1, extra_json_data: dict = None):
+    async def post_json_with_auth(self, url: str, retries: int = 15, extra_json_data: dict = None):
         """
         wrapper that posts json data after adding auth data. Optionally takes an extra_json_data argument.
         :param url: URL to fetch

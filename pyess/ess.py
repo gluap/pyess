@@ -90,7 +90,7 @@ class ESS:
         if extra_json_data:
             json.update(extra_json_data)
         try:
-            r = requests.post(url, json=json, verify=False, headers={"Content-Type": "application/json"})
+            r = requests.post(url, json=json, verify=False, headers={"Content-Type": "application/json"}, timeout=(3,3))
         except (requests.ConnectionError, requests.ConnectTimeout):
             error = True
         if not error and (r.status_code == 200 or (r.json() != {'auth': 'auth_key failed'})):
