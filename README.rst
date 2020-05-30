@@ -225,8 +225,11 @@ be accessed via the EnerVu App.
 Changelog
 =========
 
+**2020-05-30 0.1.8**
+ - refactor uploading to MQTT to avoid accidentally trying to access a string by key (should fix #8)
+
 **2020-05-30 0.1.7**
- - add config file
+ - add config file to allow storing settings for essmqtt
 
 **2020-05-30 0.1.6**
  - repair crash introduced with 0.1.5
