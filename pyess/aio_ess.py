@@ -39,8 +39,8 @@ class ESS:
         self.ip = ip
         self.logged_in = False
         self.auth_key = None
-        self.session = aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False), read_timeout=60,
-                                             conn_timeout=60, timeout=120)
+        self.session = aiohttp.ClientSession(connector=aiohttp.TCPConnector(ssl=False),
+                                             timeout=aiohttp.ClientTimeout(connect=60,sock_read=60, sock_connect=60, total=180))
 
     async def _login(self, retry=1):
         """

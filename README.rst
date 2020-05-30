@@ -212,6 +212,9 @@ be accessed via the EnerVu App.
 Changelog
 =========
 
+**2020-05-30 0.1.6**
+ - repair crash introduced with 0.1.5
+
 **2020-05-30 0.1.5**
  - some extra logging, timeouts and exception handling. Might fix #7
 
