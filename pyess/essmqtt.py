@@ -1,10 +1,12 @@
-import configargparse
 import asyncio
+import configargparse
 import logging
+import json
 import sys
-from distutils.util import strtobool
 
 from asyncio_mqtt import Client
+
+from distutils.util import strtobool
 
 from pyess.aio_ess import ESS
 from pyess.ess import autodetect_ess
@@ -56,6 +58,38 @@ async def send_loop(ess, mqtt_client=None, graphite_client=None, once=False, int
         await asyncio.sleep(interval_seconds - 1)
 
 
+def prepare_description(sensor):
+    description = {"name": sensor, "state_topic": sensor}
+    if "power" in sensor:
+        description["device_class"] = "power"
+        description["unit_of_measurement"] = "W"
+    if "enegy" in sensor or "energy" in sensor: # typo in ess json
+        description["unit_of_measuremnt"] = "Wh"
+        description["icon"] = "mdi:gauge"
+    if "soc" in sensor:
+        description["device_class"] = "battery"
+    if "current" in sensor:
+        description["unit_of_measurement"] = "A"
+        description["icon"] = "mdi:gauge"
+    if "voltage" in sensor:
+        description["unit_of_measurement"] = "V"
+        description["icon"] = "mdi:gauge"
+    return description
+
+
+async def announce_loop(client, once=False, sensors=None):
+    if sensors is None:
+        return
+    while True:
+        for sensor in sensors:
+            await client.publish(f"homeassistant/sensor/{sensor.replace('/','')}/config",
+                                 json.dumps(prepare_description(sensor)))
+        if not once:
+            await asyncio.sleep(120)
+        else:
+            return
+
+
 def main(arguments=None):
     loop = asyncio.get_event_loop()
     asyncio.run(_main(arguments))
@@ -83,6 +117,8 @@ async def _main(arguments=None):
     parser.add_argument("--common_divisor", default=1, type=int,
                         help="multiply interval_seconds for values below 'common' by this factor")
     parser.add_argument("--interval_seconds", default=10, type=int, help="update interval (default: 10 seconds)")
+    parser.add_argument("--hass_autoconfig_sensors", default=None, help="comma-separated list of sensors to advertise"
+                                                                        "for homassistant autconfig")
 
     args = parser.parse_args(arguments)
 
@@ -140,6 +176,9 @@ async def _main(arguments=None):
             asyncio.create_task(handle_control(client, switch_winter, "ess/control/winter_mode"))
             asyncio.create_task(handle_control(client, switch_fastcharge, "ess/control/fastcharge"))
             asyncio.create_task(handle_control(client, switch_active, "ess/control/active"))
+            if args.hass_autoconfig_sensors is not None:
+                asyncio.ensure_future(
+                    announce_loop(client, once=args.once, sensors=args.hass_autoconfig_sensors.split(",")))
 
             await send_loop(ess, client, once=args.once, interval_seconds=args.interval_seconds,
                             common_divisor=args.common_divisor)
