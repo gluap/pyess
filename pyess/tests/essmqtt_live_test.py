@@ -3,9 +3,9 @@
 
 import pytest
 import os
-import time
+import asyncio
 
-from pyess.essmqtt import main
+from pyess.essmqtt import _main
 
 
 def using_network():
@@ -14,10 +14,11 @@ def using_network():
 
 @pytest.mark.skipif(not using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
-def test_online_log_against_mqtt(password, hbmqtt):
-    time.sleep(5)
+@pytest.mark.asyncio()
+async def test_online_log_against_mqtt(password, hbmqtt):
+    await asyncio.sleep(1)
 
-    main(["--mqtt_server", "localhost",
+    await _main(["--mqtt_server", "localhost",
           "--mqtt_user", "test",
           "--mqtt_port", str(hbmqtt),
           "--mqtt_password", "test",
@@ -27,10 +28,11 @@ def test_online_log_against_mqtt(password, hbmqtt):
 
 @pytest.mark.skipif(not using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
-def test_online_log_against_mqtt(password, hbmqtt):
-    time.sleep(5)
+@pytest.mark.asyncio()
+async def test_online_log_against_mqtt_with_autopublish(password, hbmqtt):
+    await asyncio.sleep(1)
 
-    main(["--mqtt_server", "localhost",
+    await _main(["--mqtt_server", "localhost",
           "--mqtt_user", "test",
           "--mqtt_port", str(hbmqtt),
           "--mqtt_password", "test",
