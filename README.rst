@@ -181,6 +181,27 @@ The config file can contain any of the command line arguments. Example::
    mqtt_user = <your_mqtt_username>
    mqtt_password = <your_mqtt_password>
 
+
+essmqtt autoconfig for homeassistant
+....................................
+Essmqtt can provide autoconfiguration for [homeassistant](https://www.home-assistant.io/).
+
+**prerequisites:** [mqtt must be set up with matt discovery in homeassistant](https://www.home-assistant.io/docs/mqtt/discovery/)
+
+To select the sensors that should be autodiscovered by homeassistant, provide the ``--hass_autoconfig_sensors``
+argument with a comma separated list of all mqtt pathes you want to see as sensors in homeassistant. Some autodetection
+of the value type is done so for instance if an mqtt path contains ``power`` it is assumed to be a power
+value in watts. Of course this can also be configured in a config file.
+
+Example config file::
+
+   ess_password = <your_ess_password>
+   mqtt_server = <your_mqtt_server>
+   mqtt_user = <your_mqtt_username>
+   mqtt_password = <your_mqtt_password>
+   hass_autoconfig_sensors= ess/common/BATT/soc,ess/home/statistics/pcs_pv_total_power,ess/common/GRID/active_power,ess/common/LOAD/load_power
+
+
 essmqtt as systemd service
 ..........................
 To set up ``essmqtt`` as a daemon (systemd service) it is recommended to install it in a venv first::
@@ -224,6 +245,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+
+**2020-06-01 0.1.9**
+ - add homeassistant auto config
 
 **2020-05-30 0.1.8**
  - refactor uploading to MQTT to avoid accidentally trying to access a string by key (should fix #8)
