@@ -5,6 +5,7 @@ import json
 import sys
 
 from asyncio_mqtt import Client
+import asyncio_mqtt.error
 
 from distutils.util import strtobool
 
@@ -35,8 +36,16 @@ async def recursive_publish_dict(mqtt_client, publish_root, dictionary):
         else:
             try:
                 await mqtt_client.publish(f"{publish_root}/{key}", value)
+            except asyncio_mqtt.error.MqttCodeError:  # pragma: no cover
+                logger.warning(f"exception while publishing {value} to {publish_root}/{key}, reconnecting mqtt",
+                               exc_info=True)
+                await mqtt_client.disconnect()
+                await mqtt_client.connect()
+                logger.info("reconnected")
             except:
-                logger.exception(f"exception while publishing {value} to {publish_root}/{key}")
+                logger.exception(f"exception while publishing {value} to {publish_root}/{key}, please report bug",
+                                 exc_info=True)
+                raise
 
 
 async def send_loop(ess, mqtt_client=None, graphite_client=None, once=False, interval_seconds=10, common_divisor=1):
@@ -63,7 +72,7 @@ def prepare_description(sensor):
     if "power" in sensor:
         description["device_class"] = "power"
         description["unit_of_measurement"] = "W"
-    if "enegy" in sensor or "energy" in sensor: # typo in ess json
+    if "enegy" in sensor or "energy" in sensor:  # typo in ess json
         description["unit_of_measuremnt"] = "Wh"
         description["icon"] = "mdi:gauge"
     if "soc" in sensor:
@@ -82,8 +91,19 @@ async def announce_loop(client, once=False, sensors=None):
         return
     while True:
         for sensor in sensors:
-            await client.publish(f"homeassistant/sensor/{sensor.replace('/','')}/config",
-                                 json.dumps(prepare_description(sensor)))
+            try:
+                await client.publish(f"homeassistant/sensor/{sensor.replace('/', '')}/config",
+                                     json.dumps(prepare_description(sensor)))
+            except asyncio_mqtt.error.MqttCodeError:  # pragma: no cover
+                logger.warning(f"exception while publishing hass config, reconnecting mqtt",
+                               exc_info=True)
+                await client.disconnect()
+                await client.connect()
+                logger.info("reconnected")
+            except:  # pragma: no cover
+                logger.exception(f"exception while publishing hass config, please report bug",
+                                 exc_info=True)
+                raise
         if not once:
             await asyncio.sleep(120)
         else:
@@ -121,7 +141,6 @@ async def _main(arguments=None):
                                                                         "for homassistant autconfig")
 
     args = parser.parse_args(arguments)
-
     if args.ess_host is None:
         ip, name = autodetect_ess()
     else:
