@@ -24,3 +24,18 @@ def test_online_log_against_mqtt(password, hbmqtt):
           "--ess_password", password,
           "--once", "true"])
 
+
+@pytest.mark.skipif(not using_network(), reason="only when using network")
+@pytest.mark.vcr(mode="all")
+def test_online_log_against_mqtt(password, hbmqtt):
+    time.sleep(5)
+
+    main(["--mqtt_server", "localhost",
+          "--mqtt_user", "test",
+          "--mqtt_port", str(hbmqtt),
+          "--mqtt_password", "test",
+          "--ess_password", password,
+          "--once", "true",
+          "--hass_autoconfig_sensors", "/bla/blech/blu/bloch" ])
+
+
