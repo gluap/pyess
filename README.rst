@@ -245,6 +245,8 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2020-06-01 0.1.10**
+ - add another possible fix for #7 after logging showed that an MQTT error might be the cause.
 
 **2020-06-01 0.1.9**
  - add homeassistant auto config
