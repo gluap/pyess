@@ -3,6 +3,7 @@ import configargparse
 import logging
 import json
 import sys
+import aiohttp.client_exceptions
 
 from asyncio_mqtt import Client
 import asyncio_mqtt.error
@@ -36,15 +37,11 @@ async def recursive_publish_dict(mqtt_client, publish_root, dictionary):
         else:
             try:
                 await mqtt_client.publish(f"{publish_root}/{key}", value)
-            except asyncio_mqtt.error.MqttCodeError:  # pragma: no cover
-                logger.warning(f"exception while publishing {value} to {publish_root}/{key}, reconnecting mqtt",
-                               exc_info=True)
-                await mqtt_client.disconnect()
-                await mqtt_client.connect()
-                logger.info("reconnected")
-            except:
-                logger.exception(f"exception while publishing {value} to {publish_root}/{key}, please report bug",
-                                 exc_info=True)
+            except (asyncio_mqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
+                logger.warning("Lost MQTT connection to mqtt errorcode or timeout, restarting", exc_info=True)
+                raise
+            except:  # pragma: no cover
+                logger.exception(f"Lost MQTT connection to unexpected error code, restarting", exc_info=True)
                 raise
 
 
@@ -94,15 +91,10 @@ async def announce_loop(client, once=False, sensors=None):
             try:
                 await client.publish(f"homeassistant/sensor/{sensor.replace('/', '')}/config",
                                      json.dumps(prepare_description(sensor)))
-            except asyncio_mqtt.error.MqttCodeError:  # pragma: no cover
-                logger.warning(f"exception while publishing hass config, reconnecting mqtt",
-                               exc_info=True)
-                await client.disconnect()
-                await client.connect()
-                logger.info("reconnected")
+            except (asyncio_mqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
+                logger.warning("Lost MQTT connection to mqtt errorcode in announce loop, send loop will exit")
             except:  # pragma: no cover
-                logger.exception(f"exception while publishing hass config, please report bug",
-                                 exc_info=True)
+                logger.exception(f"Lost MQTT connection to unexpected error code, restarting", exc_info=True)
                 raise
         if not once:
             await asyncio.sleep(120)
@@ -182,28 +174,47 @@ async def _main(arguments=None):
                     logger.warning(f"ignoring incompatible value {msg} for switching")
 
     if args.mqtt_server is not None:
-        async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
-                          password=args.mqtt_password) as client:
-            # seems that a leading slash is frowned upon in mqtt, but we keep this for backwards compatibility
-            await client.subscribe('/ess/control/#')
-            asyncio.create_task(handle_control(client, switch_winter, "/ess/control/winter_mode"))
-            asyncio.create_task(handle_control(client, switch_fastcharge, "/ess/control/fastcharge"))
-            asyncio.create_task(handle_control(client, switch_active, "/ess/control/active"))
+        while True:
+            try:
+                await launch_main_loop(args, ess, handle_control, switch_active, switch_fastcharge, switch_winter)
+            except (TimeoutError, asyncio_mqtt.error.MqttCodeError, aiohttp.client_exceptions.ClientError):
+                logger.warning("Expected exception while talking go ESS or MQTT server, restarting in 60 seconds."
+                               "Usually this means the server is slow to respond or unreachable.")
+                await asyncio.sleep(60)
+            except:
+                raise
 
-            # also subscribe without leading slash for better style
-            await client.subscribe('ess/control/#')
-            asyncio.create_task(handle_control(client, switch_winter, "ess/control/winter_mode"))
-            asyncio.create_task(handle_control(client, switch_fastcharge, "ess/control/fastcharge"))
-            asyncio.create_task(handle_control(client, switch_active, "ess/control/active"))
-            if args.hass_autoconfig_sensors is not None:
-                asyncio.ensure_future(
-                    announce_loop(client, once=args.once, sensors=args.hass_autoconfig_sensors.split(",")))
+            ess = await ESS.create(name, args.ess_password, ip)
 
-            await send_loop(ess, client, once=args.once, interval_seconds=args.interval_seconds,
-                            common_divisor=args.common_divisor)
+            if args.once:
+                break
+
+
 
     else:
         pass
+
+
+async def launch_main_loop(args, ess, handle_control, switch_active, switch_fastcharge, switch_winter):
+    async with Client(args.mqtt_server, port=args.mqtt_port, logger=logger, username=args.mqtt_user,
+                      password=args.mqtt_password) as client:
+        # seems that a leading slash is frowned upon in mqtt, but we keep this for backwards compatibility
+        await client.subscribe('/ess/control/#')
+        asyncio.create_task(handle_control(client, switch_winter, "/ess/control/winter_mode"))
+        asyncio.create_task(handle_control(client, switch_fastcharge, "/ess/control/fastcharge"))
+        asyncio.create_task(handle_control(client, switch_active, "/ess/control/active"))
+
+        # also subscribe without leading slash for better style
+        await client.subscribe('ess/control/#')
+        asyncio.create_task(handle_control(client, switch_winter, "ess/control/winter_mode"))
+        asyncio.create_task(handle_control(client, switch_fastcharge, "ess/control/fastcharge"))
+        asyncio.create_task(handle_control(client, switch_active, "ess/control/active"))
+        if args.hass_autoconfig_sensors is not None:
+            asyncio.ensure_future(
+                announce_loop(client, once=args.once, sensors=args.hass_autoconfig_sensors.split(",")))
+
+        await send_loop(ess, client, once=args.once, interval_seconds=args.interval_seconds,
+                        common_divisor=args.common_divisor)
 
 
 if __name__ == "__main__":
