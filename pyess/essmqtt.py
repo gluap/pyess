@@ -177,7 +177,8 @@ async def _main(arguments=None):
         while True:
             try:
                 await launch_main_loop(args, ess, handle_control, switch_active, switch_fastcharge, switch_winter)
-            except (TimeoutError, asyncio_mqtt.error.MqttCodeError, aiohttp.client_exceptions.ClientError):
+            except (TimeoutError, asyncio_mqtt.error.MqttCodeError, aiohttp.client_exceptions.ClientError,
+                    BrokenPipeError,  ConnectionError):
                 logger.warning("Expected exception while talking go ESS or MQTT server, restarting in 60 seconds."
                                "Usually this means the server is slow to respond or unreachable.")
                 await asyncio.sleep(60)
