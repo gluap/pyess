@@ -6,13 +6,13 @@ interactions:
     uri: https://192.168.1.253/v1/user/setting/login
   response:
     body:
-      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"f0f44738-a8e7-11ea-830e-ba5511008000\"\
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"694e91ba-a8ee-11ea-830e-ba5511008000\"\
         ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
     headers:
       Access-Control-Allow-Origin: '*'
       Connection: keep-alive
       Content-Type: application/json
-      Date: Sun, 07 Jun 2020 17:54:32 GMT
+      Date: Sun, 07 Jun 2020 18:40:51 GMT
       Server: nginx/1.10.3
       Transfer-Encoding: chunked
     status:
@@ -31,7 +31,7 @@ interactions:
       Access-Control-Allow-Origin: '*'
       Connection: keep-alive
       Content-Type: application/json
-      Date: Sun, 07 Jun 2020 17:54:32 GMT
+      Date: Sun, 07 Jun 2020 18:40:51 GMT
       Server: nginx/1.10.3
       Transfer-Encoding: chunked
     status:
@@ -45,17 +45,17 @@ interactions:
     uri: https://192.168.1.253/v1/user/essinfo/home
   response:
     body:
-      string: "{\n    \"statistics\":\n    {\n        \"pcs_pv_total_power\": \"344\"\
-        ,\n        \"batconv_power\": \"0\",\n        \"bat_use\": \"0\",\n      \
-        \  \"bat_status\": \"off\",\n        \"bat_user_soc\": \"98.27586\",\n   \
-        \     \"load_power\": \"242\",\n        \"load_today\": \"0.0\",\n       \
-        \ \"grid_power\": \"102\",\n        \"current_day_self_consumption\": \"51.4\"\
-        ,\n        \"current_pv_generation_sum\": \"21754\",\n        \"current_grid_feed_in_energy\"\
-        : \"10566\"\n    },\n    \"direction\":\n    {\n        \"is_direct_consuming_\"\
+      string: "{\n    \"statistics\":\n    {\n        \"pcs_pv_total_power\": \"134\"\
+        ,\n        \"batconv_power\": \"2264\",\n        \"bat_use\": \"1\",\n   \
+        \     \"bat_status\": \"2\",\n        \"bat_user_soc\": \"84.48276\",\n  \
+        \      \"load_power\": \"2402\",\n        \"load_today\": \"0.0\",\n     \
+        \   \"grid_power\": \"4\",\n        \"current_day_self_consumption\": \"51.7\"\
+        ,\n        \"current_pv_generation_sum\": \"21948\",\n        \"current_grid_feed_in_energy\"\
+        : \"10599\"\n    },\n    \"direction\":\n    {\n        \"is_direct_consuming_\"\
         : \"1\",\n        \"is_battery_charging_\": \"0\",\n        \"is_battery_discharging_\"\
-        : \"0\",\n        \"is_grid_selling_\": \"1\",\n        \"is_grid_buying_\"\
-        : \"0\",\n        \"is_charging_from_grid_\": \"0\"\n    },\n    \"operation\"\
-        :\n    {\n        \"status\": \"start\",\n        \"mode\": \"2\"\n    },\n\
+        : \"1\",\n        \"is_grid_selling_\": \"0\",\n        \"is_grid_buying_\"\
+        : \"1\",\n        \"is_charging_from_grid_\": \"0\"\n    },\n    \"operation\"\
+        :\n    {\n        \"status\": \"start\",\n        \"mode\": \"1\"\n    },\n\
         \    \"wintermode\":\n    {\n        \"winter_status\": \"off\"\n    },\n\
         \    \"heatpump\":\n    {\n        \"heatpump_activate\": \"on\",\n      \
         \  \"current_temp\": \"0\",\n        \"heatpump_enable\": \"off\"\n    },\n\
@@ -64,7 +64,7 @@ interactions:
       Access-Control-Allow-Origin: '*'
       Connection: keep-alive
       Content-Type: application/json
-      Date: Sun, 07 Jun 2020 17:54:32 GMT
+      Date: Sun, 07 Jun 2020 18:40:51 GMT
       Server: nginx/1.10.3
       Transfer-Encoding: chunked
     status:
@@ -79,42 +79,81 @@ interactions:
   response:
     body:
       string: "{\n    \"PV\":\n    {\n        \"brand\": \"LGE-SOLAR\",\n        \"\
-        capacity\": \"5850\",\n        \"pv1_voltage\": \"306.799988\",\n        \"\
-        pv2_voltage\": \"300.600006\",\n        \"pv1_power\": \"188\",\n        \"\
-        pv2_power\": \"155\",\n        \"pv1_current\": \"0.610000\",\n        \"\
-        pv2_current\": \"0.510000\",\n        \"today_pv_generation_sum\": \"21754\"\
-        ,\n        \"today_month_pv_generation_sum\": \"171853\"\n    },\n    \"BATT\"\
-        :\n    {\n        \"status\": \"4\",\n        \"soc\": \"0\",\n        \"\
-        dc_power\": \"0\",\n        \"winter_setting\": \"on\",\n        \"winter_status\"\
+        capacity\": \"5850\",\n        \"pv1_voltage\": \"289.200012\",\n        \"\
+        pv2_voltage\": \"291.200012\",\n        \"pv1_power\": \"69\",\n        \"\
+        pv2_power\": \"65\",\n        \"pv1_current\": \"0.260000\",\n        \"pv2_current\"\
+        : \"0.240000\",\n        \"today_pv_generation_sum\": \"21948\",\n       \
+        \ \"today_month_pv_generation_sum\": \"172047\"\n    },\n    \"BATT\":\n \
+        \   {\n        \"status\": \"2\",\n        \"soc\": \"84.5\",\n        \"\
+        dc_power\": \"2264\",\n        \"winter_setting\": \"on\",\n        \"winter_status\"\
         : \"off\",\n        \"safty_soc\": \"20\",\n        \"today_batt_discharge_enery\"\
-        : \"3213\",\n        \"today_batt_charge_energy\": \"4983\",\n        \"month_batt_charge_energy\"\
-        : \"30383\",\n        \"month_batt_discharge_energy\": \"26672\"\n    },\n\
-        \    \"GRID\":\n    {\n        \"active_power\": \"-103.190002\",\n      \
-        \  \"a_phase\": \"234.699997\",\n        \"freq\": \"50.009998\",\n      \
-        \  \"today_grid_feed_in_energy\": \"10566\",\n        \"today_grid_power_purchase_energy\"\
-        : \"357\",\n        \"month_grid_feed_in_energy\": \"99065\",\n        \"\
-        month_grid_power_purchase_energy\": \"2215\"\n    },\n    \"LOAD\":\n    {\n\
-        \        \"load_power\": \"242\",\n        \"today_load_consumption_sum\"\
-        : \"9775\",\n        \"today_pv_direct_consumption_enegy\": \"6205\",\n  \
-        \      \"today_batt_discharge_enery\": \"3213\",\n        \"today_grid_power_purchase_energy\"\
-        : \"357\",\n        \"month_load_consumption_sum\": \"71292\",\n        \"\
-        month_pv_direct_consumption_energy\": \"42405\",\n        \"month_batt_discharge_energy\"\
-        : \"26672\",\n        \"month_grid_power_purchase_energy\": \"2215\"\n   \
-        \ },\n    \"PCS\":\n    {\n        \"today_self_consumption\": \"51.4\",\n\
-        \        \"month_co2_reduction_accum\": \"122015\",\n        \"today_pv_generation_sum\"\
-        : \"21754\",\n        \"month_pv_generation_sum\": \"171853\",\n        \"\
-        today_grid_feed_in_energy\": \"10566\",\n        \"month_grid_feed_in_energy\"\
-        : \"99065\",\n        \"pcs_stauts\": \"3\",\n        \"feed_in_limitation\"\
-        : \"70\",\n        \"operation_mode\": \"1\"\n    }\n}\n"
+        : \"3778\",\n        \"today_batt_charge_energy\": \"4983\",\n        \"month_batt_charge_energy\"\
+        : \"30383\",\n        \"month_batt_discharge_energy\": \"27237\"\n    },\n\
+        \    \"GRID\":\n    {\n        \"active_power\": \"4.600000\",\n        \"\
+        a_phase\": \"236.000000\",\n        \"freq\": \"49.990002\",\n        \"today_grid_feed_in_energy\"\
+        : \"10599\",\n        \"today_grid_power_purchase_energy\": \"367\",\n   \
+        \     \"month_grid_feed_in_energy\": \"99098\",\n        \"month_grid_power_purchase_energy\"\
+        : \"2225\"\n    },\n    \"LOAD\":\n    {\n        \"load_power\": \"2402\"\
+        ,\n        \"today_load_consumption_sum\": \"10511\",\n        \"today_pv_direct_consumption_enegy\"\
+        : \"6366\",\n        \"today_batt_discharge_enery\": \"3778\",\n        \"\
+        today_grid_power_purchase_energy\": \"367\",\n        \"month_load_consumption_sum\"\
+        : \"72028\",\n        \"month_pv_direct_consumption_energy\": \"42566\",\n\
+        \        \"month_batt_discharge_energy\": \"27237\",\n        \"month_grid_power_purchase_energy\"\
+        : \"2225\"\n    },\n    \"PCS\":\n    {\n        \"today_self_consumption\"\
+        : \"51.7\",\n        \"month_co2_reduction_accum\": \"122153\",\n        \"\
+        today_pv_generation_sum\": \"21948\",\n        \"month_pv_generation_sum\"\
+        : \"172047\",\n        \"today_grid_feed_in_energy\": \"10599\",\n       \
+        \ \"month_grid_feed_in_energy\": \"99098\",\n        \"pcs_stauts\": \"3\"\
+        ,\n        \"feed_in_limitation\": \"70\",\n        \"operation_mode\": \"\
+        1\"\n    }\n}\n"
     headers:
       Access-Control-Allow-Origin: '*'
       Connection: keep-alive
       Content-Type: application/json
-      Date: Sun, 07 Jun 2020 17:54:32 GMT
+      Date: Sun, 07 Jun 2020 18:40:51 GMT
       Server: nginx/1.10.3
       Transfer-Encoding: chunked
     status:
       code: 200
       message: OK
     url: https://192.168.1.253/v1/user/essinfo/common
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/login
+  response:
+    body:
+      string: "{\n    \"status\": \"success\",\n    \"auth_key\": \"69aee858-a8ee-11ea-830e-ba5511008000\"\
+        ,\n    \"regnum\": \"THE_ESS_NAME\",\n    \"role\": \"user\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 07 Jun 2020 18:40:51 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/login
+- request:
+    body: null
+    headers: {}
+    method: PUT
+    uri: https://192.168.1.253/v1/user/setting/timesync
+  response:
+    body:
+      string: "{\n    \"status\": \"success\"\n}\n"
+    headers:
+      Access-Control-Allow-Origin: '*'
+      Connection: keep-alive
+      Content-Type: application/json
+      Date: Sun, 07 Jun 2020 18:40:53 GMT
+      Server: nginx/1.10.3
+      Transfer-Encoding: chunked
+    status:
+      code: 200
+      message: OK
+    url: https://192.168.1.253/v1/user/setting/timesync
 version: 1
