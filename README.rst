@@ -33,6 +33,16 @@ installed the system.
 Usage
 =====
 
+- `Command Line`_
+ - `Fetch the device password`_
+ - `Find the esses on your network`_
+ - `Fetch the state from ess as json`_
+ - `Graphite wrapper`_
+- `MQTT Wrapper`_
+ - `essmqtt as systemd service`_
+ - `Configuring essmqtt with a configfile`_
+ - `Essmqtt discovery for homeassistant`_
+
 
 Command Line
 ------------
@@ -68,10 +78,10 @@ Examples for the data available:
 - current ip address
 - details on grid power, battery state, daily and monthly statistics
 
-Log ess state into a graphite server
-....................................
+Graphite wrapper
+................
 
-This command will fetch the ``home`` and ``common`` info from ess every 10 seconds and log them against a graphite
+The ``log_against_graphite`` command will fetch the ``home`` and ``common`` info from ess every 10 seconds and log them against a graphite
 server (assuming standard port and udp as protocol). Running this command requires the ess password to be passed on
 the command line::
 
@@ -169,39 +179,6 @@ I use ``mosquitto_sub`` to find the values I'm interested in while debugging lik
     mosquitto_sub -v -h <your_mqtt_server> -p 1883 -u <your_mqtt_user> -P <your_mqtt_password> -t "#"
 
 
-Configuring essmqtt with a config file
-......................................
-
-To permanently configure essmqtt you can create a config file in either ``/etc/essmqtt.conf`` or ``~/essmqtt.conf``
-of the user running ``essmqtt`` or you can specify which config file to load by using the argument ``--config_file``.
-The config file can contain any of the command line arguments. Example::
-
-   ess_password = <your_ess_password>
-   mqtt_server = <your_mqtt_server>
-   mqtt_user = <your_mqtt_username>
-   mqtt_password = <your_mqtt_password>
-
-
-essmqtt autoconfig for homeassistant
-....................................
-Essmqtt can provide autoconfiguration for [homeassistant](https://www.home-assistant.io/).
-
-**prerequisites:** [mqtt must be set up with matt discovery in homeassistant](https://www.home-assistant.io/docs/mqtt/discovery/)
-
-To select the sensors that should be autodiscovered by homeassistant, provide the ``--hass_autoconfig_sensors``
-argument with a comma separated list of all mqtt pathes you want to see as sensors in homeassistant. Some autodetection
-of the value type is done so for instance if an mqtt path contains ``power`` it is assumed to be a power
-value in watts. Of course this can also be configured in a config file.
-
-Example config file::
-
-   ess_password = <your_ess_password>
-   mqtt_server = <your_mqtt_server>
-   mqtt_user = <your_mqtt_username>
-   mqtt_password = <your_mqtt_password>
-   hass_autoconfig_sensors= ess/common/BATT/soc,ess/home/statistics/pcs_pv_total_power,ess/common/GRID/active_power,ess/common/LOAD/load_power
-
-
 essmqtt as systemd service
 ..........................
 To set up ``essmqtt`` as a daemon (systemd service) it is recommended to install it in a venv first::
@@ -209,7 +186,7 @@ To set up ``essmqtt`` as a daemon (systemd service) it is recommended to install
   python3.7 -m venv <path_to_venv>
   <path_to_venv>/bin/pip install pyess
 
-from then on ``essmqtt`` can be called via ``<path_to_venv>/bin/essmqtt``.
+`configure it <Configuring essmqtt with a config file>`_ from then on ``essmqtt`` can be called via ``<path_to_venv>/bin/essmqtt``.
 
 A systemd service file ``/etc/systemd/system/essmqtt.service`` could look like so::
 
@@ -233,7 +210,41 @@ A systemd service file ``/etc/systemd/system/essmqtt.service`` could look like s
 
 It can be started like any regular service via ``systemctl start essmqtt`` or enabled for boot up starts via
 ``systemctl enable essmqtt``. Logs can be displayed using systemctl as well via ``systemctl status essmqtt`` or for
-more lines ``systemctl status -n 100 essmqtt```
+more lines ``systemctl status -n 100 essmqtt``
+
+Configuring essmqtt with a configfile
+.....................................
+
+To permanently configure essmqtt you can create a config file in either ``/etc/essmqtt.conf`` or ``~/essmqtt.conf``
+of the user running ``essmqtt`` or you can specify which config file to load by using the argument ``--config_file``.
+The config file can contain any of the command line arguments. Example::
+
+   ess_password = <your_ess_password>
+   mqtt_server = <your_mqtt_server>
+   mqtt_user = <your_mqtt_username>
+   mqtt_password = <your_mqtt_password>
+
+
+Essmqtt discovery for homeassistant
+...................................
+Essmqtt can provide autoconfiguration for `homeassistant <https://www.home-assistant.io/>`_.
+
+**prerequisites:** mqtt must be set up with `mqtt discovery <https://www.home-assistant.io/docs/mqtt/discovery/>`_ in homeassistant
+
+To select the sensors that should be autodiscovered by homeassistant, provide the ``--hass_autoconfig_sensors``
+argument with a comma separated list of all mqtt pathes you want to see as sensors in homeassistant. Some autodetection
+of the value type is done so for instance if an mqtt path contains ``power`` it is assumed to be a power
+value in watts. Of course this can also be configured in a config file.
+
+Example config file::
+
+   ess_password = <your_ess_password>
+   mqtt_server = <your_mqtt_server>
+   mqtt_user = <your_mqtt_username>
+   mqtt_password = <your_mqtt_password>
+   hass_autoconfig_sensors= ess/common/BATT/soc,ess/home/statistics/pcs_pv_total_power,ess/common/GRID/active_power,ess/common/LOAD/load_power
+
+
 
 API
 ---
