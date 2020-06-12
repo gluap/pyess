@@ -240,7 +240,7 @@ The config file can contain any of the command line arguments. Example::
 
 MQTT discovery for homeassistant
 ................................
-``essmqtt` can provide autoconfiguration for `homeassistant <https://www.home-assistant.io/>`_.
+``essmqtt`` can provide autoconfiguration for `homeassistant <https://www.home-assistant.io/>`_.
 
 **prerequisites:** mqtt must be set up with `mqtt discovery <https://www.home-assistant.io/docs/mqtt/discovery/>`_ in homeassistant
 
