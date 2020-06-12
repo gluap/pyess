@@ -227,6 +227,15 @@ The config file can contain any of the command line arguments. Example::
    mqtt_server = <your_mqtt_server>
    mqtt_user = <your_mqtt_username>
    mqtt_password = <your_mqtt_password>
+   # optional settings
+   ## sensors for homeassistant MQTT discovery (default is not set -> homeassistant autoconfig disabled)
+   # hass_autoconfig_sensors = ess/common/BATT/soc,ess/home/statistics/pcs_pv_total_power,ess/common/GRID/active_power,ess/common/LOAD/load_power
+   ## update interval for MQTT values in seconds (default is 10 seconds)
+   # interval_seconds = 10
+   ## only send the values below common every n'th update of those for home
+   ## this is a debugging option that shouldn't be required, (default is 1)
+   # common_divisor = 1
+
 
 
 MQTT discovery for homeassistant
@@ -246,7 +255,7 @@ Example config file::
    mqtt_server = <your_mqtt_server>
    mqtt_user = <your_mqtt_username>
    mqtt_password = <your_mqtt_password>
-   hass_autoconfig_sensors= ess/common/BATT/soc,ess/home/statistics/pcs_pv_total_power,ess/common/GRID/active_power,ess/common/LOAD/load_power
+   hass_autoconfig_sensors = ess/common/BATT/soc,ess/home/statistics/pcs_pv_total_power,ess/common/GRID/active_power,ess/common/LOAD/load_power
 
 
 
