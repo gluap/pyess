@@ -34,14 +34,18 @@ Usage
 =====
 
 - `Command Line`_
- - `Fetch the device password`_
- - `Find the esses on your network`_
- - `Fetch the state from ess as json`_
- - `Graphite wrapper`_
+
+ * `Fetch the device password`_
+ * `Find the esses on your network`_
+ * `Fetch the state from ess as json`_
+ * `Graphite wrapper`_
+
 - `MQTT Wrapper`_
- - `essmqtt as systemd service`_
- - `Configuring essmqtt with a configfile`_
- - `Essmqtt discovery for homeassistant`_
+
+ * `essmqtt as systemd service`_
+ * `essmqtt config file`_
+ * `MQTT discovery for homeassistant`_
+
 
 
 Command Line
@@ -186,7 +190,7 @@ To set up ``essmqtt`` as a daemon (systemd service) it is recommended to install
   python3.7 -m venv <path_to_venv>
   <path_to_venv>/bin/pip install pyess
 
-`configure it <Configuring essmqtt with a config file>`_ from then on ``essmqtt`` can be called via ``<path_to_venv>/bin/essmqtt``.
+set up your `essmqtt config file`_ from then on ``essmqtt`` can be called via ``<path_to_venv>/bin/essmqtt``.
 
 A systemd service file ``/etc/systemd/system/essmqtt.service`` could look like so::
 
@@ -212,8 +216,8 @@ It can be started like any regular service via ``systemctl start essmqtt`` or en
 ``systemctl enable essmqtt``. Logs can be displayed using systemctl as well via ``systemctl status essmqtt`` or for
 more lines ``systemctl status -n 100 essmqtt``
 
-Configuring essmqtt with a configfile
-.....................................
+essmqtt config file
+...................
 
 To permanently configure essmqtt you can create a config file in either ``/etc/essmqtt.conf`` or ``~/essmqtt.conf``
 of the user running ``essmqtt`` or you can specify which config file to load by using the argument ``--config_file``.
@@ -225,9 +229,9 @@ The config file can contain any of the command line arguments. Example::
    mqtt_password = <your_mqtt_password>
 
 
-Essmqtt discovery for homeassistant
-...................................
-Essmqtt can provide autoconfiguration for `homeassistant <https://www.home-assistant.io/>`_.
+MQTT discovery for homeassistant
+................................
+``essmqtt` can provide autoconfiguration for `homeassistant <https://www.home-assistant.io/>`_.
 
 **prerequisites:** mqtt must be set up with `mqtt discovery <https://www.home-assistant.io/docs/mqtt/discovery/>`_ in homeassistant
 
