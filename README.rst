@@ -245,6 +245,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2020-06-12 0.1.12**
+ - Only publish homeassistant autoconfig information once
+
 **2020-06-01 0.1.11**
  - for cleaner restarts pass exceptions out and set up the full communication freshly when MQTT or ess crashes
 

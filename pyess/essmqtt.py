@@ -83,23 +83,19 @@ def prepare_description(sensor):
     return description
 
 
-async def announce_loop(client, once=False, sensors=None):
+async def announce_loop(client, sensors=None):
     if sensors is None:
         return
-    while True:
-        for sensor in sensors:
-            try:
-                await client.publish(f"homeassistant/sensor/{sensor.replace('/', '')}/config",
-                                     json.dumps(prepare_description(sensor)))
-            except (asyncio_mqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
-                logger.warning("Lost MQTT connection to mqtt errorcode in announce loop, send loop will exit")
-            except:  # pragma: no cover
-                logger.exception(f"Lost MQTT connection to unexpected error code, restarting", exc_info=True)
-                raise
-        if not once:
-            await asyncio.sleep(120)
-        else:
-            return
+
+    for sensor in sensors:
+        try:
+            await client.publish(f"homeassistant/sensor/{sensor.replace('/', '')}/config",
+                                 json.dumps(prepare_description(sensor)), retain=True, qos=2)
+        except (asyncio_mqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
+            logger.warning("Lost MQTT connection to mqtt errorcode in announce loop, send loop will exit")
+        except:  # pragma: no cover
+            logger.exception(f"Lost MQTT connection to unexpected error code, restarting", exc_info=True)
+            raise
 
 
 def main(arguments=None):
@@ -210,7 +206,7 @@ async def launch_main_loop(args, ess, handle_control, switch_active, switch_fast
         asyncio.create_task(handle_control(client, switch_active, "ess/control/active"))
         if args.hass_autoconfig_sensors is not None:
             asyncio.ensure_future(
-                announce_loop(client, once=args.once, sensors=args.hass_autoconfig_sensors.split(",")))
+                announce_loop(client, sensors=args.hass_autoconfig_sensors.split(",")))
 
         await send_loop(ess, client, once=args.once, interval_seconds=args.interval_seconds,
                         common_divisor=args.common_divisor)
