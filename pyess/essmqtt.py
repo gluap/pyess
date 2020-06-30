@@ -164,7 +164,7 @@ async def _main(arguments=None):
             async for msg in messages:
                 logger.info(f"control message received {msg}")
                 try:
-                    state = strtobool(msg.decode())
+                    state = strtobool(msg.payload.decode())
                     await control(state)
                 except ValueError:
                     logger.warning(f"ignoring incompatible value {msg} for switching")
