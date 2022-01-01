@@ -104,7 +104,8 @@ def main(arguments=None):
     # .run(_main, arguments)
 
 
-async def _main(arguments=None):
+async def _main( arguments=None):
+    loop = asyncio.get_event_loop()
     parser = configargparse.ArgumentParser(prog='essmqtt', description='Mqtt connector for pyess',
                                            add_config_file_help=True,
                                            default_config_files=['/etc/essmqtt.conf', '~/.essmqtt.conf'],
@@ -130,7 +131,7 @@ async def _main(arguments=None):
 
     args = parser.parse_args(arguments)
     if args.ess_host is None:
-        ip, name = autodetect_ess()
+        ip, name = await loop.run_in_executor(None, autodetect_ess)
     else:
         ip, name = args.ess_host, args.ess_host
 
