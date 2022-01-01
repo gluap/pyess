@@ -8,7 +8,7 @@ import time
 from json import JSONDecodeError
 
 import requests
-from zeroconf import Zeroconf, ServiceInfo
+from zeroconf import Zeroconf, ServiceInfo, ServiceListener
 
 from pyess.constants import LOGIN_URL, TIMESYNC_URL, GRAPH_TIMESPANS, GRAPH_DEVICES, GRAPH_PARAMS, \
     GRAPH_TFORMATS, SWITCH_URL, STATE_URLS, BATT_URL
@@ -243,7 +243,7 @@ def find_all_esses():
     from zeroconf import ServiceBrowser, Zeroconf
     esses = []
 
-    class MyListener:
+    class MyListener(ServiceListener):
 
         def remove_service(self, zeroconf, type, name):
             pass
