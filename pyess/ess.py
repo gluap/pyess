@@ -252,6 +252,9 @@ def find_all_esses():
             info = zeroconf.get_service_info(type, name)
             esses.append(info.name)
 
+        def update_service(self, *args):
+            pass
+
     zeroconf = Zeroconf()
     listener = MyListener()
     # browser = ServiceBrowser(zeroconf, "_http._tcp.local.", listener)
