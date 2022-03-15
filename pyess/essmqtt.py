@@ -70,7 +70,7 @@ def prepare_description(sensor):
         description["device_class"] = "power"
         description["unit_of_measurement"] = "W"
     if "enegy" in sensor or "energy" in sensor:  # typo in ess json
-        description["unit_of_measuremnt"] = "Wh"
+        description["unit_of_measurement"] = "Wh"
         description["icon"] = "mdi:gauge"
     if "soc" in sensor:
         description["device_class"] = "battery"
