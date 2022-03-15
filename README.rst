@@ -269,6 +269,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2022-03-15 0.1.14**
+ - fix typo in mqtt autoconfig
+
 **2020-06-12 0.1.12**
  - Only publish homeassistant autoconfig information once
 
