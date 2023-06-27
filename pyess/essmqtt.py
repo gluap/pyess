@@ -5,8 +5,8 @@ import json
 import sys
 import aiohttp.client_exceptions
 
-from asyncio_mqtt import Client
-import asyncio_mqtt.error
+from aiomqtt import Client
+import aiomqtt.error
 
 from distutils.util import strtobool
 
@@ -37,7 +37,7 @@ async def recursive_publish_dict(mqtt_client, publish_root, dictionary):
         else:
             try:
                 await mqtt_client.publish(f"{publish_root}/{key}", value)
-            except (asyncio_mqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
+            except (aiomqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
                 logger.warning("Lost MQTT connection to mqtt errorcode or timeout, restarting", exc_info=True)
                 raise
             except:  # pragma: no cover
@@ -91,7 +91,7 @@ async def announce_loop(client, sensors=None):
         try:
             await client.publish(f"homeassistant/sensor/{sensor.replace('/', '')}/config",
                                  json.dumps(prepare_description(sensor)), retain=True, qos=2)
-        except (asyncio_mqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
+        except (aiomqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
             logger.warning("Lost MQTT connection to mqtt errorcode in announce loop, send loop will exit")
         except:  # pragma: no cover
             logger.exception(f"Lost MQTT connection to unexpected error code, restarting", exc_info=True)
@@ -174,7 +174,7 @@ async def _main( arguments=None):
         while True:
             try:
                 await launch_main_loop(args, ess, handle_control, switch_active, switch_fastcharge, switch_winter)
-            except (TimeoutError, asyncio_mqtt.error.MqttCodeError, aiohttp.client_exceptions.ClientError,
+            except (TimeoutError, aiomqtt.error.MqttCodeError, aiohttp.client_exceptions.ClientError,
                     BrokenPipeError,  ConnectionError):
                 logger.warning("Expected exception while talking go ESS or MQTT server, restarting in 60 seconds."
                                "Usually this means the server is slow to respond or unreachable.")
