@@ -1,5 +1,6 @@
 #!/usr/bin/python
 # -*- coding: utf-8 -*-
+import sys
 
 import pytest
 import os
@@ -13,6 +14,8 @@ from pyess.essmqtt import main, _main
 def using_network():
     return "USE_NETWORK" in os.environ and os.environ["USE_NETWORK"] == "true"
 
+
+@pytest.mark.skipif(sys.version_info >= (3,11),reason="amqtt only available until 3.10")
 
 @pytest.mark.skipif(using_network(), reason="only when not using network")
 @pytest.mark.vcr(mode="all")
@@ -33,6 +36,8 @@ async def test_offline_log_against_mqtt(password, hbmqtt,mocker):
           "--once", "true"])
 
 
+
+@pytest.mark.skipif(sys.version_info >= (3,11),reason="amqtt only available until 3.10")
 @pytest.mark.skipif(using_network(), reason="only when using network")
 @pytest.mark.vcr(mode="all")
 @pytest.mark.asyncio()

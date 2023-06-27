@@ -161,14 +161,15 @@ async def _main( arguments=None):
             await ess.switch_off()
 
     async def handle_control(client, control, path):
-        async with client.filtered_messages(path) as messages:
+        async with client.messages() as messages:
             async for msg in messages:
-                logger.info(f"control message received {msg}")
-                try:
-                    state = strtobool(msg.payload.decode())
-                    await control(state)
-                except ValueError:
-                    logger.warning(f"ignoring incompatible value {msg} for switching")
+                if msg.topic.matches(path):
+                    logger.info(f"control message received {msg}")
+                    try:
+                        state = strtobool(msg.payload.decode())
+                        await control(state)
+                    except ValueError:
+                        logger.warning(f"ignoring incompatible value {msg} for switching")
 
     if args.mqtt_server is not None:
         while True:

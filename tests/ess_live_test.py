@@ -15,7 +15,7 @@ def using_network():
 
 
 @pytest.fixture()
-def test_online_ess(cache=[]):
+def test_online_ess(cache:list =[]):
     if not cache:
         ip, name = autodetect_ess()
         cache.append(ip)

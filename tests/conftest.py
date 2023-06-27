@@ -4,6 +4,7 @@ import json
 import os
 import random
 import subprocess
+import time
 
 import pytest
 
@@ -23,7 +24,9 @@ def hbmqtt(tmpdir):
     open(conf, "w").write(
         HBMQTT_CONF.format(port=port, passwd=os.path.join(os.path.dirname(__file__), "data/hbmqtt_passwd")))
 
-    hbmqtt = subprocess.Popen(["hbmqtt", "-c", str(conf)])
+    hbmqtt = subprocess.Popen(["amqtt", "-c", str(conf)])
+
+    time.sleep(0.5)
 
     yield port
 
