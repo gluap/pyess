@@ -7,12 +7,6 @@ Python library for LG ESS Solar power converters with EnerVU app compatibility
 ------------------------------------------------------------------------------
 
 
-.. image:: https://travis-ci.org/gluap/pyess.svg?branch=master
-    :target: https://travis-ci.org/gluap/pyess?branch=master
-.. image:: https://coveralls.io/repos/github/gluap/pyess/badge.svg?branch=master
-    :target: https://coveralls.io/github/gluap/pyess?branch=master
-
-
 Python library for communication with LG ESS power converter / energy storage devices for photovoltaic solar generators
 
 This library is **not endorsed by the manufacturer**. It was written for lack of an official API. It should allow to
@@ -269,6 +263,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2023-06-29 0.1.17**
+ - add state_class and measurement units consistently
+
 **2023-06-29 0.1.16**
  - add state_class for homeassistant integration
 
