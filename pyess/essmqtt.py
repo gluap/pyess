@@ -70,7 +70,7 @@ def prepare_description(sensor):
         description["device_class"] = "power"
         description["unit_of_measurement"] = "W"
         description["state_class"] = "measurement"
-    if "enegy" in sensor or "energy" in sensor:  # typo in ess json
+    if "enegy" in sensor or "energy" in sensor or sensor.endswith("_sum"):  # typo in ess json
         description["unit_of_measurement"] = "Wh"
         description["icon"] = "mdi:gauge"
         description["state_class"] = "total_increasing"
