@@ -269,6 +269,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2023-06-29 0.1.15**
+ - compatibility changes for python3.11
+
 **2022-03-15 0.1.14**
  - fix typo in mqtt autoconfig
 
