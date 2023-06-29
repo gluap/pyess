@@ -269,6 +269,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2023-06-29 0.1.16**
+ - add state_class for homeassistant integration
+
 **2023-06-29 0.1.15**
  - compatibility changes for python3.11
 
