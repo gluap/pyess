@@ -263,17 +263,17 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
-**2023-06-29 0.1.18**
- - maybe ``total`` fits it better
+**2023-06-29 0.1.19**
+ - homeassistant: some more imporvements to energy sensing, add  switch capability
 
 **2023-06-29 0.1.18**
- - stuff with _sum is also an "increasing" thing.
+ - homeassistant: stuff with _sum is also an "increasing" thing.
 
 **2023-06-29 0.1.17**
- - add state_class and measurement units consistently
+ - homeassistant: add state_class and measurement units consistently
 
 **2023-06-29 0.1.16**
- - add state_class for homeassistant integration
+ - homeassistant: add state_class for homeassistant integration
 
 **2023-06-29 0.1.15**
  - compatibility changes for python3.11
