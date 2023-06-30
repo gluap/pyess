@@ -65,13 +65,14 @@ async def send_loop(ess, mqtt_client=None, graphite_client=None, once=False, int
 
 
 def prepare_description(sensor):
-    description = {"name": sensor, "state_topic": sensor}
+    description = {"name": sensor, "state_topic": sensor, "unique_id": sensor.replace("/",""), "device": {"identifiers": ["lgesss"], "manufacturer": "LG", "model": "ESS", "name": "ESS", "sw_version": "pyess"}}
     if "power" in sensor:
         description["device_class"] = "power"
         description["unit_of_measurement"] = "W"
         description["state_class"] = "measurement"
     if "enegy" in sensor or "energy" in sensor or sensor.endswith("_sum"):  # typo in ess json
         description["unit_of_measurement"] = "Wh"
+        description["device_class"] = "energy"
         description["icon"] = "mdi:gauge"
         description["state_class"] = "total_increasing"
     if "soc" in sensor:
@@ -86,6 +87,15 @@ def prepare_description(sensor):
         description["unit_of_measurement"] = "V"
         description["icon"] = "mdi:gauge"
         description["state_class"] = "measurement"
+    if "control/active" in sensor:
+        description["state_topic"] = "ess/home/operation/status"
+        description["name"] = "ess_active"
+        description["state_on"] = "start"
+        description["state_off"] = "stop"
+        description["payload_on"] = "true"
+        description["payload_off"] = "false"
+        description["command_topic"] = "ess/control/active"
+
     return description
 
 
@@ -95,7 +105,8 @@ async def announce_loop(client, sensors=None):
 
     for sensor in sensors:
         try:
-            await client.publish(f"homeassistant/sensor/{sensor.replace('/', '')}/config",
+            node_type = "switch" if "control" in sensor else "sensor"
+            await client.publish(f"homeassistant/{node_type}/{sensor.replace('/', '')}/config",
                                  json.dumps(prepare_description(sensor)), retain=True, qos=2)
         except (aiomqtt.error.MqttCodeError, TimeoutError): # pragma: no cover
             logger.warning("Lost MQTT connection to mqtt errorcode in announce loop, send loop will exit")

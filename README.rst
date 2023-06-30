@@ -264,6 +264,9 @@ be accessed via the EnerVu App.
 Changelog
 =========
 **2023-06-29 0.1.18**
+ - maybe ``total`` fits it better
+
+**2023-06-29 0.1.18**
  - stuff with _sum is also an "increasing" thing.
 
 **2023-06-29 0.1.17**
