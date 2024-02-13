@@ -6,7 +6,6 @@ pyess
 Python library for LG ESS Solar power converters with EnerVU app compatibility
 ------------------------------------------------------------------------------
 
-
 Python library for communication with LG ESS power converter / energy storage devices for photovoltaic solar generators
 
 This library is **not endorsed by the manufacturer**. It was written for lack of an official API. It should allow to
@@ -234,6 +233,10 @@ The config file can contain any of the command line arguments. Example::
 
 MQTT discovery for homeassistant
 ................................
+
+**Below you find the manual setup process. If you use homeassistant operating system or one of the other installation methods that offers add-ons you can find a homeassistant add-on repo with an addon for pyess** `here <https://github.com/gluap/pyess-addon/>`_.
+
+
 ``essmqtt`` can provide autoconfiguration for `homeassistant <https://www.home-assistant.io/>`_.
 
 **prerequisites:** mqtt must be set up with `mqtt discovery <https://www.home-assistant.io/docs/mqtt/discovery/>`_ in homeassistant
@@ -263,6 +266,10 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2024-02-14 0.1.20**
+ - adapt readme
+ - nail aiomqtt to a lower version due to incompatible changes.
+
 **2023-06-29 0.1.19**
  - homeassistant: some more imporvements to energy sensing, add  switch capability
 
