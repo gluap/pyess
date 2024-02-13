@@ -266,12 +266,11 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
-**2024-02-14 0.1.20**
- - adapt readme
+**2024-02-14 0.1.21**
  - nail aiomqtt to a lower version due to incompatible changes.
 
-**2023-06-29 0.1.19**
- - homeassistant: some more imporvements to energy sensing, add  switch capability
+**2023-07-01 0.1.20**
+ - homeassistant: some more imporvements to energy sensing, add switch capability
 
 **2023-06-29 0.1.18**
  - homeassistant: stuff with _sum is also an "increasing" thing.
