@@ -266,6 +266,9 @@ be accessed via the EnerVu App.
 
 Changelog
 =========
+**2024-02-14 0.1.22**
+ - care for another typo in the ess api
+
 **2024-02-14 0.1.21**
  - nail aiomqtt to a lower version due to incompatible changes.
 
