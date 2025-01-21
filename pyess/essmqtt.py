@@ -79,7 +79,7 @@ def prepare_description(sensor):
         description["device_class"] = "battery"
         description["unit_of_measurement"] = "%"
         description["state_class"] = "measurement"
-    if "current" in sensor:
+    if sensor.endswith("current"):
         description["unit_of_measurement"] = "A"
         description["icon"] = "mdi:gauge"
         description["state_class"] = "measurement"
